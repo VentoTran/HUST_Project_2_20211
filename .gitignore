@@ -52,6 +52,6 @@ Mkfile.old
 dkms.conf
 
 # Hardware files
-/History
+HARDWARE/History
 
 
