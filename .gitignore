@@ -54,6 +54,7 @@ dkms.conf
 # Hardware files
 HARDWARE/History/
 HARDWARE/Project Logs for Project_2/
+HARDWARE/Project Outputs for Project_2/
 HARDWARE/*.log
 HARDWARE/*.OutJob
 
