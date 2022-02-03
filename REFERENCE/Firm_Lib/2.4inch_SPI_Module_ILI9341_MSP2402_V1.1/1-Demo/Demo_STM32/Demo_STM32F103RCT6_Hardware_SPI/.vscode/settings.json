@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "FONT.H": "cpp",
+        "sys.h": "c"
+    }
+}
