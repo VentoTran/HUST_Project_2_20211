@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
   29:Core/Src/main.c **** 
   30:Core/Src/main.c **** /* USER CODE END Includes */
   31:Core/Src/main.c **** 
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 2
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 2
 
 
   32:Core/Src/main.c **** /* Private typedef -----------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
   86:Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
   87:Core/Src/main.c **** 
   88:Core/Src/main.c ****   /* USER CODE END SysInit */
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 3
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 3
 
 
   89:Core/Src/main.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  143:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
  144:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
  145:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 4
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 4
 
 
  146:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
   49              	.LVL2:
   50              	.L4:
  173:Core/Src/main.c ****     HAL_IncTick();
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 5
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 5
 
 
   51              		.loc 1 173 5 is_stmt 1 view .LVU6
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
   15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
   17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 6
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 6
 
 
   18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
   72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
   73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 7
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 7
 
 
   75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  129:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
  130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 8
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 8
 
 
  132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  123:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  123              		.loc 1 123 3 view .LVU16
  123:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 9
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 9
 
 
  124              		.loc 1 123 22 is_stmt 0 view .LVU17
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  136:Core/Src/main.c ****   {
  162              		.loc 1 136 7 is_stmt 0 view .LVU34
  163 0032 06A8     		add	r0, sp, #24
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 10
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 10
 
 
  164 0034 FFF7FEFF 		bl	HAL_RCC_OscConfig
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  203              		.cfi_restore_state
  138:Core/Src/main.c ****   }
  204              		.loc 1 138 5 is_stmt 1 view .LVU50
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 11
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 11
 
 
  205 005c FFF7FEFF 		bl	Error_Handler
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  252              		.loc 1 100 3 view .LVU59
  253 001a FFF7FEFF 		bl	osKernelInitialize
  254              	.LVL15:
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 12
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 12
 
 
  101:Core/Src/main.c ****   /* Start scheduler */
@@ -696,20 +696,20 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 1
  283              		.file 15 "Core/Inc/usart.h"
  284              		.file 16 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
  285              		.file 17 "<built-in>"
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s 			page 13
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:16     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:24     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:59     .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:64     .text.Error_Handler:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:71     .text.Error_Handler:00000000 Error_Handler
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:103    .text.SystemClock_Config:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:110    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:215    .text.main:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccy4ezB4.s:222    .text.main:00000000 main
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:16     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:24     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:59     .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:64     .text.Error_Handler:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:71     .text.Error_Handler:00000000 Error_Handler
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:103    .text.SystemClock_Config:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:110    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:215    .text.main:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccVHDhFa.s:222    .text.main:00000000 main
 
 UNDEFINED SYMBOLS
 HAL_IncTick

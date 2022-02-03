@@ -74,8 +74,8 @@ myButton_t Info_Control = {20, 219, 20, 0, 0, ILI9341_LIGHTBLUE, NULL, NULL};
 myButton_t Control_Setting = {160, 205, 0, 100, 30, ILI9341_YELLOW, NULL, NULL};
 Mode DeviceState = RUNNING;
 uint8_t currentPage = 0;
-Channel Channel01 = {26, 138.2, 0};
-Channel Channel02 = {61, 54.9, 0};
+Channel Channel01 = {0, 0.0, 0};
+Channel Channel02 = {0, 0.0, 0};
 
 
 /* USER CODE END Variables */
@@ -109,6 +109,11 @@ const osTimerAttr_t myTimer_attributes = {
 osTimerId_t TimeoutHandle;
 const osTimerAttr_t Timeout_attributes = {
   .name = "Timeout"
+};
+/* Definitions for Mutex01 */
+osMutexId_t Mutex01Handle;
+const osMutexAttr_t Mutex01_attributes = {
+  .name = "Mutex01"
 };
 /* Definitions for BinarySem */
 osSemaphoreId_t BinarySemHandle;
@@ -151,6 +156,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+  /* Create the mutex(es) */
+  /* creation of Mutex01 */
+  Mutex01Handle = osMutexNew(&Mutex01_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -158,7 +166,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the semaphores(s) */
   /* creation of BinarySem */
-  BinarySemHandle = osSemaphoreNew(1, 0, &BinarySem_attributes);
+  BinarySemHandle = osSemaphoreNew(1, 1, &BinarySem_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
@@ -346,16 +354,22 @@ void LED_Indicator(void *argument)
       char t_temp[9];
       intToTime(Channel01.time, t_temp);
       ILI9341_WriteString(90, 80, t_temp, Font_7x10, ILI9341_GREEN, ILI9341_BLACK);
-      for(uint8_t i = 0; i < 120; i++)
+      
+      if((osMutexWait(Mutex01Handle, portMAX_DELAY) == osOK) && (currentPage == InfoPage))
       {
-        ILI9341_DrawLine(191+i, 20, 191+i, 100, ILI9341_BLACK);
-        if (i < 3)
+        for(uint8_t i = 0; i < 120; i++)
         {
-          ILI9341_DrawLine(190, 20, 192, 22, ILI9341_WHITE);
+          ILI9341_DrawLine(191+i, 20, 191+i, 100, ILI9341_BLACK);
+          if (i < 3)
+          {
+            ILI9341_DrawLine(190, 20, 192, 22, ILI9341_WHITE);
+          }
+          ILI9341_DrawPixel(191+i, 100, ILI9341_WHITE);
+          ILI9341_DrawPixel(191+i, 100-Channel01.history[i], ILI9341_BLUE);
         }
-        ILI9341_DrawPixel(191+i, 100, ILI9341_WHITE);
-        ILI9341_DrawPixel(191+i, 100-Channel01.history[i], ILI9341_BLUE);
+        osMutexRelease(Mutex01Handle);
       }
+      
     }
 
     if (Channel01.time > 120)
@@ -383,16 +397,21 @@ void LED_Indicator(void *argument)
       char t_temp[9];
       intToTime(Channel02.time, t_temp);
       ILI9341_WriteString(90, 170, t_temp, Font_7x10, ILI9341_GREEN, ILI9341_BLACK);
-      for(uint8_t i = 0; i < 120; i++)
+      if((osMutexWait(Mutex01Handle, portMAX_DELAY) == osOK) && (currentPage == InfoPage))
       {
-        ILI9341_DrawLine(191+i, 140, 191+i, 220, ILI9341_BLACK);
-        if (i < 3)
+        for(uint8_t i = 0; i < 120; i++)
         {
-          ILI9341_DrawLine(190, 140, 192, 142, ILI9341_WHITE);
+          ILI9341_DrawLine(191+i, 140, 191+i, 220, ILI9341_BLACK);
+          if (i < 3)
+          {
+            ILI9341_DrawLine(190, 140, 192, 142, ILI9341_WHITE);
+          }
+          ILI9341_DrawPixel(191+i, 220, ILI9341_WHITE);
+          ILI9341_DrawPixel(191+i, 220-Channel02.history[i], ILI9341_RED);
         }
-        ILI9341_DrawPixel(191+i, 220, ILI9341_WHITE);
-        ILI9341_DrawPixel(191+i, 220-Channel02.history[i], ILI9341_RED);
+        osMutexRelease(Mutex01Handle);
       }
+      
     }
 
     if (Channel02.time > 120)
@@ -702,8 +721,12 @@ void InfoPageHandler(uint16_t x, uint16_t y)
 {
   if ((((ABS(y - Info_Control.pos_x))^2) + ((ABS(x - Info_Control.pos_y))^2)) <= ((Info_Control.shape_r)^2))
   {
-    currentPage = ControlPage;
-    vTaskResume(myDisplayHandle);
+    if(osMutexWait(Mutex01Handle, portMAX_DELAY) == osOK)
+    {
+      currentPage = ControlPage;
+      vTaskResume(myDisplayHandle);
+      osMutexRelease(Mutex01Handle);
+    } 
   }
 }
 

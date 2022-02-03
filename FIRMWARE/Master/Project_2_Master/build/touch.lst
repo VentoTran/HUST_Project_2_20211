@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
   44              		.align	2
   45              	.L3:
   46 0010 00080140 		.word	1073809408
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 2
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 2
 
 
   47              		.cfi_endproc
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
   99              	.LCFI2:
  100              		.cfi_def_cfa_offset 8
  101              		.cfi_offset 3, -8
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 3
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 3
 
 
  102              		.cfi_offset 14, -4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
  153              		.loc 1 23 5 is_stmt 1 view .LVU12
   24:Core/Src/touch.c ****     static const uint8_t cmd_read_y[] = { READ_Y };
  154              		.loc 1 24 5 view .LVU13
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 4
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 4
 
 
   25:Core/Src/touch.c ****     static const uint8_t zeroes_tx[] = { 0x00, 0x00 };
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
  194              	.LVL8:
   37:Core/Src/touch.c **** 
   38:Core/Src/touch.c ****         HAL_SPI_Transmit(&ILI9341_TOUCH_SPI_PORT, (uint8_t*)cmd_read_y, sizeof(cmd_read_y), HAL_MAX
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 5
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 5
 
 
  195              		.loc 1 38 9 is_stmt 1 view .LVU33
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
  240              		.loc 1 47 9 is_stmt 1 view .LVU44
  241              		.loc 1 47 35 is_stmt 0 view .LVU45
  242 0072 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 6
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 6
 
 
  243              		.loc 1 47 64 view .LVU46
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
   63:Core/Src/touch.c ****     //char data[50];
   64:Core/Src/touch.c ****     // Uncomment this line to calibrate touchscreen:
   65:Core/Src/touch.c ****     //sprintf(data, "raw_x = %ld, raw_y = %ld\n\0", raw_x, raw_y);
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 7
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 7
 
 
   66:Core/Src/touch.c ****     //uint32_t data[] = {raw_x, raw_y};
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
  322 00d6 0020     		movs	r0, #0
  323 00d8 FAE7     		b	.L18
  324              	.L22:
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 8
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 8
 
 
  325 00da 00BF     		.align	2
@@ -455,29 +455,29 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 1
  363              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
  364              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
  365              		.file 9 "Core/Inc/lcd.h"
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s 			page 9
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 touch.c
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:16     .text.ILI9341_TouchSelect:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:23     .text.ILI9341_TouchSelect:00000000 ILI9341_TouchSelect
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:46     .text.ILI9341_TouchSelect:00000010 $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:51     .text.ILI9341_TouchUnselect:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:58     .text.ILI9341_TouchUnselect:00000000 ILI9341_TouchUnselect
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:80     .text.ILI9341_TouchUnselect:00000010 $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:85     .text.ILI9341_TouchPressed:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:92     .text.ILI9341_TouchPressed:00000000 ILI9341_TouchPressed
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:116    .text.ILI9341_TouchPressed:00000014 $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:121    .text.ILI9341_TouchGetCoordinates:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:128    .text.ILI9341_TouchGetCoordinates:00000000 ILI9341_TouchGetCoordinates
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:327    .text.ILI9341_TouchGetCoordinates:000000dc $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:336    .rodata.cmd_read_x.0:00000000 $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:340    .rodata.cmd_read_x.0:00000000 cmd_read_x.0
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:343    .rodata.cmd_read_y.2:00000000 $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:347    .rodata.cmd_read_y.2:00000000 cmd_read_y.2
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:350    .rodata.zeroes_tx.1:00000000 $d
-C:\Users\Vento\AppData\Local\Temp\ccFW3mcU.s:354    .rodata.zeroes_tx.1:00000000 zeroes_tx.1
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:16     .text.ILI9341_TouchSelect:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:23     .text.ILI9341_TouchSelect:00000000 ILI9341_TouchSelect
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:46     .text.ILI9341_TouchSelect:00000010 $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:51     .text.ILI9341_TouchUnselect:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:58     .text.ILI9341_TouchUnselect:00000000 ILI9341_TouchUnselect
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:80     .text.ILI9341_TouchUnselect:00000010 $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:85     .text.ILI9341_TouchPressed:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:92     .text.ILI9341_TouchPressed:00000000 ILI9341_TouchPressed
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:116    .text.ILI9341_TouchPressed:00000014 $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:121    .text.ILI9341_TouchGetCoordinates:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:128    .text.ILI9341_TouchGetCoordinates:00000000 ILI9341_TouchGetCoordinates
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:327    .text.ILI9341_TouchGetCoordinates:000000dc $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:336    .rodata.cmd_read_x.0:00000000 $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:340    .rodata.cmd_read_x.0:00000000 cmd_read_x.0
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:343    .rodata.cmd_read_y.2:00000000 $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:347    .rodata.cmd_read_y.2:00000000 cmd_read_y.2
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:350    .rodata.zeroes_tx.1:00000000 $d
+C:\Users\Vento\AppData\Local\Temp\ccs6KJTo.s:354    .rodata.zeroes_tx.1:00000000 zeroes_tx.1
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

@@ -1,7 +1,8 @@
 #MicroXplorer Configuration settings - do not modify
 FREERTOS.BinarySemaphores01=BinarySem,Dynamic,NULL
 FREERTOS.FootprintOK=true
-FREERTOS.IPParameters=Tasks01,FootprintOK,Timers01,BinarySemaphores01
+FREERTOS.IPParameters=Tasks01,FootprintOK,Timers01,BinarySemaphores01,Mutexes01
+FREERTOS.Mutexes01=Mutex01,Dynamic,NULL
 FREERTOS.Tasks01=myDisplay,24,200,Display_Task,Default,NULL,Dynamic,NULL,NULL;myPLC,24,200,PLC_Task,Default,NULL,Dynamic,NULL,NULL;Button,32,150,IRQ_Task,Default,NULL,Dynamic,NULL,NULL
 FREERTOS.Timers01=myTimer,LED_Indicator,osTimerPeriodic,Default,NULL,Dynamic,NULL;Timeout,LCD_Timeout,osTimerOnce,Default,NULL,Dynamic,NULL
 File.Version=6
