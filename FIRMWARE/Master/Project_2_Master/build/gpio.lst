@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
   30:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
   31:Core/Src/gpio.c **** /* USER CODE BEGIN 1 */
   32:Core/Src/gpio.c **** 
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 2
 
 
   33:Core/Src/gpio.c **** /* USER CODE END 1 */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
   65              	.LBE2:
   66              		.loc 1 48 3 view .LVU8
   49:Core/Src/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 3
 
 
   67              		.loc 1 49 3 view .LVU9
@@ -172,20 +172,20 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
   53:Core/Src/gpio.c ****   /*Configure GPIO pin Output Level */
   54:Core/Src/gpio.c ****   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
  112              		.loc 1 54 3 view .LVU27
- 113 005a DFF89890 		ldr	r9, .L3+4
+ 113 005a DFF8A090 		ldr	r9, .L3+12
  114 005e 2246     		mov	r2, r4
  115 0060 4FF40051 		mov	r1, #8192
  116 0064 4846     		mov	r0, r9
  117 0066 FFF7FEFF 		bl	HAL_GPIO_WritePin
  118              	.LVL0:
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 4
 
 
   55:Core/Src/gpio.c **** 
   56:Core/Src/gpio.c ****   /*Configure GPIO pin Output Level */
   57:Core/Src/gpio.c ****   HAL_GPIO_WritePin(LCD_SS_GPIO_Port, LCD_SS_Pin, GPIO_PIN_RESET);
  119              		.loc 1 57 3 view .LVU28
- 120 006a 234E     		ldr	r6, .L3+8
+ 120 006a 224E     		ldr	r6, .L3+4
  121 006c 2246     		mov	r2, r4
  122 006e 4FF48051 		mov	r1, #4096
  123 0072 3046     		mov	r0, r6
@@ -195,7 +195,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
   59:Core/Src/gpio.c ****   /*Configure GPIO pin Output Level */
   60:Core/Src/gpio.c ****   HAL_GPIO_WritePin(GPIOA, TOUCH_SS_Pin|LCD_RS_Pin|LCD_DC_Pin|LCD_LED_Pin, GPIO_PIN_RESET);
  126              		.loc 1 60 3 view .LVU29
- 127 0078 DFF88080 		ldr	r8, .L3+12
+ 127 0078 DFF88480 		ldr	r8, .L3+16
  128 007c 2246     		mov	r2, r4
  129 007e 4FF41941 		mov	r1, #39168
  130 0082 4046     		mov	r0, r8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
   71:Core/Src/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  157              		.loc 1 71 3 is_stmt 1 view .LVU41
  158              		.loc 1 71 24 is_stmt 0 view .LVU42
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 5
 
 
  159 00a6 0595     		str	r5, [sp, #20]
@@ -291,14 +291,14 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
   85:Core/Src/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
  193              		.loc 1 85 3 is_stmt 1 view .LVU59
  194              		.loc 1 85 24 is_stmt 0 view .LVU60
- 195 00cc 0C4B     		ldr	r3, .L3+16
+ 195 00cc 0A4B     		ldr	r3, .L3+8
  196 00ce 0593     		str	r3, [sp, #20]
   86:Core/Src/gpio.c ****   GPIO_InitStruct.Pull = GPIO_PULLUP;
  197              		.loc 1 86 3 is_stmt 1 view .LVU61
  198              		.loc 1 86 24 is_stmt 0 view .LVU62
  199 00d0 0695     		str	r5, [sp, #24]
   87:Core/Src/gpio.c ****   HAL_GPIO_Init(TOUCH_IRQ_GPIO_Port, &GPIO_InitStruct);
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 6
 
 
  200              		.loc 1 87 3 is_stmt 1 view .LVU63
@@ -321,8 +321,9 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
  213 00e6 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
  214              	.LVL8:
   92:Core/Src/gpio.c **** 
-  93:Core/Src/gpio.c **** }
- 215              		.loc 1 93 1 is_stmt 0 view .LVU66
+  93:Core/Src/gpio.c ****   
+  94:Core/Src/gpio.c **** }
+ 215              		.loc 1 94 1 is_stmt 0 view .LVU66
  216 00ea 09B0     		add	sp, sp, #36
  217              	.LCFI2:
  218              		.cfi_def_cfa_offset 28
@@ -332,27 +333,30 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 1
  222              		.align	2
  223              	.L3:
  224 00f0 00100240 		.word	1073876992
- 225 00f4 00100140 		.word	1073811456
- 226 00f8 000C0140 		.word	1073810432
- 227 00fc 00080140 		.word	1073809408
- 228 0100 00002110 		.word	270598144
+ 225 00f4 000C0140 		.word	1073810432
+ 226 00f8 00002110 		.word	270598144
+ 227 00fc 00100140 		.word	1073811456
+ 228 0100 00080140 		.word	1073809408
  229              		.cfi_endproc
  230              	.LFE65:
  232              		.text
  233              	.Letext0:
- 234              		.file 2 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\machine\\_default_type
- 235              		.file 3 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\sys\\_stdint.h"
- 236              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 237              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 238              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s 			page 7
+ 234              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 235              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 236              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 237              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 238              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 239              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 240              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 241              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
-C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s:16     .text.MX_GPIO_Init:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\Vento\AppData\Local\Temp\ccxjXx7G.s:224    .text.MX_GPIO_Init:000000f0 $d
+C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s:16     .text.MX_GPIO_Init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\Admin\AppData\Local\Temp\cc7vzTIu.s:224    .text.MX_GPIO_Init:000000f0 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

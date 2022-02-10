@@ -66,7 +66,7 @@ typedef struct
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 extern SPI_HandleTypeDef hspi2;
-
+extern UART_HandleTypeDef huart1;
 myButton_t Channel_1 = {80, 120, 50, 0, 0, ILI9341_RED, false, NULL};
 myButton_t Channel_2 = {240, 120, 50, 0, 0, ILI9341_RED, false, NULL};
 myButton_t Control_Info = {299, 219, 20, 0, 0, ILI9341_LIGHTBLUE, NULL, NULL};
@@ -76,7 +76,8 @@ Mode DeviceState = RUNNING;
 uint8_t currentPage = 0;
 Channel Channel01 = {0, 0.0, 0};
 Channel Channel02 = {0, 0.0, 0};
-
+uint8_t UART1_rxBuffer[100];
+uint8_t UART1_txBuffer[100];
 
 /* USER CODE END Variables */
 /* Definitions for myDisplay */
@@ -115,10 +116,15 @@ osMutexId_t Mutex01Handle;
 const osMutexAttr_t Mutex01_attributes = {
   .name = "Mutex01"
 };
+
 /* Definitions for BinarySem */
 osSemaphoreId_t BinarySemHandle;
 const osSemaphoreAttr_t BinarySem_attributes = {
   .name = "BinarySem"
+};
+osSemaphoreId_t PLCSemHandle;
+const osSemaphoreAttr_t PLCSemHandle_attributes = {
+  .name = "PLCSem"
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -167,7 +173,7 @@ void MX_FREERTOS_Init(void) {
   /* Create the semaphores(s) */
   /* creation of BinarySem */
   BinarySemHandle = osSemaphoreNew(1, 1, &BinarySem_attributes);
-
+  PLCSemHandle = osSemaphoreNew(1, 1, &PLCSemHandle_attributes);
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
@@ -263,7 +269,14 @@ void PLC_Task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    if (osSemaphoreAcquire(PLCSemHandle, portMAX_DELAY) == osOK)
+    {
+      memset(UART1_txBuffer, '0', sizeof(UART1_txBuffer));
+      intToStr(Channel01.PWM_percent, UART1_txBuffer, 2);
+      //intToStr(Channel02.PWM_percent, UART1_txBuffer, 2);
+      HAL_UART_Transmit(&huart1, (uint8_t*)UART1_txBuffer, 2, 10);
+    }
+
   }
   /* USER CODE END PLC_Task */
 }
@@ -704,6 +717,7 @@ void SettingPageHandler(uint16_t x, uint16_t y)
     ILI9341_WriteString(109, 40, temp, Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
     ILI9341_FillRectangle(22, 72, 277, 17, ILI9341_BLACK);
     ILI9341_FillRectangle(22, 72, 278*((double)Channel01.PWM_percent/100) - 1, 17, ILI9341_GREEN);
+    osSemaphoreRelease(PLCSemHandle);
   }
 
   if ((x >= 160) && (x <= 180) && (y >= 20) && (y <= 300))
@@ -829,5 +843,17 @@ int intToStr0(uint8_t x, char str[], int d)
   return i;
 }
 
+void HAL_UART_RxCplCallback(UART_HandleTypeDef *huart)
+{ 
+  if (huart->Instance == USART1)
+  {
+    HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, sizeof(UART1_rxBuffer));
+  }
+}
+
+// void HAL_UART_TxCplCallback(UART_HandleTypeDef *huart)
+// {
+  
+// }
 /* USER CODE END Application */
 
