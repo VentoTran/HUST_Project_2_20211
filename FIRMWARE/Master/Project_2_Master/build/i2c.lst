@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
   30:Core/Src/i2c.c **** void MX_I2C1_Init(void)
   31:Core/Src/i2c.c **** {
   27              		.loc 1 31 1 view -0
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 2
 
 
   28              		.cfi_startproc
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
   65              		.loc 1 48 3 is_stmt 1 view .LVU17
   66              		.loc 1 48 28 is_stmt 0 view .LVU18
   67 001e 0362     		str	r3, [r0, #32]
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 3
 
 
   49:Core/Src/i2c.c ****   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
@@ -149,7 +149,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
   83              	.L6:
   84 002e 00BF     		.align	2
   85              	.L5:
-  86 0030 00000000 		.word	.LANCHOR0
+  86 0030 00000000 		.word	hi2c1
   87 0034 00540040 		.word	1073763328
   88 0038 A0860100 		.word	100000
   89              		.cfi_endproc
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
  111              		.cfi_offset 4, -8
  112              		.cfi_offset 14, -4
  113 0002 86B0     		sub	sp, sp, #24
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 4
 
 
  114              	.LCFI2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
   69:Core/Src/i2c.c ****     /**I2C1 GPIO Configuration
  143              		.loc 1 69 5 is_stmt 1 view .LVU33
  144              	.LBB2:
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 5
 
 
   69:Core/Src/i2c.c ****     /**I2C1 GPIO Configuration
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
  183 0044 43F40013 		orr	r3, r3, #2097152
  184 0048 E361     		str	r3, [r4, #28]
   80:Core/Src/i2c.c ****   /* USER CODE BEGIN I2C1_MspInit 1 */
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 6
 
 
  185              		.loc 1 80 5 view .LVU50
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
  233              		.cfi_offset 14, -4
   91:Core/Src/i2c.c ****   {
   92:Core/Src/i2c.c ****   /* USER CODE BEGIN I2C1_MspDeInit 0 */
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 7
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 7
 
 
   93:Core/Src/i2c.c **** 
@@ -407,46 +407,39 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 1
  259 0034 000C0140 		.word	1073810432
  260              		.cfi_endproc
  261              	.LFE67:
- 263              		.global	hi2c1
- 264              		.section	.bss.hi2c1,"aw",%nobits
- 265              		.align	2
- 266              		.set	.LANCHOR0,. + 0
- 269              	hi2c1:
- 270 0000 00000000 		.space	84
- 270      00000000 
- 270      00000000 
- 270      00000000 
- 270      00000000 
- 271              		.text
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 8
+ 263              		.comm	hi2c1,84,4
+ 264              		.text
+ 265              	.Letext0:
+ 266              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 267              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 268              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 269              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 270              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 271              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 272              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 273              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 8
 
 
- 272              	.Letext0:
- 273              		.file 2 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\machine\\_default_type
- 274              		.file 3 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\sys\\_stdint.h"
- 275              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 276              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 277              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 278              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 279              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
- 280              		.file 9 "Core/Inc/main.h"
- 281              		.file 10 "Core/Inc/i2c.h"
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s 			page 9
+ 274              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 275              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 276              		.file 12 "Core/Inc/i2c.h"
+ 277              		.file 13 "Core/Inc/main.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 i2c.c
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:16     .text.MX_I2C1_Init:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:24     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:86     .text.MX_I2C1_Init:00000030 $d
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:93     .text.HAL_I2C_MspInit:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:100    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:198    .text.HAL_I2C_MspInit:00000058 $d
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:205    .text.HAL_I2C_MspDeInit:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:212    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:257    .text.HAL_I2C_MspDeInit:0000002c $d
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:269    .bss.hi2c1:00000000 hi2c1
-C:\Users\Vento\AppData\Local\Temp\ccBNJIaX.s:265    .bss.hi2c1:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:16     .text.MX_I2C1_Init:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:24     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:86     .text.MX_I2C1_Init:00000030 $d
+                            *COM*:00000054 hi2c1
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:93     .text.HAL_I2C_MspInit:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:100    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:198    .text.HAL_I2C_MspInit:00000058 $d
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:205    .text.HAL_I2C_MspDeInit:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:212    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+C:\Users\Admin\AppData\Local\Temp\ccDokeeH.s:257    .text.HAL_I2C_MspDeInit:0000002c $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Init

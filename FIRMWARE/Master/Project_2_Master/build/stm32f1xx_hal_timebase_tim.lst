@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
   29:Core/Src/stm32f1xx_hal_timebase_tim.c **** /* Private function prototypes -----------------------------------------------*/
   30:Core/Src/stm32f1xx_hal_timebase_tim.c **** /* Private functions ---------------------------------------------------------*/
   31:Core/Src/stm32f1xx_hal_timebase_tim.c **** 
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 2
 
 
   32:Core/Src/stm32f1xx_hal_timebase_tim.c **** /**
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
   59              		.loc 1 54 3 view .LVU10
   60              		.loc 1 54 3 view .LVU11
   61 0014 144B     		ldr	r3, .L6
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 3
 
 
   62 0016 9A69     		ldr	r2, [r3, #24]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
   97              		.loc 1 73 3 is_stmt 1 view .LVU24
   98              		.loc 1 73 21 is_stmt 0 view .LVU25
   99 0044 40F2E732 		movw	r2, #999
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 4
 
 
  100 0048 C260     		str	r2, [r0, #12]
@@ -238,11 +238,11 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
  139              		.align	2
  140              	.L6:
  141 0068 00100240 		.word	1073876992
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 5
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 5
 
 
  142 006c 83DE1B43 		.word	1125899907
- 143 0070 00000000 		.word	.LANCHOR0
+ 143 0070 00000000 		.word	htim1
  144 0074 002C0140 		.word	1073818624
  145              		.cfi_endproc
  146              	.LFE65:
@@ -283,7 +283,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
  171              	.L10:
  172 000e 00BF     		.align	2
  173              	.L9:
- 174 0010 00000000 		.word	.LANCHOR0
+ 174 0010 00000000 		.word	htim1
  175              		.cfi_endproc
  176              	.LFE66:
  178              		.section	.text.HAL_ResumeTick,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
   99:Core/Src/stm32f1xx_hal_timebase_tim.c **** 
  100:Core/Src/stm32f1xx_hal_timebase_tim.c **** /**
  101:Core/Src/stm32f1xx_hal_timebase_tim.c ****   * @brief  Resume Tick increment.
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 6
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 6
 
 
  102:Core/Src/stm32f1xx_hal_timebase_tim.c ****   * @note   Enable the tick increment by Enabling TIM1 update interrupt.
@@ -326,45 +326,38 @@ ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 1
  201              	.L13:
  202 000e 00BF     		.align	2
  203              	.L12:
- 204 0010 00000000 		.word	.LANCHOR0
+ 204 0010 00000000 		.word	htim1
  205              		.cfi_endproc
  206              	.LFE67:
- 208              		.global	htim1
- 209              		.section	.bss.htim1,"aw",%nobits
- 210              		.align	2
- 211              		.set	.LANCHOR0,. + 0
- 214              	htim1:
- 215 0000 00000000 		.space	72
- 215      00000000 
- 215      00000000 
- 215      00000000 
- 215      00000000 
- 216              		.text
- 217              	.Letext0:
- 218              		.file 2 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\machine\\_default_type
- 219              		.file 3 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\sys\\_stdint.h"
- 220              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 221              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 222              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
- 223              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 224              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
- 225              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
-ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s 			page 7
+ 208              		.comm	htim1,72,4
+ 209              		.text
+ 210              	.Letext0:
+ 211              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 212              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 213              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 214              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 215              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 216              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 217              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 218              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 219              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 220              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 221              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f1xx_hal_timebase_tim.c
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:16     .text.HAL_InitTick:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:24     .text.HAL_InitTick:00000000 HAL_InitTick
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:141    .text.HAL_InitTick:00000068 $d
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:149    .text.HAL_SuspendTick:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:156    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:174    .text.HAL_SuspendTick:00000010 $d
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:179    .text.HAL_ResumeTick:00000000 $t
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:186    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:204    .text.HAL_ResumeTick:00000010 $d
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:214    .bss.htim1:00000000 htim1
-C:\Users\Vento\AppData\Local\Temp\ccgUrv5G.s:210    .bss.htim1:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:16     .text.HAL_InitTick:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:24     .text.HAL_InitTick:00000000 HAL_InitTick
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:141    .text.HAL_InitTick:00000068 $d
+                            *COM*:00000048 htim1
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:149    .text.HAL_SuspendTick:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:156    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:174    .text.HAL_SuspendTick:00000010 $d
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:179    .text.HAL_ResumeTick:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:186    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
+C:\Users\Admin\AppData\Local\Temp\ccHODEzF.s:204    .text.HAL_ResumeTick:00000010 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority
