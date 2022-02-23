@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
   44              		.align	2
   45              	.L3:
   46 0010 00080140 		.word	1073809408
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 2
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 2
 
 
   47              		.cfi_endproc
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
   99              	.LCFI2:
  100              		.cfi_def_cfa_offset 8
  101              		.cfi_offset 3, -8
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 3
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 3
 
 
  102              		.cfi_offset 14, -4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  153              		.loc 1 23 5 is_stmt 1 view .LVU12
   24:Core/Src/touch.c ****     static const uint8_t cmd_read_y[] = { READ_Y };
  154              		.loc 1 24 5 view .LVU13
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 4
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 4
 
 
   25:Core/Src/touch.c ****     static const uint8_t zeroes_tx[] = { 0x00, 0x00 };
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  194              	.LVL8:
   37:Core/Src/touch.c **** 
   38:Core/Src/touch.c ****         HAL_SPI_Transmit(&ILI9341_TOUCH_SPI_PORT, (uint8_t*)cmd_read_y, sizeof(cmd_read_y), HAL_MAX
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 5
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 5
 
 
  195              		.loc 1 38 9 is_stmt 1 view .LVU33
@@ -253,7 +253,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  203              		.loc 1 39 9 view .LVU34
   40:Core/Src/touch.c ****         HAL_SPI_TransmitReceive(&ILI9341_TOUCH_SPI_PORT, (uint8_t*)zeroes_tx, y_raw, sizeof(y_raw),
  204              		.loc 1 40 9 view .LVU35
- 205 0034 DFF8B490 		ldr	r9, .L21+16
+ 205 0034 DFF8AC90 		ldr	r9, .L21+8
  206 0038 4FF0FF37 		mov	r7, #-1
  207 003c 0097     		str	r7, [sp]
  208 003e 0223     		movs	r3, #2
@@ -267,7 +267,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  214              		.loc 1 42 9 view .LVU36
  215 004a 3B46     		mov	r3, r7
  216 004c 0122     		movs	r2, #1
- 217 004e 2549     		ldr	r1, .L21+8
+ 217 004e 2649     		ldr	r1, .L21+12
  218 0050 2846     		mov	r0, r5
  219 0052 FFF7FEFF 		bl	HAL_SPI_Transmit
  220              	.LVL11:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  240              		.loc 1 47 9 is_stmt 1 view .LVU44
  241              		.loc 1 47 35 is_stmt 0 view .LVU45
  242 0072 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 6
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 6
 
 
  243              		.loc 1 47 64 view .LVU46
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
   63:Core/Src/touch.c ****     //char data[50];
   64:Core/Src/touch.c ****     // Uncomment this line to calibrate touchscreen:
   65:Core/Src/touch.c ****     //sprintf(data, "raw_x = %ld, raw_y = %ld\n\0", raw_x, raw_y);
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 7
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 7
 
 
   66:Core/Src/touch.c ****     //uint32_t data[] = {raw_x, raw_y};
@@ -375,7 +375,7 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  284 009e AAF5AF2A 		sub	r10, r10, #358400
  285 00a2 AAF5C86A 		sub	r10, r10, #1600
  286              		.loc 1 69 68 view .LVU64
- 287 00a6 104A     		ldr	r2, .L21+12
+ 287 00a6 114A     		ldr	r2, .L21+16
  288 00a8 A2FB0A3A 		umull	r3, r10, r2, r10
  289 00ac 4FEA9A3A 		lsr	r10, r10, #14
  290              		.loc 1 69 8 view .LVU65
@@ -418,76 +418,66 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 1
  322 00d6 0020     		movs	r0, #0
  323 00d8 FAE7     		b	.L18
  324              	.L22:
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 8
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 8
 
 
  325 00da 00BF     		.align	2
  326              	.L21:
  327 00dc 00000000 		.word	hspi2
  328 00e0 00000000 		.word	.LANCHOR0
- 329 00e4 00000000 		.word	.LANCHOR2
- 330 00e8 27072E8E 		.word	-1909586137
- 331 00ec 00000000 		.word	.LANCHOR1
+ 329 00e4 00000000 		.word	.LANCHOR1
+ 330 00e8 00000000 		.word	.LANCHOR2
+ 331 00ec 27072E8E 		.word	-1909586137
  332              		.cfi_endproc
  333              	.LFE71:
- 335              		.section	.rodata.cmd_read_x.7600,"a"
+ 335              		.section	.rodata.cmd_read_x.0,"a"
  336              		.align	2
  337              		.set	.LANCHOR2,. + 0
- 340              	cmd_read_x.7600:
+ 340              	cmd_read_x.0:
  341 0000 D0       		.ascii	"\320"
- 342              		.section	.rodata.cmd_read_y.7601,"a"
+ 342              		.section	.rodata.cmd_read_y.2,"a"
  343              		.align	2
  344              		.set	.LANCHOR0,. + 0
- 347              	cmd_read_y.7601:
+ 347              	cmd_read_y.2:
  348 0000 90       		.ascii	"\220"
- 349              		.section	.rodata.zeroes_tx.7602,"a"
+ 349              		.section	.rodata.zeroes_tx.1,"a"
  350              		.align	2
  351              		.set	.LANCHOR1,. + 0
- 354              	zeroes_tx.7602:
+ 354              	zeroes_tx.1:
  355 0000 0000     		.space	2
  356              		.text
  357              	.Letext0:
- 358              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 359              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 360              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
- 361              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 362              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 363              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 364              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 365              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 366              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
- 367              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 368              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 369              		.file 13 "Core/Inc/font.h"
- 370              		.file 14 "Core/Inc/lcd.h"
- 371              		.file 15 "Core/Inc/touch.h"
- 372              		.file 16 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-non
- 373              		.file 17 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\in
- 374              		.file 18 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\in
- 375              		.file 19 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\in
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s 			page 9
+ 358              		.file 2 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\machine\\_default_type
+ 359              		.file 3 "d:\\tools\\gcc-arm-none-eabi-10.3-2021.07\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 360              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 361              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 362              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 363              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 364              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
+ 365              		.file 9 "Core/Inc/lcd.h"
+ARM GAS  C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 touch.c
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:16     .text.ILI9341_TouchSelect:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:23     .text.ILI9341_TouchSelect:00000000 ILI9341_TouchSelect
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:46     .text.ILI9341_TouchSelect:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:51     .text.ILI9341_TouchUnselect:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:58     .text.ILI9341_TouchUnselect:00000000 ILI9341_TouchUnselect
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:80     .text.ILI9341_TouchUnselect:00000010 $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:85     .text.ILI9341_TouchPressed:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:92     .text.ILI9341_TouchPressed:00000000 ILI9341_TouchPressed
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:116    .text.ILI9341_TouchPressed:00000014 $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:121    .text.ILI9341_TouchGetCoordinates:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:128    .text.ILI9341_TouchGetCoordinates:00000000 ILI9341_TouchGetCoordinates
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:327    .text.ILI9341_TouchGetCoordinates:000000dc $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:336    .rodata.cmd_read_x.7600:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:340    .rodata.cmd_read_x.7600:00000000 cmd_read_x.7600
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:343    .rodata.cmd_read_y.7601:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:347    .rodata.cmd_read_y.7601:00000000 cmd_read_y.7601
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:350    .rodata.zeroes_tx.7602:00000000 $d
-C:\Users\Admin\AppData\Local\Temp\ccs8frJB.s:354    .rodata.zeroes_tx.7602:00000000 zeroes_tx.7602
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:16     .text.ILI9341_TouchSelect:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:23     .text.ILI9341_TouchSelect:00000000 ILI9341_TouchSelect
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:46     .text.ILI9341_TouchSelect:00000010 $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:51     .text.ILI9341_TouchUnselect:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:58     .text.ILI9341_TouchUnselect:00000000 ILI9341_TouchUnselect
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:80     .text.ILI9341_TouchUnselect:00000010 $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:85     .text.ILI9341_TouchPressed:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:92     .text.ILI9341_TouchPressed:00000000 ILI9341_TouchPressed
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:116    .text.ILI9341_TouchPressed:00000014 $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:121    .text.ILI9341_TouchGetCoordinates:00000000 $t
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:128    .text.ILI9341_TouchGetCoordinates:00000000 ILI9341_TouchGetCoordinates
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:327    .text.ILI9341_TouchGetCoordinates:000000dc $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:336    .rodata.cmd_read_x.0:00000000 $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:340    .rodata.cmd_read_x.0:00000000 cmd_read_x.0
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:343    .rodata.cmd_read_y.2:00000000 $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:347    .rodata.cmd_read_y.2:00000000 cmd_read_y.2
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:350    .rodata.zeroes_tx.1:00000000 $d
+C:\Users\Vento\AppData\Local\Temp\ccJPNSKe.s:354    .rodata.zeroes_tx.1:00000000 zeroes_tx.1
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

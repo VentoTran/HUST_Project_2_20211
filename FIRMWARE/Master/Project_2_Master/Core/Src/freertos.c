@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "lcd.h"
 #include "math.h"
+#include "timers.h"
 
 /* USER CODE END Includes */
 
@@ -116,14 +117,14 @@ osMutexId_t Mutex01Handle;
 const osMutexAttr_t Mutex01_attributes = {
   .name = "Mutex01"
 };
-
 /* Definitions for BinarySem */
 osSemaphoreId_t BinarySemHandle;
 const osSemaphoreAttr_t BinarySem_attributes = {
   .name = "BinarySem"
 };
+/* Definitions for PLCSem */
 osSemaphoreId_t PLCSemHandle;
-const osSemaphoreAttr_t PLCSemHandle_attributes = {
+const osSemaphoreAttr_t PLCSem_attributes = {
   .name = "PLCSem"
 };
 
@@ -172,8 +173,11 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the semaphores(s) */
   /* creation of BinarySem */
-  BinarySemHandle = osSemaphoreNew(1, 1, &BinarySem_attributes);
-  PLCSemHandle = osSemaphoreNew(1, 1, &PLCSemHandle_attributes);
+  BinarySemHandle = osSemaphoreNew(1, 0, &BinarySem_attributes);
+
+  /* creation of PLCSem */
+  PLCSemHandle = osSemaphoreNew(1, 0, &PLCSem_attributes);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
@@ -266,16 +270,22 @@ void Display_Task(void *argument)
 void PLC_Task(void *argument)
 {
   /* USER CODE BEGIN PLC_Task */
+  osDelay(2000);
   /* Infinite loop */
   for(;;)
   {
-    if (osSemaphoreAcquire(PLCSemHandle, portMAX_DELAY) == osOK)
-    {
-      memset(UART1_txBuffer, '0', sizeof(UART1_txBuffer));
-      intToStr(Channel01.PWM_percent, UART1_txBuffer, 2);
-      //intToStr(Channel02.PWM_percent, UART1_txBuffer, 2);
-      HAL_UART_Transmit(&huart1, (uint8_t*)UART1_txBuffer, 2, 10);
-    }
+    // if (osSemaphoreAcquire(PLCSemHandle, portMAX_DELAY) == osOK)
+    // {
+    //   memset(UART1_txBuffer, '0', sizeof(UART1_txBuffer));
+    //   intToStr(Channel01.PWM_percent, UART1_txBuffer, 2);
+    //   //intToStr(Channel02.PWM_percent, UART1_txBuffer, 2);
+    //   HAL_UART_Transmit(&huart1, (uint8_t*)UART1_txBuffer, 2, 10);
+    // }
+    UART1_txBuffer[0] = 0x0A;
+    UART1_txBuffer[1] = 0x0B;
+    HAL_UART_Transmit(&huart1, (uint8_t*)UART1_txBuffer, 2, 10);
+
+    osDelay(20000);
 
   }
   /* USER CODE END PLC_Task */
@@ -313,8 +323,8 @@ void IRQ_Task(void *argument)
         hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
         HAL_SPI_Init(&hspi2);
 
-        osTimerDelete(TimeoutHandle);
-        TimeoutHandle = osTimerNew(LCD_Timeout, osTimerOnce, NULL, &Timeout_attributes);
+        osTimerStop(TimeoutHandle);
+        xTimerReset(TimeoutHandle, 10);
 
         if (DeviceState == SLEEPING)
         {
@@ -368,7 +378,7 @@ void LED_Indicator(void *argument)
       intToTime(Channel01.time, t_temp);
       ILI9341_WriteString(90, 80, t_temp, Font_7x10, ILI9341_GREEN, ILI9341_BLACK);
       
-      if((osMutexWait(Mutex01Handle, portMAX_DELAY) == osOK) && (currentPage == InfoPage))
+      if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
       {
         for(uint8_t i = 0; i < 120; i++)
         {
@@ -410,7 +420,7 @@ void LED_Indicator(void *argument)
       char t_temp[9];
       intToTime(Channel02.time, t_temp);
       ILI9341_WriteString(90, 170, t_temp, Font_7x10, ILI9341_GREEN, ILI9341_BLACK);
-      if((osMutexWait(Mutex01Handle, portMAX_DELAY) == osOK) && (currentPage == InfoPage))
+      if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
       {
         for(uint8_t i = 0; i < 120; i++)
         {
@@ -462,7 +472,7 @@ void LCD_Timeout(void *argument)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  if ((GPIO_Pin == TOUCH_IRQ_Pin))
+  if (GPIO_Pin == TOUCH_IRQ_Pin)
   {
     osSemaphoreRelease(BinarySemHandle);
   }
@@ -735,7 +745,7 @@ void InfoPageHandler(uint16_t x, uint16_t y)
 {
   if ((((ABS(y - Info_Control.pos_x))^2) + ((ABS(x - Info_Control.pos_y))^2)) <= ((Info_Control.shape_r)^2))
   {
-    if(osMutexWait(Mutex01Handle, portMAX_DELAY) == osOK)
+    if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
     {
       currentPage = ControlPage;
       vTaskResume(myDisplayHandle);
@@ -853,7 +863,7 @@ void HAL_UART_RxCplCallback(UART_HandleTypeDef *huart)
 
 // void HAL_UART_TxCplCallback(UART_HandleTypeDef *huart)
 // {
-  
+// 
 // }
 /* USER CODE END Application */
 

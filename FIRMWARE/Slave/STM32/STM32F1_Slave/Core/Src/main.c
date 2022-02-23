@@ -18,11 +18,16 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
+#include "dma.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "string.h"
 
 /* USER CODE END Includes */
 
@@ -33,6 +38,10 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+#define PWM_MAX 800
+#define PWM_MIN 0
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -86,8 +95,18 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
-  
+  MX_ADC1_Init();
+  MX_DMA_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
+
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+
+  // HAL_GPIO_WritePin(OF_CN1_GPIO_Port, OF_CN1_Pin, 1);
+  // HAL_GPIO_WritePin(OF_CN2_GPIO_Port, OF_CN2_Pin, 1);
+
 
   /* USER CODE END 2 */
 
@@ -99,6 +118,27 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // for(uint16_t i = PWM_MIN; i <= PWM_MAX; i += 50)
+    // {
+    //   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, i);
+    //   HAL_Delay(100);
+    // }
+    // for(uint16_t i = PWM_MIN; i <= PWM_MAX; i += 50)
+    // {
+    //   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, i);
+    //   HAL_Delay(100);
+    // }
+
+    // for(uint16_t i = PWM_MAX; i > PWM_MIN; i -= 50)
+    // {
+    //   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, i);
+    //   HAL_Delay(100);
+    // }
+
+    // HAL_GPIO_TogglePin(OF_CN1_GPIO_Port, OF_CN1_Pin);
+
+    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
@@ -111,6 +151,7 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -139,13 +180,19 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /* USER CODE BEGIN 4 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   memset(UART1_rxBuffer, '0', sizeof(UART1_rxBuffer));
-  HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, sizeof(UART1_rxBuffer));
+  HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
 }
 /* USER CODE END 4 */
 

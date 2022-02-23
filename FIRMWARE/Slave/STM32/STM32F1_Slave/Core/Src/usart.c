@@ -50,7 +50,6 @@ void MX_USART1_UART_Init(void)
   {
     Error_Handler();
   }
-  HAL_UART_MspInit(&huart1);
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
