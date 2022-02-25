@@ -1,0 +1,1085 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.0 #12072 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_flash
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _assert_failed
+                                     12 	.globl _FLASH_Unlock
+                                     13 	.globl _FLASH_Lock
+                                     14 	.globl _FLASH_DeInit
+                                     15 	.globl _FLASH_ITConfig
+                                     16 	.globl _FLASH_EraseByte
+                                     17 	.globl _FLASH_ProgramByte
+                                     18 	.globl _FLASH_ReadByte
+                                     19 	.globl _FLASH_ProgramWord
+                                     20 	.globl _FLASH_ProgramOptionByte
+                                     21 	.globl _FLASH_EraseOptionByte
+                                     22 	.globl _FLASH_ReadOptionByte
+                                     23 	.globl _FLASH_SetLowPowerMode
+                                     24 	.globl _FLASH_SetProgrammingTime
+                                     25 	.globl _FLASH_GetLowPowerMode
+                                     26 	.globl _FLASH_GetProgrammingTime
+                                     27 	.globl _FLASH_GetBootSize
+                                     28 	.globl _FLASH_GetFlagStatus
+                                     29 	.globl _FLASH_WaitForLastOperation
+                                     30 	.globl _FLASH_EraseBlock
+                                     31 	.globl _FLASH_ProgramBlock
+                                     32 ;--------------------------------------------------------
+                                     33 ; ram data
+                                     34 ;--------------------------------------------------------
+                                     35 	.area DATA
+                                     36 ;--------------------------------------------------------
+                                     37 ; ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area INITIALIZED
+                                     40 ;--------------------------------------------------------
+                                     41 ; absolute external ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area DABS (ABS)
+                                     44 
+                                     45 ; default segment ordering for linker
+                                     46 	.area HOME
+                                     47 	.area GSINIT
+                                     48 	.area GSFINAL
+                                     49 	.area CONST
+                                     50 	.area INITIALIZER
+                                     51 	.area CODE
+                                     52 
+                                     53 ;--------------------------------------------------------
+                                     54 ; global & static initialisations
+                                     55 ;--------------------------------------------------------
+                                     56 	.area HOME
+                                     57 	.area GSINIT
+                                     58 	.area GSFINAL
+                                     59 	.area GSINIT
+                                     60 ;--------------------------------------------------------
+                                     61 ; Home
+                                     62 ;--------------------------------------------------------
+                                     63 	.area HOME
+                                     64 	.area HOME
+                                     65 ;--------------------------------------------------------
+                                     66 ; code
+                                     67 ;--------------------------------------------------------
+                                     68 	.area CODE
+                                     69 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 168: void FLASH_Unlock(FLASH_MemType_TypeDef FLASH_MemType)
+                                     70 ;	-----------------------------------------
+                                     71 ;	 function FLASH_Unlock
+                                     72 ;	-----------------------------------------
+      000000                         73 _FLASH_Unlock:
+                                     74 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 171: assert_param(IS_MEMORY_TYPE_OK(FLASH_MemType));
+      000000 7B 03            [ 1]   75 	ld	a, (0x03, sp)
+      000002 A0 FD            [ 1]   76 	sub	a, #0xfd
+      000004 26 02            [ 1]   77 	jrne	00127$
+      000006 4C               [ 1]   78 	inc	a
+      000007 21                      79 	.byte 0x21
+      000008                         80 00127$:
+      000008 4F               [ 1]   81 	clr	a
+      000009                         82 00128$:
+      000009 4D               [ 1]   83 	tnz	a
+      00000A 26 19            [ 1]   84 	jrne	00107$
+      00000C 88               [ 1]   85 	push	a
+      00000D 7B 04            [ 1]   86 	ld	a, (0x04, sp)
+      00000F A1 F7            [ 1]   87 	cp	a, #0xf7
+      000011 84               [ 1]   88 	pop	a
+      000012 27 11            [ 1]   89 	jreq	00107$
+      000014 88               [ 1]   90 	push	a
+      000015 4B AB            [ 1]   91 	push	#0xab
+      000017 5F               [ 1]   92 	clrw	x
+      000018 89               [ 2]   93 	pushw	x
+      000019 4B 00            [ 1]   94 	push	#0x00
+      00001B 4Br00            [ 1]   95 	push	#<(___str_0+0)
+      00001D 4Bs00            [ 1]   96 	push	#((___str_0+0) >> 8)
+      00001F CDr00r00         [ 4]   97 	call	_assert_failed
+      000022 5B 06            [ 2]   98 	addw	sp, #6
+      000024 84               [ 1]   99 	pop	a
+      000025                        100 00107$:
+                                    101 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 174: if(FLASH_MemType == FLASH_MEMTYPE_PROG)
+      000025 4D               [ 1]  102 	tnz	a
+      000026 27 09            [ 1]  103 	jreq	00102$
+                                    104 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 176: FLASH->PUKR = FLASH_RASS_KEY1;
+      000028 35 56 50 62      [ 1]  105 	mov	0x5062+0, #0x56
+                                    106 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 177: FLASH->PUKR = FLASH_RASS_KEY2;
+      00002C 35 AE 50 62      [ 1]  107 	mov	0x5062+0, #0xae
+      000030 81               [ 4]  108 	ret
+      000031                        109 00102$:
+                                    110 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 182: FLASH->DUKR = FLASH_RASS_KEY2; /* Warning: keys are reversed on data memory !!! */
+      000031 35 AE 50 64      [ 1]  111 	mov	0x5064+0, #0xae
+                                    112 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 183: FLASH->DUKR = FLASH_RASS_KEY1;
+      000035 35 56 50 64      [ 1]  113 	mov	0x5064+0, #0x56
+                                    114 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 185: }
+      000039 81               [ 4]  115 	ret
+                                    116 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 193: void FLASH_Lock(FLASH_MemType_TypeDef FLASH_MemType)
+                                    117 ;	-----------------------------------------
+                                    118 ;	 function FLASH_Lock
+                                    119 ;	-----------------------------------------
+      00003A                        120 _FLASH_Lock:
+                                    121 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 196: assert_param(IS_MEMORY_TYPE_OK(FLASH_MemType));
+      00003A 7B 03            [ 1]  122 	ld	a, (0x03, sp)
+      00003C A1 FD            [ 1]  123 	cp	a, #0xfd
+      00003E 27 15            [ 1]  124 	jreq	00104$
+      000040 7B 03            [ 1]  125 	ld	a, (0x03, sp)
+      000042 A1 F7            [ 1]  126 	cp	a, #0xf7
+      000044 27 0F            [ 1]  127 	jreq	00104$
+      000046 4B C4            [ 1]  128 	push	#0xc4
+      000048 5F               [ 1]  129 	clrw	x
+      000049 89               [ 2]  130 	pushw	x
+      00004A 4B 00            [ 1]  131 	push	#0x00
+      00004C 4Br00            [ 1]  132 	push	#<(___str_0+0)
+      00004E 4Bs00            [ 1]  133 	push	#((___str_0+0) >> 8)
+      000050 CDr00r00         [ 4]  134 	call	_assert_failed
+      000053 5B 06            [ 2]  135 	addw	sp, #6
+      000055                        136 00104$:
+                                    137 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 199: FLASH->IAPSR &= (uint8_t)FLASH_MemType;
+      000055 C6 50 5F         [ 1]  138 	ld	a, 0x505f
+      000058 14 03            [ 1]  139 	and	a, (0x03, sp)
+      00005A C7 50 5F         [ 1]  140 	ld	0x505f, a
+                                    141 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 200: }
+      00005D 81               [ 4]  142 	ret
+                                    143 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 207: void FLASH_DeInit(void)
+                                    144 ;	-----------------------------------------
+                                    145 ;	 function FLASH_DeInit
+                                    146 ;	-----------------------------------------
+      00005E                        147 _FLASH_DeInit:
+                                    148 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 209: FLASH->CR1 = FLASH_CR1_RESET_VALUE;
+      00005E 35 00 50 5A      [ 1]  149 	mov	0x505a+0, #0x00
+                                    150 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 210: FLASH->CR2 = FLASH_CR2_RESET_VALUE;
+      000062 35 00 50 5B      [ 1]  151 	mov	0x505b+0, #0x00
+                                    152 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 211: FLASH->NCR2 = FLASH_NCR2_RESET_VALUE;
+      000066 35 FF 50 5C      [ 1]  153 	mov	0x505c+0, #0xff
+                                    154 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 212: FLASH->IAPSR &= (uint8_t)(~FLASH_IAPSR_DUL);
+      00006A 72 17 50 5F      [ 1]  155 	bres	20575, #3
+                                    156 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 213: FLASH->IAPSR &= (uint8_t)(~FLASH_IAPSR_PUL);
+      00006E 72 13 50 5F      [ 1]  157 	bres	20575, #1
+                                    158 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 214: (void) FLASH->IAPSR; /* Reading of this register causes the clearing of status flags */
+      000072 C6 50 5F         [ 1]  159 	ld	a, 0x505f
+                                    160 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 215: }
+      000075 81               [ 4]  161 	ret
+                                    162 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 223: void FLASH_ITConfig(FunctionalState NewState)
+                                    163 ;	-----------------------------------------
+                                    164 ;	 function FLASH_ITConfig
+                                    165 ;	-----------------------------------------
+      000076                        166 _FLASH_ITConfig:
+                                    167 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 226: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+      000076 0D 03            [ 1]  168 	tnz	(0x03, sp)
+      000078 27 14            [ 1]  169 	jreq	00107$
+      00007A 7B 03            [ 1]  170 	ld	a, (0x03, sp)
+      00007C 4A               [ 1]  171 	dec	a
+      00007D 27 0F            [ 1]  172 	jreq	00107$
+      00007F 4B E2            [ 1]  173 	push	#0xe2
+      000081 5F               [ 1]  174 	clrw	x
+      000082 89               [ 2]  175 	pushw	x
+      000083 4B 00            [ 1]  176 	push	#0x00
+      000085 4Br00            [ 1]  177 	push	#<(___str_0+0)
+      000087 4Bs00            [ 1]  178 	push	#((___str_0+0) >> 8)
+      000089 CDr00r00         [ 4]  179 	call	_assert_failed
+      00008C 5B 06            [ 2]  180 	addw	sp, #6
+      00008E                        181 00107$:
+                                    182 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 230: FLASH->CR1 |= FLASH_CR1_IE; /* Enables the interrupt sources */
+      00008E C6 50 5A         [ 1]  183 	ld	a, 0x505a
+                                    184 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 228: if(NewState != DISABLE)
+      000091 0D 03            [ 1]  185 	tnz	(0x03, sp)
+      000093 27 06            [ 1]  186 	jreq	00102$
+                                    187 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 230: FLASH->CR1 |= FLASH_CR1_IE; /* Enables the interrupt sources */
+      000095 AA 02            [ 1]  188 	or	a, #0x02
+      000097 C7 50 5A         [ 1]  189 	ld	0x505a, a
+      00009A 81               [ 4]  190 	ret
+      00009B                        191 00102$:
+                                    192 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 234: FLASH->CR1 &= (uint8_t)(~FLASH_CR1_IE); /* Disables the interrupt sources */
+      00009B A4 FD            [ 1]  193 	and	a, #0xfd
+      00009D C7 50 5A         [ 1]  194 	ld	0x505a, a
+                                    195 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 236: }
+      0000A0 81               [ 4]  196 	ret
+                                    197 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 245: void FLASH_EraseByte(uint32_t Address)
+                                    198 ;	-----------------------------------------
+                                    199 ;	 function FLASH_EraseByte
+                                    200 ;	-----------------------------------------
+      0000A1                        201 _FLASH_EraseByte:
+                                    202 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 248: assert_param(IS_FLASH_ADDRESS_OK(Address));
+      0000A1 1E 05            [ 2]  203 	ldw	x, (0x05, sp)
+      0000A3 A3 80 00         [ 2]  204 	cpw	x, #0x8000
+      0000A6 7B 04            [ 1]  205 	ld	a, (0x04, sp)
+      0000A8 A2 00            [ 1]  206 	sbc	a, #0x00
+      0000AA 7B 03            [ 1]  207 	ld	a, (0x03, sp)
+      0000AC A2 00            [ 1]  208 	sbc	a, #0x00
+      0000AE 25 0D            [ 1]  209 	jrc	00110$
+      0000B0 AE 9F FF         [ 2]  210 	ldw	x, #0x9fff
+      0000B3 13 05            [ 2]  211 	cpw	x, (0x05, sp)
+      0000B5 4F               [ 1]  212 	clr	a
+      0000B6 12 04            [ 1]  213 	sbc	a, (0x04, sp)
+      0000B8 4F               [ 1]  214 	clr	a
+      0000B9 12 03            [ 1]  215 	sbc	a, (0x03, sp)
+      0000BB 24 2B            [ 1]  216 	jrnc	00104$
+      0000BD                        217 00110$:
+      0000BD 1E 05            [ 2]  218 	ldw	x, (0x05, sp)
+      0000BF A3 40 00         [ 2]  219 	cpw	x, #0x4000
+      0000C2 7B 04            [ 1]  220 	ld	a, (0x04, sp)
+      0000C4 A2 00            [ 1]  221 	sbc	a, #0x00
+      0000C6 7B 03            [ 1]  222 	ld	a, (0x03, sp)
+      0000C8 A2 00            [ 1]  223 	sbc	a, #0x00
+      0000CA 25 0D            [ 1]  224 	jrc	00103$
+      0000CC AE 42 7F         [ 2]  225 	ldw	x, #0x427f
+      0000CF 13 05            [ 2]  226 	cpw	x, (0x05, sp)
+      0000D1 4F               [ 1]  227 	clr	a
+      0000D2 12 04            [ 1]  228 	sbc	a, (0x04, sp)
+      0000D4 4F               [ 1]  229 	clr	a
+      0000D5 12 03            [ 1]  230 	sbc	a, (0x03, sp)
+      0000D7 24 0F            [ 1]  231 	jrnc	00104$
+      0000D9                        232 00103$:
+      0000D9 4B F8            [ 1]  233 	push	#0xf8
+      0000DB 5F               [ 1]  234 	clrw	x
+      0000DC 89               [ 2]  235 	pushw	x
+      0000DD 4B 00            [ 1]  236 	push	#0x00
+      0000DF 4Br00            [ 1]  237 	push	#<(___str_0+0)
+      0000E1 4Bs00            [ 1]  238 	push	#((___str_0+0) >> 8)
+      0000E3 CDr00r00         [ 4]  239 	call	_assert_failed
+      0000E6 5B 06            [ 2]  240 	addw	sp, #6
+      0000E8                        241 00104$:
+                                    242 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 253: *(PointerAttr uint8_t*) (MemoryAddressCast)Address = FLASH_CLEAR_BYTE;
+      0000E8 1E 05            [ 2]  243 	ldw	x, (0x05, sp)
+      0000EA 7F               [ 1]  244 	clr	(x)
+                                    245 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 257: }
+      0000EB 81               [ 4]  246 	ret
+                                    247 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 267: void FLASH_ProgramByte(uint32_t Address, uint8_t Data)
+                                    248 ;	-----------------------------------------
+                                    249 ;	 function FLASH_ProgramByte
+                                    250 ;	-----------------------------------------
+      0000EC                        251 _FLASH_ProgramByte:
+                                    252 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 270: assert_param(IS_FLASH_ADDRESS_OK(Address));
+      0000EC 1E 05            [ 2]  253 	ldw	x, (0x05, sp)
+      0000EE A3 80 00         [ 2]  254 	cpw	x, #0x8000
+      0000F1 7B 04            [ 1]  255 	ld	a, (0x04, sp)
+      0000F3 A2 00            [ 1]  256 	sbc	a, #0x00
+      0000F5 7B 03            [ 1]  257 	ld	a, (0x03, sp)
+      0000F7 A2 00            [ 1]  258 	sbc	a, #0x00
+      0000F9 25 0D            [ 1]  259 	jrc	00110$
+      0000FB AE 9F FF         [ 2]  260 	ldw	x, #0x9fff
+      0000FE 13 05            [ 2]  261 	cpw	x, (0x05, sp)
+      000100 4F               [ 1]  262 	clr	a
+      000101 12 04            [ 1]  263 	sbc	a, (0x04, sp)
+      000103 4F               [ 1]  264 	clr	a
+      000104 12 03            [ 1]  265 	sbc	a, (0x03, sp)
+      000106 24 2B            [ 1]  266 	jrnc	00104$
+      000108                        267 00110$:
+      000108 1E 05            [ 2]  268 	ldw	x, (0x05, sp)
+      00010A A3 40 00         [ 2]  269 	cpw	x, #0x4000
+      00010D 7B 04            [ 1]  270 	ld	a, (0x04, sp)
+      00010F A2 00            [ 1]  271 	sbc	a, #0x00
+      000111 7B 03            [ 1]  272 	ld	a, (0x03, sp)
+      000113 A2 00            [ 1]  273 	sbc	a, #0x00
+      000115 25 0D            [ 1]  274 	jrc	00103$
+      000117 AE 42 7F         [ 2]  275 	ldw	x, #0x427f
+      00011A 13 05            [ 2]  276 	cpw	x, (0x05, sp)
+      00011C 4F               [ 1]  277 	clr	a
+      00011D 12 04            [ 1]  278 	sbc	a, (0x04, sp)
+      00011F 4F               [ 1]  279 	clr	a
+      000120 12 03            [ 1]  280 	sbc	a, (0x03, sp)
+      000122 24 0F            [ 1]  281 	jrnc	00104$
+      000124                        282 00103$:
+      000124 4B 0E            [ 1]  283 	push	#0x0e
+      000126 4B 01            [ 1]  284 	push	#0x01
+      000128 5F               [ 1]  285 	clrw	x
+      000129 89               [ 2]  286 	pushw	x
+      00012A 4Br00            [ 1]  287 	push	#<(___str_0+0)
+      00012C 4Bs00            [ 1]  288 	push	#((___str_0+0) >> 8)
+      00012E CDr00r00         [ 4]  289 	call	_assert_failed
+      000131 5B 06            [ 2]  290 	addw	sp, #6
+      000133                        291 00104$:
+                                    292 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 275: *(PointerAttr uint8_t*) (MemoryAddressCast)Address = Data;
+      000133 1E 05            [ 2]  293 	ldw	x, (0x05, sp)
+      000135 7B 07            [ 1]  294 	ld	a, (0x07, sp)
+      000137 F7               [ 1]  295 	ld	(x), a
+                                    296 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 279: }
+      000138 81               [ 4]  297 	ret
+                                    298 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 288: uint8_t FLASH_ReadByte(uint32_t Address)
+                                    299 ;	-----------------------------------------
+                                    300 ;	 function FLASH_ReadByte
+                                    301 ;	-----------------------------------------
+      000139                        302 _FLASH_ReadByte:
+                                    303 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 291: assert_param(IS_FLASH_ADDRESS_OK(Address));
+      000139 1E 05            [ 2]  304 	ldw	x, (0x05, sp)
+      00013B A3 80 00         [ 2]  305 	cpw	x, #0x8000
+      00013E 7B 04            [ 1]  306 	ld	a, (0x04, sp)
+      000140 A2 00            [ 1]  307 	sbc	a, #0x00
+      000142 7B 03            [ 1]  308 	ld	a, (0x03, sp)
+      000144 A2 00            [ 1]  309 	sbc	a, #0x00
+      000146 25 0D            [ 1]  310 	jrc	00110$
+      000148 AE 9F FF         [ 2]  311 	ldw	x, #0x9fff
+      00014B 13 05            [ 2]  312 	cpw	x, (0x05, sp)
+      00014D 4F               [ 1]  313 	clr	a
+      00014E 12 04            [ 1]  314 	sbc	a, (0x04, sp)
+      000150 4F               [ 1]  315 	clr	a
+      000151 12 03            [ 1]  316 	sbc	a, (0x03, sp)
+      000153 24 2B            [ 1]  317 	jrnc	00104$
+      000155                        318 00110$:
+      000155 1E 05            [ 2]  319 	ldw	x, (0x05, sp)
+      000157 A3 40 00         [ 2]  320 	cpw	x, #0x4000
+      00015A 7B 04            [ 1]  321 	ld	a, (0x04, sp)
+      00015C A2 00            [ 1]  322 	sbc	a, #0x00
+      00015E 7B 03            [ 1]  323 	ld	a, (0x03, sp)
+      000160 A2 00            [ 1]  324 	sbc	a, #0x00
+      000162 25 0D            [ 1]  325 	jrc	00103$
+      000164 AE 42 7F         [ 2]  326 	ldw	x, #0x427f
+      000167 13 05            [ 2]  327 	cpw	x, (0x05, sp)
+      000169 4F               [ 1]  328 	clr	a
+      00016A 12 04            [ 1]  329 	sbc	a, (0x04, sp)
+      00016C 4F               [ 1]  330 	clr	a
+      00016D 12 03            [ 1]  331 	sbc	a, (0x03, sp)
+      00016F 24 0F            [ 1]  332 	jrnc	00104$
+      000171                        333 00103$:
+      000171 4B 23            [ 1]  334 	push	#0x23
+      000173 4B 01            [ 1]  335 	push	#0x01
+      000175 5F               [ 1]  336 	clrw	x
+      000176 89               [ 2]  337 	pushw	x
+      000177 4Br00            [ 1]  338 	push	#<(___str_0+0)
+      000179 4Bs00            [ 1]  339 	push	#((___str_0+0) >> 8)
+      00017B CDr00r00         [ 4]  340 	call	_assert_failed
+      00017E 5B 06            [ 2]  341 	addw	sp, #6
+      000180                        342 00104$:
+                                    343 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 296: return(*(PointerAttr uint8_t *) (MemoryAddressCast)Address); 
+      000180 1E 05            [ 2]  344 	ldw	x, (0x05, sp)
+      000182 F6               [ 1]  345 	ld	a, (x)
+                                    346 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 300: }
+      000183 81               [ 4]  347 	ret
+                                    348 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 310: void FLASH_ProgramWord(uint32_t Address, uint32_t Data)
+                                    349 ;	-----------------------------------------
+                                    350 ;	 function FLASH_ProgramWord
+                                    351 ;	-----------------------------------------
+      000184                        352 _FLASH_ProgramWord:
+      000184 89               [ 2]  353 	pushw	x
+                                    354 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 313: assert_param(IS_FLASH_ADDRESS_OK(Address));
+      000185 1E 07            [ 2]  355 	ldw	x, (0x07, sp)
+      000187 A3 80 00         [ 2]  356 	cpw	x, #0x8000
+      00018A 7B 06            [ 1]  357 	ld	a, (0x06, sp)
+      00018C A2 00            [ 1]  358 	sbc	a, #0x00
+      00018E 7B 05            [ 1]  359 	ld	a, (0x05, sp)
+      000190 A2 00            [ 1]  360 	sbc	a, #0x00
+      000192 25 0D            [ 1]  361 	jrc	00110$
+      000194 AE 9F FF         [ 2]  362 	ldw	x, #0x9fff
+      000197 13 07            [ 2]  363 	cpw	x, (0x07, sp)
+      000199 4F               [ 1]  364 	clr	a
+      00019A 12 06            [ 1]  365 	sbc	a, (0x06, sp)
+      00019C 4F               [ 1]  366 	clr	a
+      00019D 12 05            [ 1]  367 	sbc	a, (0x05, sp)
+      00019F 24 2B            [ 1]  368 	jrnc	00104$
+      0001A1                        369 00110$:
+      0001A1 1E 07            [ 2]  370 	ldw	x, (0x07, sp)
+      0001A3 A3 40 00         [ 2]  371 	cpw	x, #0x4000
+      0001A6 7B 06            [ 1]  372 	ld	a, (0x06, sp)
+      0001A8 A2 00            [ 1]  373 	sbc	a, #0x00
+      0001AA 7B 05            [ 1]  374 	ld	a, (0x05, sp)
+      0001AC A2 00            [ 1]  375 	sbc	a, #0x00
+      0001AE 25 0D            [ 1]  376 	jrc	00103$
+      0001B0 AE 42 7F         [ 2]  377 	ldw	x, #0x427f
+      0001B3 13 07            [ 2]  378 	cpw	x, (0x07, sp)
+      0001B5 4F               [ 1]  379 	clr	a
+      0001B6 12 06            [ 1]  380 	sbc	a, (0x06, sp)
+      0001B8 4F               [ 1]  381 	clr	a
+      0001B9 12 05            [ 1]  382 	sbc	a, (0x05, sp)
+      0001BB 24 0F            [ 1]  383 	jrnc	00104$
+      0001BD                        384 00103$:
+      0001BD 4B 39            [ 1]  385 	push	#0x39
+      0001BF 4B 01            [ 1]  386 	push	#0x01
+      0001C1 5F               [ 1]  387 	clrw	x
+      0001C2 89               [ 2]  388 	pushw	x
+      0001C3 4Br00            [ 1]  389 	push	#<(___str_0+0)
+      0001C5 4Bs00            [ 1]  390 	push	#((___str_0+0) >> 8)
+      0001C7 CDr00r00         [ 4]  391 	call	_assert_failed
+      0001CA 5B 06            [ 2]  392 	addw	sp, #6
+      0001CC                        393 00104$:
+                                    394 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 316: FLASH->CR2 |= FLASH_CR2_WPRG;
+      0001CC 72 1C 50 5B      [ 1]  395 	bset	20571, #6
+                                    396 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 317: FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NWPRG);
+      0001D0 C6 50 5C         [ 1]  397 	ld	a, 0x505c
+      0001D3 A4 BF            [ 1]  398 	and	a, #0xbf
+      0001D5 C7 50 5C         [ 1]  399 	ld	0x505c, a
+                                    400 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 322: *((PointerAttr uint8_t*)(MemoryAddressCast)Address)       = *((uint8_t*)(&Data));
+      0001D8 16 07            [ 2]  401 	ldw	y, (0x07, sp)
+      0001DA 7B 09            [ 1]  402 	ld  a, (9, sp)
+      0001DC 90 F7            [ 1]  403 	ld	(y), a
+                                    404 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 324: *(((PointerAttr uint8_t*)(MemoryAddressCast)Address) + 1) = *((uint8_t*)(&Data)+1); 
+      0001DE 93               [ 1]  405 	ldw	x, y
+      0001DF 5C               [ 1]  406 	incw	x
+      0001E0 1F 01            [ 2]  407 	ldw	(0x01, sp), x
+      0001E2 96               [ 1]  408 	ldw	x, sp
+      0001E3 1C 00 09         [ 2]  409 	addw	x, #9
+      0001E6 E6 01            [ 1]  410 	ld	a, (0x1, x)
+      0001E8 1E 01            [ 2]  411 	ldw	x, (0x01, sp)
+      0001EA F7               [ 1]  412 	ld	(x), a
+                                    413 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 326: *(((PointerAttr uint8_t*)(MemoryAddressCast)Address) + 2) = *((uint8_t*)(&Data)+2); 
+      0001EB 93               [ 1]  414 	ldw	x, y
+      0001EC 5C               [ 1]  415 	incw	x
+      0001ED 5C               [ 1]  416 	incw	x
+      0001EE 1F 01            [ 2]  417 	ldw	(0x01, sp), x
+      0001F0 96               [ 1]  418 	ldw	x, sp
+      0001F1 1C 00 09         [ 2]  419 	addw	x, #9
+      0001F4 E6 02            [ 1]  420 	ld	a, (0x2, x)
+      0001F6 1E 01            [ 2]  421 	ldw	x, (0x01, sp)
+      0001F8 F7               [ 1]  422 	ld	(x), a
+                                    423 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 328: *(((PointerAttr uint8_t*)(MemoryAddressCast)Address) + 3) = *((uint8_t*)(&Data)+3); 
+      0001F9 72 A9 00 03      [ 2]  424 	addw	y, #0x0003
+      0001FD 96               [ 1]  425 	ldw	x, sp
+      0001FE 1C 00 09         [ 2]  426 	addw	x, #9
+      000201 E6 03            [ 1]  427 	ld	a, (0x3, x)
+      000203 90 F7            [ 1]  428 	ld	(y), a
+                                    429 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 335: }
+      000205 85               [ 2]  430 	popw	x
+      000206 81               [ 4]  431 	ret
+                                    432 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 343: void FLASH_ProgramOptionByte(uint16_t Address, uint8_t Data)
+                                    433 ;	-----------------------------------------
+                                    434 ;	 function FLASH_ProgramOptionByte
+                                    435 ;	-----------------------------------------
+      000207                        436 _FLASH_ProgramOptionByte:
+      000207 89               [ 2]  437 	pushw	x
+                                    438 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 346: assert_param(IS_OPTION_BYTE_ADDRESS_OK(Address));
+      000208 1E 05            [ 2]  439 	ldw	x, (0x05, sp)
+      00020A A3 48 00         [ 2]  440 	cpw	x, #0x4800
+      00020D 25 07            [ 1]  441 	jrc	00106$
+      00020F 1E 05            [ 2]  442 	ldw	x, (0x05, sp)
+      000211 A3 48 7F         [ 2]  443 	cpw	x, #0x487f
+      000214 23 0F            [ 2]  444 	jrule	00107$
+      000216                        445 00106$:
+      000216 4B 5A            [ 1]  446 	push	#0x5a
+      000218 4B 01            [ 1]  447 	push	#0x01
+      00021A 5F               [ 1]  448 	clrw	x
+      00021B 89               [ 2]  449 	pushw	x
+      00021C 4Br00            [ 1]  450 	push	#<(___str_0+0)
+      00021E 4Bs00            [ 1]  451 	push	#((___str_0+0) >> 8)
+      000220 CDr00r00         [ 4]  452 	call	_assert_failed
+      000223 5B 06            [ 2]  453 	addw	sp, #6
+      000225                        454 00107$:
+                                    455 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 349: FLASH->CR2 |= FLASH_CR2_OPT;
+      000225 72 1E 50 5B      [ 1]  456 	bset	20571, #7
+                                    457 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 350: FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NOPT);
+      000229 72 1F 50 5C      [ 1]  458 	bres	20572, #7
+                                    459 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 353: if(Address == 0x4800)
+      00022D 1E 05            [ 2]  460 	ldw	x, (0x05, sp)
+                                    461 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 356: *((NEAR uint8_t*)Address) = Data;
+      00022F 16 05            [ 2]  462 	ldw	y, (0x05, sp)
+      000231 17 01            [ 2]  463 	ldw	(0x01, sp), y
+                                    464 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 353: if(Address == 0x4800)
+      000233 A3 48 00         [ 2]  465 	cpw	x, #0x4800
+      000236 26 07            [ 1]  466 	jrne	00102$
+                                    467 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 356: *((NEAR uint8_t*)Address) = Data;
+      000238 1E 01            [ 2]  468 	ldw	x, (0x01, sp)
+      00023A 7B 07            [ 1]  469 	ld	a, (0x07, sp)
+      00023C F7               [ 1]  470 	ld	(x), a
+      00023D 20 0F            [ 2]  471 	jra	00103$
+      00023F                        472 00102$:
+                                    473 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 361: *((NEAR uint8_t*)Address) = Data;
+      00023F 16 01            [ 2]  474 	ldw	y, (0x01, sp)
+      000241 7B 07            [ 1]  475 	ld	a, (0x07, sp)
+      000243 90 F7            [ 1]  476 	ld	(y), a
+                                    477 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 362: *((NEAR uint8_t*)((uint16_t)(Address + 1))) = (uint8_t)(~Data);
+      000245 5C               [ 1]  478 	incw	x
+      000246 1F 01            [ 2]  479 	ldw	(0x01, sp), x
+      000248 7B 07            [ 1]  480 	ld	a, (0x07, sp)
+      00024A 43               [ 1]  481 	cpl	a
+      00024B 1E 01            [ 2]  482 	ldw	x, (0x01, sp)
+      00024D F7               [ 1]  483 	ld	(x), a
+      00024E                        484 00103$:
+                                    485 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 364: FLASH_WaitForLastOperation(FLASH_MEMTYPE_PROG);
+      00024E 4B FD            [ 1]  486 	push	#0xfd
+      000250 CDr03rB7         [ 4]  487 	call	_FLASH_WaitForLastOperation
+      000253 84               [ 1]  488 	pop	a
+                                    489 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 367: FLASH->CR2 &= (uint8_t)(~FLASH_CR2_OPT);
+      000254 72 1F 50 5B      [ 1]  490 	bres	20571, #7
+                                    491 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 368: FLASH->NCR2 |= FLASH_NCR2_NOPT;
+      000258 72 1E 50 5C      [ 1]  492 	bset	20572, #7
+                                    493 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 369: }
+      00025C 85               [ 2]  494 	popw	x
+      00025D 81               [ 4]  495 	ret
+                                    496 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 376: void FLASH_EraseOptionByte(uint16_t Address)
+                                    497 ;	-----------------------------------------
+                                    498 ;	 function FLASH_EraseOptionByte
+                                    499 ;	-----------------------------------------
+      00025E                        500 _FLASH_EraseOptionByte:
+                                    501 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 379: assert_param(IS_OPTION_BYTE_ADDRESS_OK(Address));
+      00025E 1E 03            [ 2]  502 	ldw	x, (0x03, sp)
+      000260 A3 48 00         [ 2]  503 	cpw	x, #0x4800
+      000263 25 07            [ 1]  504 	jrc	00106$
+      000265 1E 03            [ 2]  505 	ldw	x, (0x03, sp)
+      000267 A3 48 7F         [ 2]  506 	cpw	x, #0x487f
+      00026A 23 0F            [ 2]  507 	jrule	00107$
+      00026C                        508 00106$:
+      00026C 4B 7B            [ 1]  509 	push	#0x7b
+      00026E 4B 01            [ 1]  510 	push	#0x01
+      000270 5F               [ 1]  511 	clrw	x
+      000271 89               [ 2]  512 	pushw	x
+      000272 4Br00            [ 1]  513 	push	#<(___str_0+0)
+      000274 4Bs00            [ 1]  514 	push	#((___str_0+0) >> 8)
+      000276 CDr00r00         [ 4]  515 	call	_assert_failed
+      000279 5B 06            [ 2]  516 	addw	sp, #6
+      00027B                        517 00107$:
+                                    518 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 382: FLASH->CR2 |= FLASH_CR2_OPT;
+      00027B 72 1E 50 5B      [ 1]  519 	bset	20571, #7
+                                    520 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 383: FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NOPT);
+      00027F 72 1F 50 5C      [ 1]  521 	bres	20572, #7
+                                    522 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 386: if(Address == 0x4800)
+      000283 16 03            [ 2]  523 	ldw	y, (0x03, sp)
+                                    524 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 389: *((NEAR uint8_t*)Address) = FLASH_CLEAR_BYTE;
+      000285 1E 03            [ 2]  525 	ldw	x, (0x03, sp)
+                                    526 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 386: if(Address == 0x4800)
+      000287 90 A3 48 00      [ 2]  527 	cpw	y, #0x4800
+      00028B 26 03            [ 1]  528 	jrne	00102$
+                                    529 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 389: *((NEAR uint8_t*)Address) = FLASH_CLEAR_BYTE;
+      00028D 7F               [ 1]  530 	clr	(x)
+      00028E 20 07            [ 2]  531 	jra	00103$
+      000290                        532 00102$:
+                                    533 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 394: *((NEAR uint8_t*)Address) = FLASH_CLEAR_BYTE;
+      000290 7F               [ 1]  534 	clr	(x)
+                                    535 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 395: *((NEAR uint8_t*)((uint16_t)(Address + (uint16_t)1 ))) = FLASH_SET_BYTE;
+      000291 1E 03            [ 2]  536 	ldw	x, (0x03, sp)
+      000293 5C               [ 1]  537 	incw	x
+      000294 A6 FF            [ 1]  538 	ld	a, #0xff
+      000296 F7               [ 1]  539 	ld	(x), a
+      000297                        540 00103$:
+                                    541 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 397: FLASH_WaitForLastOperation(FLASH_MEMTYPE_PROG);
+      000297 4B FD            [ 1]  542 	push	#0xfd
+      000299 CDr03rB7         [ 4]  543 	call	_FLASH_WaitForLastOperation
+      00029C 84               [ 1]  544 	pop	a
+                                    545 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 400: FLASH->CR2 &= (uint8_t)(~FLASH_CR2_OPT);
+      00029D 72 1F 50 5B      [ 1]  546 	bres	20571, #7
+                                    547 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 401: FLASH->NCR2 |= FLASH_NCR2_NOPT;
+      0002A1 72 1E 50 5C      [ 1]  548 	bset	20572, #7
+                                    549 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 402: }
+      0002A5 81               [ 4]  550 	ret
+                                    551 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 409: uint16_t FLASH_ReadOptionByte(uint16_t Address)
+                                    552 ;	-----------------------------------------
+                                    553 ;	 function FLASH_ReadOptionByte
+                                    554 ;	-----------------------------------------
+      0002A6                        555 _FLASH_ReadOptionByte:
+      0002A6 52 03            [ 2]  556 	sub	sp, #3
+                                    557 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 415: assert_param(IS_OPTION_BYTE_ADDRESS_OK(Address));
+      0002A8 1E 06            [ 2]  558 	ldw	x, (0x06, sp)
+      0002AA A3 48 00         [ 2]  559 	cpw	x, #0x4800
+      0002AD 25 05            [ 1]  560 	jrc	00109$
+      0002AF A3 48 7F         [ 2]  561 	cpw	x, #0x487f
+      0002B2 23 0F            [ 2]  562 	jrule	00110$
+      0002B4                        563 00109$:
+      0002B4 4B 9F            [ 1]  564 	push	#0x9f
+      0002B6 4B 01            [ 1]  565 	push	#0x01
+      0002B8 5F               [ 1]  566 	clrw	x
+      0002B9 89               [ 2]  567 	pushw	x
+      0002BA 4Br00            [ 1]  568 	push	#<(___str_0+0)
+      0002BC 4Bs00            [ 1]  569 	push	#((___str_0+0) >> 8)
+      0002BE CDr00r00         [ 4]  570 	call	_assert_failed
+      0002C1 5B 06            [ 2]  571 	addw	sp, #6
+      0002C3                        572 00110$:
+                                    573 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 417: value_optbyte = *((NEAR uint8_t*)Address); /* Read option byte */
+      0002C3 1E 06            [ 2]  574 	ldw	x, (0x06, sp)
+      0002C5 F6               [ 1]  575 	ld	a, (x)
+      0002C6 6B 03            [ 1]  576 	ld	(0x03, sp), a
+                                    577 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 418: value_optbyte_complement = *(((NEAR uint8_t*)Address) + 1); /* Read option byte complement */
+      0002C8 E6 01            [ 1]  578 	ld	a, (0x1, x)
+      0002CA 6B 01            [ 1]  579 	ld	(0x01, sp), a
+                                    580 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 421: if(Address == 0x4800)	 
+      0002CC 16 06            [ 2]  581 	ldw	y, (0x06, sp)
+                                    582 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 423: res_value =	 value_optbyte;
+      0002CE 5F               [ 1]  583 	clrw	x
+      0002CF 7B 03            [ 1]  584 	ld	a, (0x03, sp)
+      0002D1 97               [ 1]  585 	ld	xl, a
+                                    586 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 421: if(Address == 0x4800)	 
+      0002D2 90 A3 48 00      [ 2]  587 	cpw	y, #0x4800
+      0002D6 27 18            [ 1]  588 	jreq	00106$
+                                    589 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 423: res_value =	 value_optbyte;
+                                    590 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 427: if(value_optbyte == (uint8_t)(~value_optbyte_complement))
+      0002D8 7B 01            [ 1]  591 	ld	a, (0x01, sp)
+      0002DA 43               [ 1]  592 	cpl	a
+      0002DB 11 03            [ 1]  593 	cp	a, (0x03, sp)
+      0002DD 26 0E            [ 1]  594 	jrne	00102$
+                                    595 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 429: res_value = (uint16_t)((uint16_t)value_optbyte << 8);
+      0002DF 4F               [ 1]  596 	clr	a
+      0002E0 02               [ 1]  597 	rlwa	x
+      0002E1 1F 02            [ 2]  598 	ldw	(0x02, sp), x
+                                    599 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 430: res_value = res_value | (uint16_t)value_optbyte_complement;
+      0002E3 7B 01            [ 1]  600 	ld	a, (0x01, sp)
+      0002E5 5F               [ 1]  601 	clrw	x
+      0002E6 1A 03            [ 1]  602 	or	a, (0x03, sp)
+      0002E8 02               [ 1]  603 	rlwa	x
+      0002E9 1A 02            [ 1]  604 	or	a, (0x02, sp)
+      0002EB 95               [ 1]  605 	ld	xh, a
+                                    606 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 434: res_value = FLASH_OPTIONBYTE_ERROR;
+      0002EC BC                     607 	.byte 0xbc
+      0002ED                        608 00102$:
+      0002ED AE 55 55         [ 2]  609 	ldw	x, #0x5555
+      0002F0                        610 00106$:
+                                    611 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 437: return(res_value);
+                                    612 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 438: }
+      0002F0 5B 03            [ 2]  613 	addw	sp, #3
+      0002F2 81               [ 4]  614 	ret
+                                    615 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 446: void FLASH_SetLowPowerMode(FLASH_LPMode_TypeDef FLASH_LPMode)
+                                    616 ;	-----------------------------------------
+                                    617 ;	 function FLASH_SetLowPowerMode
+                                    618 ;	-----------------------------------------
+      0002F3                        619 _FLASH_SetLowPowerMode:
+                                    620 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 449: assert_param(IS_FLASH_LOW_POWER_MODE_OK(FLASH_LPMode));
+      0002F3 7B 03            [ 1]  621 	ld	a, (0x03, sp)
+      0002F5 A1 04            [ 1]  622 	cp	a, #0x04
+      0002F7 27 1F            [ 1]  623 	jreq	00104$
+      0002F9 7B 03            [ 1]  624 	ld	a, (0x03, sp)
+      0002FB A1 08            [ 1]  625 	cp	a, #0x08
+      0002FD 27 19            [ 1]  626 	jreq	00104$
+      0002FF 0D 03            [ 1]  627 	tnz	(0x03, sp)
+      000301 27 15            [ 1]  628 	jreq	00104$
+      000303 7B 03            [ 1]  629 	ld	a, (0x03, sp)
+      000305 A1 0C            [ 1]  630 	cp	a, #0x0c
+      000307 27 0F            [ 1]  631 	jreq	00104$
+      000309 4B C1            [ 1]  632 	push	#0xc1
+      00030B 4B 01            [ 1]  633 	push	#0x01
+      00030D 5F               [ 1]  634 	clrw	x
+      00030E 89               [ 2]  635 	pushw	x
+      00030F 4Br00            [ 1]  636 	push	#<(___str_0+0)
+      000311 4Bs00            [ 1]  637 	push	#((___str_0+0) >> 8)
+      000313 CDr00r00         [ 4]  638 	call	_assert_failed
+      000316 5B 06            [ 2]  639 	addw	sp, #6
+      000318                        640 00104$:
+                                    641 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 452: FLASH->CR1 &= (uint8_t)(~(FLASH_CR1_HALT | FLASH_CR1_AHALT)); 
+      000318 C6 50 5A         [ 1]  642 	ld	a, 0x505a
+      00031B A4 F3            [ 1]  643 	and	a, #0xf3
+      00031D C7 50 5A         [ 1]  644 	ld	0x505a, a
+                                    645 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 455: FLASH->CR1 |= (uint8_t)FLASH_LPMode; 
+      000320 C6 50 5A         [ 1]  646 	ld	a, 0x505a
+      000323 1A 03            [ 1]  647 	or	a, (0x03, sp)
+      000325 C7 50 5A         [ 1]  648 	ld	0x505a, a
+                                    649 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 456: }
+      000328 81               [ 4]  650 	ret
+                                    651 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 464: void FLASH_SetProgrammingTime(FLASH_ProgramTime_TypeDef FLASH_ProgTime)
+                                    652 ;	-----------------------------------------
+                                    653 ;	 function FLASH_SetProgrammingTime
+                                    654 ;	-----------------------------------------
+      000329                        655 _FLASH_SetProgrammingTime:
+                                    656 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 467: assert_param(IS_FLASH_PROGRAM_TIME_OK(FLASH_ProgTime));
+      000329 0D 03            [ 1]  657 	tnz	(0x03, sp)
+      00032B 27 14            [ 1]  658 	jreq	00104$
+      00032D 7B 03            [ 1]  659 	ld	a, (0x03, sp)
+      00032F 4A               [ 1]  660 	dec	a
+      000330 27 0F            [ 1]  661 	jreq	00104$
+      000332 4B D3            [ 1]  662 	push	#0xd3
+      000334 4B 01            [ 1]  663 	push	#0x01
+      000336 5F               [ 1]  664 	clrw	x
+      000337 89               [ 2]  665 	pushw	x
+      000338 4Br00            [ 1]  666 	push	#<(___str_0+0)
+      00033A 4Bs00            [ 1]  667 	push	#((___str_0+0) >> 8)
+      00033C CDr00r00         [ 4]  668 	call	_assert_failed
+      00033F 5B 06            [ 2]  669 	addw	sp, #6
+      000341                        670 00104$:
+                                    671 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 469: FLASH->CR1 &= (uint8_t)(~FLASH_CR1_FIX);
+      000341 C6 50 5A         [ 1]  672 	ld	a, 0x505a
+      000344 A4 FE            [ 1]  673 	and	a, #0xfe
+      000346 C7 50 5A         [ 1]  674 	ld	0x505a, a
+                                    675 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 470: FLASH->CR1 |= (uint8_t)FLASH_ProgTime;
+      000349 C6 50 5A         [ 1]  676 	ld	a, 0x505a
+      00034C 1A 03            [ 1]  677 	or	a, (0x03, sp)
+      00034E C7 50 5A         [ 1]  678 	ld	0x505a, a
+                                    679 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 471: }
+      000351 81               [ 4]  680 	ret
+                                    681 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 478: FLASH_LPMode_TypeDef FLASH_GetLowPowerMode(void)
+                                    682 ;	-----------------------------------------
+                                    683 ;	 function FLASH_GetLowPowerMode
+                                    684 ;	-----------------------------------------
+      000352                        685 _FLASH_GetLowPowerMode:
+                                    686 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 480: return((FLASH_LPMode_TypeDef)(FLASH->CR1 & (uint8_t)(FLASH_CR1_HALT | FLASH_CR1_AHALT)));
+      000352 C6 50 5A         [ 1]  687 	ld	a, 0x505a
+      000355 A4 0C            [ 1]  688 	and	a, #0x0c
+                                    689 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 481: }
+      000357 81               [ 4]  690 	ret
+                                    691 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 488: FLASH_ProgramTime_TypeDef FLASH_GetProgrammingTime(void)
+                                    692 ;	-----------------------------------------
+                                    693 ;	 function FLASH_GetProgrammingTime
+                                    694 ;	-----------------------------------------
+      000358                        695 _FLASH_GetProgrammingTime:
+                                    696 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 490: return((FLASH_ProgramTime_TypeDef)(FLASH->CR1 & FLASH_CR1_FIX));
+      000358 C6 50 5A         [ 1]  697 	ld	a, 0x505a
+      00035B A4 01            [ 1]  698 	and	a, #0x01
+                                    699 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 491: }
+      00035D 81               [ 4]  700 	ret
+                                    701 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 498: uint32_t FLASH_GetBootSize(void)
+                                    702 ;	-----------------------------------------
+                                    703 ;	 function FLASH_GetBootSize
+                                    704 ;	-----------------------------------------
+      00035E                        705 _FLASH_GetBootSize:
+      00035E 52 04            [ 2]  706 	sub	sp, #4
+                                    707 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 503: temp = (uint32_t)((uint32_t)FLASH->FPR * (uint32_t)512);
+      000360 C6 50 5D         [ 1]  708 	ld	a, 0x505d
+      000363 5F               [ 1]  709 	clrw	x
+      000364 0F 04            [ 1]  710 	clr	(0x04, sp)
+      000366 08 04            [ 1]  711 	sll	(0x04, sp)
+      000368 49               [ 1]  712 	rlc	a
+      000369 59               [ 2]  713 	rlcw	x
+      00036A 90 95            [ 1]  714 	ld	yh, a
+      00036C 7B 04            [ 1]  715 	ld	a, (0x04, sp)
+      00036E 90 97            [ 1]  716 	ld	yl, a
+                                    717 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 506: if(FLASH->FPR == 0xFF)
+      000370 C6 50 5D         [ 1]  718 	ld	a, 0x505d
+      000373 4C               [ 1]  719 	inc	a
+      000374 26 0B            [ 1]  720 	jrne	00102$
+                                    721 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 508: temp += 512;
+      000376 72 A9 02 00      [ 2]  722 	addw	y, #0x0200
+      00037A 9F               [ 1]  723 	ld	a, xl
+      00037B A9 00            [ 1]  724 	adc	a, #0x00
+      00037D 02               [ 1]  725 	rlwa	x
+      00037E A9 00            [ 1]  726 	adc	a, #0x00
+      000380 95               [ 1]  727 	ld	xh, a
+      000381                        728 00102$:
+                                    729 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 512: return(temp);
+      000381 51               [ 1]  730 	exgw	x, y
+                                    731 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 513: }
+      000382 5B 04            [ 2]  732 	addw	sp, #4
+      000384 81               [ 4]  733 	ret
+                                    734 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 523: FlagStatus FLASH_GetFlagStatus(FLASH_Flag_TypeDef FLASH_FLAG)
+                                    735 ;	-----------------------------------------
+                                    736 ;	 function FLASH_GetFlagStatus
+                                    737 ;	-----------------------------------------
+      000385                        738 _FLASH_GetFlagStatus:
+                                    739 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 527: assert_param(IS_FLASH_FLAGS_OK(FLASH_FLAG));
+      000385 7B 03            [ 1]  740 	ld	a, (0x03, sp)
+      000387 A1 08            [ 1]  741 	cp	a, #0x08
+      000389 27 20            [ 1]  742 	jreq	00107$
+      00038B 7B 03            [ 1]  743 	ld	a, (0x03, sp)
+      00038D A1 04            [ 1]  744 	cp	a, #0x04
+      00038F 27 1A            [ 1]  745 	jreq	00107$
+      000391 7B 03            [ 1]  746 	ld	a, (0x03, sp)
+      000393 A1 02            [ 1]  747 	cp	a, #0x02
+      000395 27 14            [ 1]  748 	jreq	00107$
+      000397 7B 03            [ 1]  749 	ld	a, (0x03, sp)
+      000399 4A               [ 1]  750 	dec	a
+      00039A 27 0F            [ 1]  751 	jreq	00107$
+      00039C 4B 0F            [ 1]  752 	push	#0x0f
+      00039E 4B 02            [ 1]  753 	push	#0x02
+      0003A0 5F               [ 1]  754 	clrw	x
+      0003A1 89               [ 2]  755 	pushw	x
+      0003A2 4Br00            [ 1]  756 	push	#<(___str_0+0)
+      0003A4 4Bs00            [ 1]  757 	push	#((___str_0+0) >> 8)
+      0003A6 CDr00r00         [ 4]  758 	call	_assert_failed
+      0003A9 5B 06            [ 2]  759 	addw	sp, #6
+      0003AB                        760 00107$:
+                                    761 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 530: if((FLASH->IAPSR & (uint8_t)FLASH_FLAG) != (uint8_t)RESET)
+      0003AB C6 50 5F         [ 1]  762 	ld	a, 0x505f
+      0003AE 14 03            [ 1]  763 	and	a, (0x03, sp)
+      0003B0 27 03            [ 1]  764 	jreq	00102$
+                                    765 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 532: status = SET; /* FLASH_FLAG is set */
+      0003B2 A6 01            [ 1]  766 	ld	a, #0x01
+      0003B4 81               [ 4]  767 	ret
+      0003B5                        768 00102$:
+                                    769 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 536: status = RESET; /* FLASH_FLAG is reset*/
+      0003B5 4F               [ 1]  770 	clr	a
+                                    771 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 540: return status;
+                                    772 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 541: }
+      0003B6 81               [ 4]  773 	ret
+                                    774 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 660: IN_RAM(FLASH_Status_TypeDef FLASH_WaitForLastOperation(FLASH_MemType_TypeDef FLASH_MemType)) 
+                                    775 ;	-----------------------------------------
+                                    776 ;	 function FLASH_WaitForLastOperation
+                                    777 ;	-----------------------------------------
+      0003B7                        778 _FLASH_WaitForLastOperation:
+                                    779 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 662: uint8_t flagstatus = 0x00;
+      0003B7 4F               [ 1]  780 	clr	a
+                                    781 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 688: while((flagstatus == 0x00) && (timeout != 0x00))
+      0003B8 5F               [ 1]  782 	clrw	x
+      0003B9 5A               [ 2]  783 	decw	x
+      0003BA                        784 00102$:
+      0003BA 4D               [ 1]  785 	tnz	a
+      0003BB 26 0B            [ 1]  786 	jrne	00104$
+      0003BD 5D               [ 2]  787 	tnzw	x
+      0003BE 27 08            [ 1]  788 	jreq	00104$
+                                    789 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 690: flagstatus = (uint8_t)(FLASH->IAPSR & (FLASH_IAPSR_EOP | FLASH_IAPSR_WR_PG_DIS));
+      0003C0 C6 50 5F         [ 1]  790 	ld	a, 0x505f
+      0003C3 A4 05            [ 1]  791 	and	a, #0x05
+                                    792 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 691: timeout--;
+      0003C5 5A               [ 2]  793 	decw	x
+      0003C6 20 F2            [ 2]  794 	jra	00102$
+      0003C8                        795 00104$:
+                                    796 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 695: if(timeout == 0x00 )
+      0003C8 5D               [ 2]  797 	tnzw	x
+      0003C9 27 01            [ 1]  798 	jreq	00132$
+      0003CB 81               [ 4]  799 	ret
+      0003CC                        800 00132$:
+                                    801 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 697: flagstatus = FLASH_STATUS_TIMEOUT;
+      0003CC A6 02            [ 1]  802 	ld	a, #0x02
+                                    803 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 700: return((FLASH_Status_TypeDef)flagstatus);
+                                    804 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 701: }
+      0003CE 81               [ 4]  805 	ret
+                                    806 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 710: IN_RAM(void FLASH_EraseBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_MemType))
+                                    807 ;	-----------------------------------------
+                                    808 ;	 function FLASH_EraseBlock
+                                    809 ;	-----------------------------------------
+      0003CF                        810 _FLASH_EraseBlock:
+      0003CF 52 06            [ 2]  811 	sub	sp, #6
+                                    812 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 722: assert_param(IS_MEMORY_TYPE_OK(FLASH_MemType));
+      0003D1 7B 0B            [ 1]  813 	ld	a, (0x0b, sp)
+      0003D3 A0 FD            [ 1]  814 	sub	a, #0xfd
+      0003D5 26 02            [ 1]  815 	jrne	00141$
+      0003D7 4C               [ 1]  816 	inc	a
+      0003D8 21                     817 	.byte 0x21
+      0003D9                        818 00141$:
+      0003D9 4F               [ 1]  819 	clr	a
+      0003DA                        820 00142$:
+      0003DA 4D               [ 1]  821 	tnz	a
+      0003DB 26 19            [ 1]  822 	jrne	00107$
+      0003DD 88               [ 1]  823 	push	a
+      0003DE 7B 0C            [ 1]  824 	ld	a, (0x0c, sp)
+      0003E0 A1 F7            [ 1]  825 	cp	a, #0xf7
+      0003E2 84               [ 1]  826 	pop	a
+      0003E3 27 11            [ 1]  827 	jreq	00107$
+      0003E5 88               [ 1]  828 	push	a
+      0003E6 4B D2            [ 1]  829 	push	#0xd2
+      0003E8 4B 02            [ 1]  830 	push	#0x02
+      0003EA 5F               [ 1]  831 	clrw	x
+      0003EB 89               [ 2]  832 	pushw	x
+      0003EC 4Br00            [ 1]  833 	push	#<(___str_0+0)
+      0003EE 4Bs00            [ 1]  834 	push	#((___str_0+0) >> 8)
+      0003F0 CDr00r00         [ 4]  835 	call	_assert_failed
+      0003F3 5B 06            [ 2]  836 	addw	sp, #6
+      0003F5 84               [ 1]  837 	pop	a
+      0003F6                        838 00107$:
+                                    839 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 723: if(FLASH_MemType == FLASH_MEMTYPE_PROG)
+      0003F6 4D               [ 1]  840 	tnz	a
+      0003F7 27 1F            [ 1]  841 	jreq	00102$
+                                    842 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 725: assert_param(IS_FLASH_PROG_BLOCK_NUMBER_OK(BlockNum));
+      0003F9 1E 09            [ 2]  843 	ldw	x, (0x09, sp)
+      0003FB A3 00 80         [ 2]  844 	cpw	x, #0x0080
+      0003FE 25 0F            [ 1]  845 	jrc	00112$
+      000400 4B D5            [ 1]  846 	push	#0xd5
+      000402 4B 02            [ 1]  847 	push	#0x02
+      000404 5F               [ 1]  848 	clrw	x
+      000405 89               [ 2]  849 	pushw	x
+      000406 4Br00            [ 1]  850 	push	#<(___str_0+0)
+      000408 4Bs00            [ 1]  851 	push	#((___str_0+0) >> 8)
+      00040A CDr00r00         [ 4]  852 	call	_assert_failed
+      00040D 5B 06            [ 2]  853 	addw	sp, #6
+      00040F                        854 00112$:
+                                    855 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 726: startaddress = FLASH_PROG_START_PHYSICAL_ADDRESS;
+      00040F 0F 04            [ 1]  856 	clr	(0x04, sp)
+      000411 A6 80            [ 1]  857 	ld	a, #0x80
+      000413 5F               [ 1]  858 	clrw	x
+      000414 1F 01            [ 2]  859 	ldw	(0x01, sp), x
+      000416 20 1D            [ 2]  860 	jra	00103$
+      000418                        861 00102$:
+                                    862 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 730: assert_param(IS_FLASH_DATA_BLOCK_NUMBER_OK(BlockNum));
+      000418 1E 09            [ 2]  863 	ldw	x, (0x09, sp)
+      00041A A3 00 0A         [ 2]  864 	cpw	x, #0x000a
+      00041D 25 0F            [ 1]  865 	jrc	00114$
+      00041F 4B DA            [ 1]  866 	push	#0xda
+      000421 4B 02            [ 1]  867 	push	#0x02
+      000423 5F               [ 1]  868 	clrw	x
+      000424 89               [ 2]  869 	pushw	x
+      000425 4Br00            [ 1]  870 	push	#<(___str_0+0)
+      000427 4Bs00            [ 1]  871 	push	#((___str_0+0) >> 8)
+      000429 CDr00r00         [ 4]  872 	call	_assert_failed
+      00042C 5B 06            [ 2]  873 	addw	sp, #6
+      00042E                        874 00114$:
+                                    875 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 731: startaddress = FLASH_DATA_START_PHYSICAL_ADDRESS;
+      00042E 0F 04            [ 1]  876 	clr	(0x04, sp)
+      000430 A6 40            [ 1]  877 	ld	a, #0x40
+      000432 5F               [ 1]  878 	clrw	x
+      000433 1F 01            [ 2]  879 	ldw	(0x01, sp), x
+      000435                        880 00103$:
+                                    881 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 739: pwFlash = (PointerAttr uint32_t *)(MemoryAddressCast)(startaddress + ((uint32_t)BlockNum * FLASH_BLOCK_SIZE));
+      000435 1E 09            [ 2]  882 	ldw	x, (0x09, sp)
+      000437 58               [ 2]  883 	sllw	x
+      000438 58               [ 2]  884 	sllw	x
+      000439 58               [ 2]  885 	sllw	x
+      00043A 58               [ 2]  886 	sllw	x
+      00043B 58               [ 2]  887 	sllw	x
+      00043C 58               [ 2]  888 	sllw	x
+      00043D 1F 05            [ 2]  889 	ldw	(0x05, sp), x
+      00043F 95               [ 1]  890 	ld	xh, a
+      000440 7B 04            [ 1]  891 	ld	a, (0x04, sp)
+      000442 97               [ 1]  892 	ld	xl, a
+      000443 72 FB 05         [ 2]  893 	addw	x, (0x05, sp)
+                                    894 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 743: FLASH->CR2 |= FLASH_CR2_ERASE;
+      000446 72 1A 50 5B      [ 1]  895 	bset	20571, #5
+                                    896 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 744: FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NERASE);
+      00044A 72 1B 50 5C      [ 1]  897 	bres	20572, #5
+                                    898 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 748: *pwFlash = (uint32_t)0;
+      00044E 90 5F            [ 1]  899 	clrw	y
+      000450 EF 02            [ 2]  900 	ldw	(0x2, x), y
+      000452 FF               [ 2]  901 	ldw	(x), y
+                                    902 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 756: }
+      000453 5B 06            [ 2]  903 	addw	sp, #6
+      000455 81               [ 4]  904 	ret
+                                    905 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 767: IN_RAM(void FLASH_ProgramBlock(uint16_t BlockNum, FLASH_MemType_TypeDef FLASH_MemType, 
+                                    906 ;	-----------------------------------------
+                                    907 ;	 function FLASH_ProgramBlock
+                                    908 ;	-----------------------------------------
+      000456                        909 _FLASH_ProgramBlock:
+      000456 52 08            [ 2]  910 	sub	sp, #8
+                                    911 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 774: assert_param(IS_MEMORY_TYPE_OK(FLASH_MemType));
+      000458 7B 0D            [ 1]  912 	ld	a, (0x0d, sp)
+      00045A A0 FD            [ 1]  913 	sub	a, #0xfd
+      00045C 26 04            [ 1]  914 	jrne	00173$
+      00045E 4C               [ 1]  915 	inc	a
+      00045F 6B 08            [ 1]  916 	ld	(0x08, sp), a
+      000461 C5                     917 	.byte 0xc5
+      000462                        918 00173$:
+      000462 0F 08            [ 1]  919 	clr	(0x08, sp)
+      000464                        920 00174$:
+      000464 0D 08            [ 1]  921 	tnz	(0x08, sp)
+      000466 26 15            [ 1]  922 	jrne	00113$
+      000468 7B 0D            [ 1]  923 	ld	a, (0x0d, sp)
+      00046A A1 F7            [ 1]  924 	cp	a, #0xf7
+      00046C 27 0F            [ 1]  925 	jreq	00113$
+      00046E 4B 06            [ 1]  926 	push	#0x06
+      000470 4B 03            [ 1]  927 	push	#0x03
+      000472 5F               [ 1]  928 	clrw	x
+      000473 89               [ 2]  929 	pushw	x
+      000474 4Br00            [ 1]  930 	push	#<(___str_0+0)
+      000476 4Bs00            [ 1]  931 	push	#((___str_0+0) >> 8)
+      000478 CDr00r00         [ 4]  932 	call	_assert_failed
+      00047B 5B 06            [ 2]  933 	addw	sp, #6
+      00047D                        934 00113$:
+                                    935 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 775: assert_param(IS_FLASH_PROGRAM_MODE_OK(FLASH_ProgMode));
+      00047D 0D 0E            [ 1]  936 	tnz	(0x0e, sp)
+      00047F 27 15            [ 1]  937 	jreq	00118$
+      000481 7B 0E            [ 1]  938 	ld	a, (0x0e, sp)
+      000483 A1 10            [ 1]  939 	cp	a, #0x10
+      000485 27 0F            [ 1]  940 	jreq	00118$
+      000487 4B 07            [ 1]  941 	push	#0x07
+      000489 4B 03            [ 1]  942 	push	#0x03
+      00048B 5F               [ 1]  943 	clrw	x
+      00048C 89               [ 2]  944 	pushw	x
+      00048D 4Br00            [ 1]  945 	push	#<(___str_0+0)
+      00048F 4Bs00            [ 1]  946 	push	#((___str_0+0) >> 8)
+      000491 CDr00r00         [ 4]  947 	call	_assert_failed
+      000494 5B 06            [ 2]  948 	addw	sp, #6
+      000496                        949 00118$:
+                                    950 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 776: if(FLASH_MemType == FLASH_MEMTYPE_PROG)
+      000496 7B 08            [ 1]  951 	ld	a, (0x08, sp)
+      000498 27 1E            [ 1]  952 	jreq	00102$
+                                    953 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 778: assert_param(IS_FLASH_PROG_BLOCK_NUMBER_OK(BlockNum));
+      00049A 1E 0B            [ 2]  954 	ldw	x, (0x0b, sp)
+      00049C A3 00 80         [ 2]  955 	cpw	x, #0x0080
+      00049F 25 0F            [ 1]  956 	jrc	00123$
+      0004A1 4B 0A            [ 1]  957 	push	#0x0a
+      0004A3 4B 03            [ 1]  958 	push	#0x03
+      0004A5 5F               [ 1]  959 	clrw	x
+      0004A6 89               [ 2]  960 	pushw	x
+      0004A7 4Br00            [ 1]  961 	push	#<(___str_0+0)
+      0004A9 4Bs00            [ 1]  962 	push	#((___str_0+0) >> 8)
+      0004AB CDr00r00         [ 4]  963 	call	_assert_failed
+      0004AE 5B 06            [ 2]  964 	addw	sp, #6
+      0004B0                        965 00123$:
+                                    966 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 779: startaddress = FLASH_PROG_START_PHYSICAL_ADDRESS;
+      0004B0 AE 80 00         [ 2]  967 	ldw	x, #0x8000
+      0004B3 1F 03            [ 2]  968 	ldw	(0x03, sp), x
+      0004B5 5F               [ 1]  969 	clrw	x
+      0004B6 20 1C            [ 2]  970 	jra	00103$
+      0004B8                        971 00102$:
+                                    972 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 783: assert_param(IS_FLASH_DATA_BLOCK_NUMBER_OK(BlockNum));
+      0004B8 1E 0B            [ 2]  973 	ldw	x, (0x0b, sp)
+      0004BA A3 00 0A         [ 2]  974 	cpw	x, #0x000a
+      0004BD 25 0F            [ 1]  975 	jrc	00125$
+      0004BF 4B 0F            [ 1]  976 	push	#0x0f
+      0004C1 4B 03            [ 1]  977 	push	#0x03
+      0004C3 5F               [ 1]  978 	clrw	x
+      0004C4 89               [ 2]  979 	pushw	x
+      0004C5 4Br00            [ 1]  980 	push	#<(___str_0+0)
+      0004C7 4Bs00            [ 1]  981 	push	#((___str_0+0) >> 8)
+      0004C9 CDr00r00         [ 4]  982 	call	_assert_failed
+      0004CC 5B 06            [ 2]  983 	addw	sp, #6
+      0004CE                        984 00125$:
+                                    985 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 784: startaddress = FLASH_DATA_START_PHYSICAL_ADDRESS;
+      0004CE AE 40 00         [ 2]  986 	ldw	x, #0x4000
+      0004D1 1F 03            [ 2]  987 	ldw	(0x03, sp), x
+      0004D3 5F               [ 1]  988 	clrw	x
+      0004D4                        989 00103$:
+                                    990 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 788: startaddress = startaddress + ((uint32_t)BlockNum * FLASH_BLOCK_SIZE);
+      0004D4 16 0B            [ 2]  991 	ldw	y, (0x0b, sp)
+      0004D6 17 07            [ 2]  992 	ldw	(0x07, sp), y
+      0004D8 90 5F            [ 1]  993 	clrw	y
+      0004DA 17 05            [ 2]  994 	ldw	(0x05, sp), y
+      0004DC 16 07            [ 2]  995 	ldw	y, (0x07, sp)
+      0004DE A6 06            [ 1]  996 	ld	a, #0x06
+      0004E0                        997 00186$:
+      0004E0 90 58            [ 2]  998 	sllw	y
+      0004E2 09 06            [ 1]  999 	rlc	(0x06, sp)
+      0004E4 09 05            [ 1] 1000 	rlc	(0x05, sp)
+      0004E6 4A               [ 1] 1001 	dec	a
+      0004E7 26 F7            [ 1] 1002 	jrne	00186$
+      0004E9 72 F9 03         [ 2] 1003 	addw	y, (0x03, sp)
+      0004EC 9F               [ 1] 1004 	ld	a, xl
+      0004ED 19 06            [ 1] 1005 	adc	a, (0x06, sp)
+      0004EF 02               [ 1] 1006 	rlwa	x
+      0004F0 19 05            [ 1] 1007 	adc	a, (0x05, sp)
+      0004F2 95               [ 1] 1008 	ld	xh, a
+      0004F3 17 03            [ 2] 1009 	ldw	(0x03, sp), y
+      0004F5 1F 01            [ 2] 1010 	ldw	(0x01, sp), x
+                                   1011 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 794: FLASH->CR2 |= FLASH_CR2_PRG;
+      0004F7 C6 50 5B         [ 1] 1012 	ld	a, 0x505b
+                                   1013 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 791: if(FLASH_ProgMode == FLASH_PROGRAMMODE_STANDARD)
+      0004FA 0D 0E            [ 1] 1014 	tnz	(0x0e, sp)
+      0004FC 26 0B            [ 1] 1015 	jrne	00105$
+                                   1016 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 794: FLASH->CR2 |= FLASH_CR2_PRG;
+      0004FE AA 01            [ 1] 1017 	or	a, #0x01
+      000500 C7 50 5B         [ 1] 1018 	ld	0x505b, a
+                                   1019 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 795: FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NPRG);
+      000503 72 11 50 5C      [ 1] 1020 	bres	20572, #0
+      000507 20 09            [ 2] 1021 	jra	00134$
+      000509                       1022 00105$:
+                                   1023 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 800: FLASH->CR2 |= FLASH_CR2_FPRG;
+      000509 AA 10            [ 1] 1024 	or	a, #0x10
+      00050B C7 50 5B         [ 1] 1025 	ld	0x505b, a
+                                   1026 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 801: FLASH->NCR2 &= (uint8_t)(~FLASH_NCR2_NFPRG);
+      00050E 72 19 50 5C      [ 1] 1027 	bres	20572, #4
+                                   1028 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 805: for(Count = 0; Count < FLASH_BLOCK_SIZE; Count++)
+      000512                       1029 00134$:
+      000512 90 5F            [ 1] 1030 	clrw	y
+      000514                       1031 00108$:
+                                   1032 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 807: *((PointerAttr uint8_t*) (MemoryAddressCast)startaddress + Count) = ((uint8_t)(Buffer[Count]));
+      000514 1E 03            [ 2] 1033 	ldw	x, (0x03, sp)
+      000516 1F 05            [ 2] 1034 	ldw	(0x05, sp), x
+      000518 93               [ 1] 1035 	ldw	x, y
+      000519 72 FB 05         [ 2] 1036 	addw	x, (0x05, sp)
+      00051C 1F 07            [ 2] 1037 	ldw	(0x07, sp), x
+      00051E 93               [ 1] 1038 	ldw	x, y
+      00051F 72 FB 0F         [ 2] 1039 	addw	x, (0x0f, sp)
+      000522 F6               [ 1] 1040 	ld	a, (x)
+      000523 1E 07            [ 2] 1041 	ldw	x, (0x07, sp)
+      000525 F7               [ 1] 1042 	ld	(x), a
+                                   1043 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 805: for(Count = 0; Count < FLASH_BLOCK_SIZE; Count++)
+      000526 90 5C            [ 1] 1044 	incw	y
+      000528 90 A3 00 40      [ 2] 1045 	cpw	y, #0x0040
+      00052C 25 E6            [ 1] 1046 	jrc	00108$
+                                   1047 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_flash.c: 809: }
+      00052E 5B 08            [ 2] 1048 	addw	sp, #8
+      000530 81               [ 4] 1049 	ret
+                                   1050 	.area CODE
+                                   1051 	.area CONST
+                                   1052 	.area CONST
+      000000                       1053 ___str_0:
+      000000 43 3A                 1054 	.ascii "C:"
+      000002 5C                    1055 	.db 0x5c
+      000003 55 73 65 72 73        1056 	.ascii "Users"
+      000008 5C                    1057 	.db 0x5c
+      000009 41 64 6D 69 6E        1058 	.ascii "Admin"
+      00000E 5C                    1059 	.db 0x5c
+      00000F 2E 70 6C 61 74 66 6F  1060 	.ascii ".platformio"
+             72 6D 69 6F
+      00001A 5C                    1061 	.db 0x5c
+      00001B 70 61 63 6B 61 67 65  1062 	.ascii "packages"
+             73
+      000023 5C                    1063 	.db 0x5c
+      000024 66 72 61 6D 65 77 6F  1064 	.ascii "framework-ststm8spl"
+             72 6B 2D 73 74 73 74
+             6D 38 73 70 6C
+      000037 5C                    1065 	.db 0x5c
+      000038 4C 69 62 72 61 72 69  1066 	.ascii "Libraries"
+             65 73
+      000041 5C                    1067 	.db 0x5c
+      000042 53 54 4D 38 53 5F 53  1068 	.ascii "STM8S_StdPeriph_Driver"
+             74 64 50 65 72 69 70
+             68 5F 44 72 69 76 65
+             72
+      000058 5C                    1069 	.db 0x5c
+      000059 73 72 63              1070 	.ascii "src"
+      00005C 5C                    1071 	.db 0x5c
+      00005D 73 74 6D 38 73 5F 66  1072 	.ascii "stm8s_flash.c"
+             6C 61 73 68 2E 63
+      00006A 00                    1073 	.db 0x00
+                                   1074 	.area CODE
+                                   1075 	.area INITIALIZER
+                                   1076 	.area CABS (ABS)

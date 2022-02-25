@@ -1,0 +1,47 @@
+// AUTOMATICALLY GENERATED FILE. PLEASE DO NOT MODIFY IT MANUALLY
+//
+// PIO Unified Debugger
+//
+// Documentation: https://docs.platformio.org/page/plus/debugging.html
+// Configuration: https://docs.platformio.org/page/projectconf/section_env_debug.html
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "platformio-debug",
+            "request": "launch",
+            "name": "PIO Debug",
+            "executable": "e:/Downloads/Tài liệu 20211/Project2-20211/FIRMWARE/Slave_STM8S003F3_V1/.pio/build/stm8s003f3/firmware.elf",
+            "projectEnvName": "stm8s003f3",
+            "toolchainBinDir": "C:/Users/Admin/.platformio/packages/tool-stm8binutils/bin",
+            "internalConsoleOptions": "openOnSessionStart",
+            "svdPath": "C:/Users/Admin/.platformio/platforms/ststm8/misc/svd/STM8S003F3.svd",
+            "preLaunchTask": {
+                "type": "PlatformIO",
+                "task": "Pre-Debug"
+            }
+        },
+        {
+            "type": "platformio-debug",
+            "request": "launch",
+            "name": "PIO Debug (skip Pre-Debug)",
+            "executable": "e:/Downloads/Tài liệu 20211/Project2-20211/FIRMWARE/Slave_STM8S003F3_V1/.pio/build/stm8s003f3/firmware.elf",
+            "projectEnvName": "stm8s003f3",
+            "toolchainBinDir": "C:/Users/Admin/.platformio/packages/tool-stm8binutils/bin",
+            "internalConsoleOptions": "openOnSessionStart",
+            "svdPath": "C:/Users/Admin/.platformio/platforms/ststm8/misc/svd/STM8S003F3.svd"
+        },
+        {
+            "type": "platformio-debug",
+            "request": "launch",
+            "name": "PIO Debug (without uploading)",
+            "executable": "e:/Downloads/Tài liệu 20211/Project2-20211/FIRMWARE/Slave_STM8S003F3_V1/.pio/build/stm8s003f3/firmware.elf",
+            "projectEnvName": "stm8s003f3",
+            "toolchainBinDir": "C:/Users/Admin/.platformio/packages/tool-stm8binutils/bin",
+            "internalConsoleOptions": "openOnSessionStart",
+            "svdPath": "C:/Users/Admin/.platformio/platforms/ststm8/misc/svd/STM8S003F3.svd",
+            "loadMode": "manual"
+        }
+    ]
+}

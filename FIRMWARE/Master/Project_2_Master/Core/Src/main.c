@@ -23,7 +23,7 @@
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
-
+#include "plc.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -58,7 +58,7 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern UART_HandleTypeDef huart1;
 /* USER CODE END 0 */
 
 /**
@@ -93,6 +93,12 @@ int main(void)
   MX_SPI2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+
+  // uint8_t send_buffer[101] = {0};
+  // for (uint8_t i = 0; i < 100; i++)
+  // {
+  //   send_buffer[i] = i+1;
+  // }
 
   /* USER CODE END 2 */
 

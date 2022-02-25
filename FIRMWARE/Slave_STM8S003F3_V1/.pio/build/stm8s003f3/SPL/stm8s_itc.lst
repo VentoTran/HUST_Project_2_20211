@@ -1,0 +1,499 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.0 #12072 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_itc
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _assert_failed
+                                     12 	.globl _ITC_GetCPUCC
+                                     13 	.globl _ITC_DeInit
+                                     14 	.globl _ITC_GetSoftIntStatus
+                                     15 	.globl _ITC_GetSoftwarePriority
+                                     16 	.globl _ITC_SetSoftwarePriority
+                                     17 ;--------------------------------------------------------
+                                     18 ; ram data
+                                     19 ;--------------------------------------------------------
+                                     20 	.area DATA
+                                     21 ;--------------------------------------------------------
+                                     22 ; ram data
+                                     23 ;--------------------------------------------------------
+                                     24 	.area INITIALIZED
+                                     25 ;--------------------------------------------------------
+                                     26 ; absolute external ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area DABS (ABS)
+                                     29 
+                                     30 ; default segment ordering for linker
+                                     31 	.area HOME
+                                     32 	.area GSINIT
+                                     33 	.area GSFINAL
+                                     34 	.area CONST
+                                     35 	.area INITIALIZER
+                                     36 	.area CODE
+                                     37 
+                                     38 ;--------------------------------------------------------
+                                     39 ; global & static initialisations
+                                     40 ;--------------------------------------------------------
+                                     41 	.area HOME
+                                     42 	.area GSINIT
+                                     43 	.area GSFINAL
+                                     44 	.area GSINIT
+                                     45 ;--------------------------------------------------------
+                                     46 ; Home
+                                     47 ;--------------------------------------------------------
+                                     48 	.area HOME
+                                     49 	.area HOME
+                                     50 ;--------------------------------------------------------
+                                     51 ; code
+                                     52 ;--------------------------------------------------------
+                                     53 	.area CODE
+                                     54 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 50: uint8_t ITC_GetCPUCC(void)
+                                     55 ;	-----------------------------------------
+                                     56 ;	 function ITC_GetCPUCC
+                                     57 ;	-----------------------------------------
+      000000                         58 _ITC_GetCPUCC:
+                                     59 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 59: __asm__("push cc");
+      000000 8A               [ 1]   60 	push	cc
+                                     61 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 60: __asm__("pop a");
+      000001 84               [ 1]   62 	pop	a
+                                     63 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 65: }
+      000002 81               [ 4]   64 	ret
+                                     65 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 83: void ITC_DeInit(void)
+                                     66 ;	-----------------------------------------
+                                     67 ;	 function ITC_DeInit
+                                     68 ;	-----------------------------------------
+      000003                         69 _ITC_DeInit:
+                                     70 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 85: ITC->ISPR1 = ITC_SPRX_RESET_VALUE;
+      000003 35 FF 7F 70      [ 1]   71 	mov	0x7f70+0, #0xff
+                                     72 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 86: ITC->ISPR2 = ITC_SPRX_RESET_VALUE;
+      000007 35 FF 7F 71      [ 1]   73 	mov	0x7f71+0, #0xff
+                                     74 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 87: ITC->ISPR3 = ITC_SPRX_RESET_VALUE;
+      00000B 35 FF 7F 72      [ 1]   75 	mov	0x7f72+0, #0xff
+                                     76 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 88: ITC->ISPR4 = ITC_SPRX_RESET_VALUE;
+      00000F 35 FF 7F 73      [ 1]   77 	mov	0x7f73+0, #0xff
+                                     78 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 89: ITC->ISPR5 = ITC_SPRX_RESET_VALUE;
+      000013 35 FF 7F 74      [ 1]   79 	mov	0x7f74+0, #0xff
+                                     80 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 90: ITC->ISPR6 = ITC_SPRX_RESET_VALUE;
+      000017 35 FF 7F 75      [ 1]   81 	mov	0x7f75+0, #0xff
+                                     82 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 91: ITC->ISPR7 = ITC_SPRX_RESET_VALUE;
+      00001B 35 FF 7F 76      [ 1]   83 	mov	0x7f76+0, #0xff
+                                     84 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 92: ITC->ISPR8 = ITC_SPRX_RESET_VALUE;
+      00001F 35 FF 7F 77      [ 1]   85 	mov	0x7f77+0, #0xff
+                                     86 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 93: }
+      000023 81               [ 4]   87 	ret
+                                     88 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 100: uint8_t ITC_GetSoftIntStatus(void)
+                                     89 ;	-----------------------------------------
+                                     90 ;	 function ITC_GetSoftIntStatus
+                                     91 ;	-----------------------------------------
+      000024                         92 _ITC_GetSoftIntStatus:
+                                     93 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 102: return (uint8_t)(ITC_GetCPUCC() & CPU_CC_I1I0);
+      000024 CDr00r00         [ 4]   94 	call	_ITC_GetCPUCC
+      000027 A4 28            [ 1]   95 	and	a, #0x28
+                                     96 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 103: }
+      000029 81               [ 4]   97 	ret
+                                     98 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 110: ITC_PriorityLevel_TypeDef ITC_GetSoftwarePriority(ITC_Irq_TypeDef IrqNum)
+                                     99 ;	-----------------------------------------
+                                    100 ;	 function ITC_GetSoftwarePriority
+                                    101 ;	-----------------------------------------
+      00002A                        102 _ITC_GetSoftwarePriority:
+      00002A 52 04            [ 2]  103 	sub	sp, #4
+                                    104 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 112: uint8_t Value = 0;
+      00002C 0F 01            [ 1]  105 	clr	(0x01, sp)
+                                    106 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 116: assert_param(IS_ITC_IRQ_OK((uint8_t)IrqNum));
+      00002E 7B 07            [ 1]  107 	ld	a, (0x07, sp)
+      000030 A1 18            [ 1]  108 	cp	a, #0x18
+      000032 22 04            [ 1]  109 	jrugt	00138$
+      000034 0F 02            [ 1]  110 	clr	(0x02, sp)
+      000036 20 04            [ 2]  111 	jra	00139$
+      000038                        112 00138$:
+      000038 A6 01            [ 1]  113 	ld	a, #0x01
+      00003A 6B 02            [ 1]  114 	ld	(0x02, sp), a
+      00003C                        115 00139$:
+      00003C 0D 02            [ 1]  116 	tnz	(0x02, sp)
+      00003E 27 0F            [ 1]  117 	jreq	00127$
+      000040 4B 74            [ 1]  118 	push	#0x74
+      000042 5F               [ 1]  119 	clrw	x
+      000043 89               [ 2]  120 	pushw	x
+      000044 4B 00            [ 1]  121 	push	#0x00
+      000046 4Br00            [ 1]  122 	push	#<(___str_0+0)
+      000048 4Bs00            [ 1]  123 	push	#((___str_0+0) >> 8)
+      00004A CDr00r00         [ 4]  124 	call	_assert_failed
+      00004D 5B 06            [ 2]  125 	addw	sp, #6
+      00004F                        126 00127$:
+                                    127 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 119: Mask = (uint8_t)(0x03U << (((uint8_t)IrqNum % 4U) * 2U));
+      00004F 7B 07            [ 1]  128 	ld	a, (0x07, sp)
+      000051 A4 03            [ 1]  129 	and	a, #0x03
+      000053 48               [ 1]  130 	sll	a
+      000054 6B 03            [ 1]  131 	ld	(0x03, sp), a
+      000056 A6 03            [ 1]  132 	ld	a, #0x03
+      000058 6B 04            [ 1]  133 	ld	(0x04, sp), a
+      00005A 7B 03            [ 1]  134 	ld	a, (0x03, sp)
+      00005C 27 05            [ 1]  135 	jreq	00142$
+      00005E                        136 00141$:
+      00005E 08 04            [ 1]  137 	sll	(0x04, sp)
+      000060 4A               [ 1]  138 	dec	a
+      000061 26 FB            [ 1]  139 	jrne	00141$
+      000063                        140 00142$:
+                                    141 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 121: switch (IrqNum)
+      000063 7B 02            [ 1]  142 	ld	a, (0x02, sp)
+      000065 26 78            [ 1]  143 	jrne	00123$
+      000067 5F               [ 1]  144 	clrw	x
+      000068 7B 07            [ 1]  145 	ld	a, (0x07, sp)
+      00006A 97               [ 1]  146 	ld	xl, a
+      00006B 58               [ 2]  147 	sllw	x
+      00006C DEu00u70         [ 2]  148 	ldw	x, (#00144$, x)
+      00006F FC               [ 2]  149 	jp	(x)
+      000070                        150 00144$:
+      000070r00rA2                  151 	.dw	#00104$
+      000072r00rA2                  152 	.dw	#00104$
+      000074r00rA2                  153 	.dw	#00104$
+      000076r00rA2                  154 	.dw	#00104$
+      000078r00rAB                  155 	.dw	#00108$
+      00007Ar00rAB                  156 	.dw	#00108$
+      00007Cr00rAB                  157 	.dw	#00108$
+      00007Er00rAB                  158 	.dw	#00108$
+      000080r00rDF                  159 	.dw	#00123$
+      000082r00rDF                  160 	.dw	#00123$
+      000084r00rB4                  161 	.dw	#00110$
+      000086r00rB4                  162 	.dw	#00110$
+      000088r00rBD                  163 	.dw	#00114$
+      00008Ar00rBD                  164 	.dw	#00114$
+      00008Cr00rBD                  165 	.dw	#00114$
+      00008Er00rBD                  166 	.dw	#00114$
+      000090r00rC6                  167 	.dw	#00118$
+      000092r00rC6                  168 	.dw	#00118$
+      000094r00rC6                  169 	.dw	#00118$
+      000096r00rC6                  170 	.dw	#00118$
+      000098r00rDF                  171 	.dw	#00123$
+      00009Ar00rDF                  172 	.dw	#00123$
+      00009Cr00rCF                  173 	.dw	#00120$
+      00009Er00rCF                  174 	.dw	#00120$
+      0000A0r00rD8                  175 	.dw	#00121$
+                                    176 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 126: case ITC_IRQ_PORTA:
+      0000A2                        177 00104$:
+                                    178 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 127: Value = (uint8_t)(ITC->ISPR1 & Mask); /* Read software priority */
+      0000A2 C6 7F 70         [ 1]  179 	ld	a, 0x7f70
+      0000A5 14 04            [ 1]  180 	and	a, (0x04, sp)
+      0000A7 6B 01            [ 1]  181 	ld	(0x01, sp), a
+                                    182 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 128: break;
+      0000A9 20 34            [ 2]  183 	jra	00123$
+                                    184 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 133: case ITC_IRQ_PORTE:
+      0000AB                        185 00108$:
+                                    186 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 134: Value = (uint8_t)(ITC->ISPR2 & Mask); /* Read software priority */
+      0000AB C6 7F 71         [ 1]  187 	ld	a, 0x7f71
+      0000AE 14 04            [ 1]  188 	and	a, (0x04, sp)
+      0000B0 6B 01            [ 1]  189 	ld	(0x01, sp), a
+                                    190 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 135: break;
+      0000B2 20 2B            [ 2]  191 	jra	00123$
+                                    192 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 145: case ITC_IRQ_TIM1_OVF:
+      0000B4                        193 00110$:
+                                    194 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 146: Value = (uint8_t)(ITC->ISPR3 & Mask); /* Read software priority */
+      0000B4 C6 7F 72         [ 1]  195 	ld	a, 0x7f72
+      0000B7 14 04            [ 1]  196 	and	a, (0x04, sp)
+      0000B9 6B 01            [ 1]  197 	ld	(0x01, sp), a
+                                    198 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 147: break;
+      0000BB 20 22            [ 2]  199 	jra	00123$
+                                    200 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 157: case ITC_IRQ_TIM3_OVF:
+      0000BD                        201 00114$:
+                                    202 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 158: Value = (uint8_t)(ITC->ISPR4 & Mask); /* Read software priority */
+      0000BD C6 7F 73         [ 1]  203 	ld	a, 0x7f73
+      0000C0 14 04            [ 1]  204 	and	a, (0x04, sp)
+      0000C2 6B 01            [ 1]  205 	ld	(0x01, sp), a
+                                    206 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 159: break;
+      0000C4 20 19            [ 2]  207 	jra	00123$
+                                    208 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 171: case ITC_IRQ_I2C:
+      0000C6                        209 00118$:
+                                    210 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 172: Value = (uint8_t)(ITC->ISPR5 & Mask); /* Read software priority */
+      0000C6 C6 7F 74         [ 1]  211 	ld	a, 0x7f74
+      0000C9 14 04            [ 1]  212 	and	a, (0x04, sp)
+      0000CB 6B 01            [ 1]  213 	ld	(0x01, sp), a
+                                    214 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 173: break;
+      0000CD 20 10            [ 2]  215 	jra	00123$
+                                    216 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 192: case ITC_IRQ_TIM4_OVF:
+      0000CF                        217 00120$:
+                                    218 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 194: Value = (uint8_t)(ITC->ISPR6 & Mask); /* Read software priority */
+      0000CF C6 7F 75         [ 1]  219 	ld	a, 0x7f75
+      0000D2 14 04            [ 1]  220 	and	a, (0x04, sp)
+      0000D4 6B 01            [ 1]  221 	ld	(0x01, sp), a
+                                    222 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 195: break;
+      0000D6 20 07            [ 2]  223 	jra	00123$
+                                    224 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 197: case ITC_IRQ_EEPROM_EEC:
+      0000D8                        225 00121$:
+                                    226 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 198: Value = (uint8_t)(ITC->ISPR7 & Mask); /* Read software priority */
+      0000D8 C6 7F 76         [ 1]  227 	ld	a, 0x7f76
+      0000DB 14 04            [ 1]  228 	and	a, (0x04, sp)
+      0000DD 6B 01            [ 1]  229 	ld	(0x01, sp), a
+                                    230 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 203: }
+      0000DF                        231 00123$:
+                                    232 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 205: Value >>= (uint8_t)(((uint8_t)IrqNum % 4u) * 2u);
+      0000DF 7B 01            [ 1]  233 	ld	a, (0x01, sp)
+      0000E1 88               [ 1]  234 	push	a
+      0000E2 7B 04            [ 1]  235 	ld	a, (0x04, sp)
+      0000E4 27 05            [ 1]  236 	jreq	00146$
+      0000E6                        237 00145$:
+      0000E6 04 01            [ 1]  238 	srl	(1, sp)
+      0000E8 4A               [ 1]  239 	dec	a
+      0000E9 26 FB            [ 1]  240 	jrne	00145$
+      0000EB                        241 00146$:
+      0000EB 84               [ 1]  242 	pop	a
+                                    243 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 207: return((ITC_PriorityLevel_TypeDef)Value);
+                                    244 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 208: }
+      0000EC 5B 04            [ 2]  245 	addw	sp, #4
+      0000EE 81               [ 4]  246 	ret
+                                    247 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 223: void ITC_SetSoftwarePriority(ITC_Irq_TypeDef IrqNum, ITC_PriorityLevel_TypeDef PriorityValue)
+                                    248 ;	-----------------------------------------
+                                    249 ;	 function ITC_SetSoftwarePriority
+                                    250 ;	-----------------------------------------
+      0000EF                        251 _ITC_SetSoftwarePriority:
+      0000EF 52 03            [ 2]  252 	sub	sp, #3
+                                    253 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 229: assert_param(IS_ITC_IRQ_OK((uint8_t)IrqNum));
+      0000F1 7B 06            [ 1]  254 	ld	a, (0x06, sp)
+      0000F3 A1 18            [ 1]  255 	cp	a, #0x18
+      0000F5 22 04            [ 1]  256 	jrugt	00176$
+      0000F7 0F 01            [ 1]  257 	clr	(0x01, sp)
+      0000F9 20 04            [ 2]  258 	jra	00177$
+      0000FB                        259 00176$:
+      0000FB A6 01            [ 1]  260 	ld	a, #0x01
+      0000FD 6B 01            [ 1]  261 	ld	(0x01, sp), a
+      0000FF                        262 00177$:
+      0000FF 0D 01            [ 1]  263 	tnz	(0x01, sp)
+      000101 27 0F            [ 1]  264 	jreq	00127$
+      000103 4B E5            [ 1]  265 	push	#0xe5
+      000105 5F               [ 1]  266 	clrw	x
+      000106 89               [ 2]  267 	pushw	x
+      000107 4B 00            [ 1]  268 	push	#0x00
+      000109 4Br00            [ 1]  269 	push	#<(___str_0+0)
+      00010B 4Bs00            [ 1]  270 	push	#((___str_0+0) >> 8)
+      00010D CDr00r00         [ 4]  271 	call	_assert_failed
+      000110 5B 06            [ 2]  272 	addw	sp, #6
+      000112                        273 00127$:
+                                    274 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 230: assert_param(IS_ITC_PRIORITY_OK(PriorityValue));
+      000112 7B 07            [ 1]  275 	ld	a, (0x07, sp)
+      000114 A1 02            [ 1]  276 	cp	a, #0x02
+      000116 27 1E            [ 1]  277 	jreq	00129$
+      000118 7B 07            [ 1]  278 	ld	a, (0x07, sp)
+      00011A 4A               [ 1]  279 	dec	a
+      00011B 27 19            [ 1]  280 	jreq	00129$
+      00011D 0D 07            [ 1]  281 	tnz	(0x07, sp)
+      00011F 27 15            [ 1]  282 	jreq	00129$
+      000121 7B 07            [ 1]  283 	ld	a, (0x07, sp)
+      000123 A1 03            [ 1]  284 	cp	a, #0x03
+      000125 27 0F            [ 1]  285 	jreq	00129$
+      000127 4B E6            [ 1]  286 	push	#0xe6
+      000129 5F               [ 1]  287 	clrw	x
+      00012A 89               [ 2]  288 	pushw	x
+      00012B 4B 00            [ 1]  289 	push	#0x00
+      00012D 4Br00            [ 1]  290 	push	#<(___str_0+0)
+      00012F 4Bs00            [ 1]  291 	push	#((___str_0+0) >> 8)
+      000131 CDr00r00         [ 4]  292 	call	_assert_failed
+      000134 5B 06            [ 2]  293 	addw	sp, #6
+      000136                        294 00129$:
+                                    295 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 233: assert_param(IS_ITC_INTERRUPTS_DISABLED);
+      000136 CDr00r24         [ 4]  296 	call	_ITC_GetSoftIntStatus
+      000139 A1 28            [ 1]  297 	cp	a, #0x28
+      00013B 27 0F            [ 1]  298 	jreq	00140$
+      00013D 4B E9            [ 1]  299 	push	#0xe9
+      00013F 5F               [ 1]  300 	clrw	x
+      000140 89               [ 2]  301 	pushw	x
+      000141 4B 00            [ 1]  302 	push	#0x00
+      000143 4Br00            [ 1]  303 	push	#<(___str_0+0)
+      000145 4Bs00            [ 1]  304 	push	#((___str_0+0) >> 8)
+      000147 CDr00r00         [ 4]  305 	call	_assert_failed
+      00014A 5B 06            [ 2]  306 	addw	sp, #6
+      00014C                        307 00140$:
+                                    308 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 237: Mask = (uint8_t)(~(uint8_t)(0x03U << (((uint8_t)IrqNum % 4U) * 2U)));
+      00014C 7B 06            [ 1]  309 	ld	a, (0x06, sp)
+      00014E 5F               [ 1]  310 	clrw	x
+      00014F A4 03            [ 1]  311 	and	a, #0x03
+      000151 97               [ 1]  312 	ld	xl, a
+      000152 58               [ 2]  313 	sllw	x
+      000153 A6 03            [ 1]  314 	ld	a, #0x03
+      000155 88               [ 1]  315 	push	a
+      000156 9F               [ 1]  316 	ld	a, xl
+      000157 4D               [ 1]  317 	tnz	a
+      000158 27 05            [ 1]  318 	jreq	00193$
+      00015A                        319 00192$:
+      00015A 08 01            [ 1]  320 	sll	(1, sp)
+      00015C 4A               [ 1]  321 	dec	a
+      00015D 26 FB            [ 1]  322 	jrne	00192$
+      00015F                        323 00193$:
+      00015F 84               [ 1]  324 	pop	a
+      000160 43               [ 1]  325 	cpl	a
+      000161 6B 02            [ 1]  326 	ld	(0x02, sp), a
+                                    327 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 240: NewPriority = (uint8_t)((uint8_t)(PriorityValue) << (((uint8_t)IrqNum % 4U) * 2U));
+      000163 7B 07            [ 1]  328 	ld	a, (0x07, sp)
+      000165 88               [ 1]  329 	push	a
+      000166 9F               [ 1]  330 	ld	a, xl
+      000167 4D               [ 1]  331 	tnz	a
+      000168 27 05            [ 1]  332 	jreq	00195$
+      00016A                        333 00194$:
+      00016A 08 01            [ 1]  334 	sll	(1, sp)
+      00016C 4A               [ 1]  335 	dec	a
+      00016D 26 FB            [ 1]  336 	jrne	00194$
+      00016F                        337 00195$:
+      00016F 84               [ 1]  338 	pop	a
+      000170 6B 03            [ 1]  339 	ld	(0x03, sp), a
+                                    340 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 242: switch (IrqNum)
+      000172 7B 01            [ 1]  341 	ld	a, (0x01, sp)
+      000174 27 03            [ 1]  342 	jreq	00196$
+      000176 CCr02r30         [ 2]  343 	jp	00124$
+      000179                        344 00196$:
+      000179 5F               [ 1]  345 	clrw	x
+      00017A 7B 06            [ 1]  346 	ld	a, (0x06, sp)
+      00017C 97               [ 1]  347 	ld	xl, a
+      00017D 58               [ 2]  348 	sllw	x
+      00017E DEu01u82         [ 2]  349 	ldw	x, (#00197$, x)
+      000181 FC               [ 2]  350 	jp	(x)
+      000182                        351 00197$:
+      000182r01rB4                  352 	.dw	#00104$
+      000184r01rB4                  353 	.dw	#00104$
+      000186r01rB4                  354 	.dw	#00104$
+      000188r01rB4                  355 	.dw	#00104$
+      00018Ar01rC6                  356 	.dw	#00108$
+      00018Cr01rC6                  357 	.dw	#00108$
+      00018Er01rC6                  358 	.dw	#00108$
+      000190r01rC6                  359 	.dw	#00108$
+      000192r02r30                  360 	.dw	#00124$
+      000194r02r30                  361 	.dw	#00124$
+      000196r01rD8                  362 	.dw	#00110$
+      000198r01rD8                  363 	.dw	#00110$
+      00019Ar01rEA                  364 	.dw	#00114$
+      00019Cr01rEA                  365 	.dw	#00114$
+      00019Er01rEA                  366 	.dw	#00114$
+      0001A0r01rEA                  367 	.dw	#00114$
+      0001A2r01rFC                  368 	.dw	#00118$
+      0001A4r01rFC                  369 	.dw	#00118$
+      0001A6r01rFC                  370 	.dw	#00118$
+      0001A8r01rFC                  371 	.dw	#00118$
+      0001AAr02r30                  372 	.dw	#00124$
+      0001ACr02r30                  373 	.dw	#00124$
+      0001AEr02r0E                  374 	.dw	#00120$
+      0001B0r02r0E                  375 	.dw	#00120$
+      0001B2r02r20                  376 	.dw	#00121$
+                                    377 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 247: case ITC_IRQ_PORTA:
+      0001B4                        378 00104$:
+                                    379 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 248: ITC->ISPR1 &= Mask;
+      0001B4 C6 7F 70         [ 1]  380 	ld	a, 0x7f70
+      0001B7 14 02            [ 1]  381 	and	a, (0x02, sp)
+      0001B9 C7 7F 70         [ 1]  382 	ld	0x7f70, a
+                                    383 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 249: ITC->ISPR1 |= NewPriority;
+      0001BC C6 7F 70         [ 1]  384 	ld	a, 0x7f70
+      0001BF 1A 03            [ 1]  385 	or	a, (0x03, sp)
+      0001C1 C7 7F 70         [ 1]  386 	ld	0x7f70, a
+                                    387 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 250: break;
+      0001C4 20 6A            [ 2]  388 	jra	00124$
+                                    389 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 255: case ITC_IRQ_PORTE:
+      0001C6                        390 00108$:
+                                    391 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 256: ITC->ISPR2 &= Mask;
+      0001C6 C6 7F 71         [ 1]  392 	ld	a, 0x7f71
+      0001C9 14 02            [ 1]  393 	and	a, (0x02, sp)
+      0001CB C7 7F 71         [ 1]  394 	ld	0x7f71, a
+                                    395 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 257: ITC->ISPR2 |= NewPriority;
+      0001CE C6 7F 71         [ 1]  396 	ld	a, 0x7f71
+      0001D1 1A 03            [ 1]  397 	or	a, (0x03, sp)
+      0001D3 C7 7F 71         [ 1]  398 	ld	0x7f71, a
+                                    399 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 258: break;
+      0001D6 20 58            [ 2]  400 	jra	00124$
+                                    401 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 268: case ITC_IRQ_TIM1_OVF:
+      0001D8                        402 00110$:
+                                    403 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 269: ITC->ISPR3 &= Mask;
+      0001D8 C6 7F 72         [ 1]  404 	ld	a, 0x7f72
+      0001DB 14 02            [ 1]  405 	and	a, (0x02, sp)
+      0001DD C7 7F 72         [ 1]  406 	ld	0x7f72, a
+                                    407 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 270: ITC->ISPR3 |= NewPriority;
+      0001E0 C6 7F 72         [ 1]  408 	ld	a, 0x7f72
+      0001E3 1A 03            [ 1]  409 	or	a, (0x03, sp)
+      0001E5 C7 7F 72         [ 1]  410 	ld	0x7f72, a
+                                    411 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 271: break;
+      0001E8 20 46            [ 2]  412 	jra	00124$
+                                    413 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 281: case ITC_IRQ_TIM3_OVF:
+      0001EA                        414 00114$:
+                                    415 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 282: ITC->ISPR4 &= Mask;
+      0001EA C6 7F 73         [ 1]  416 	ld	a, 0x7f73
+      0001ED 14 02            [ 1]  417 	and	a, (0x02, sp)
+      0001EF C7 7F 73         [ 1]  418 	ld	0x7f73, a
+                                    419 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 283: ITC->ISPR4 |= NewPriority;
+      0001F2 C6 7F 73         [ 1]  420 	ld	a, 0x7f73
+      0001F5 1A 03            [ 1]  421 	or	a, (0x03, sp)
+      0001F7 C7 7F 73         [ 1]  422 	ld	0x7f73, a
+                                    423 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 284: break;
+      0001FA 20 34            [ 2]  424 	jra	00124$
+                                    425 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 296: case ITC_IRQ_I2C:
+      0001FC                        426 00118$:
+                                    427 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 297: ITC->ISPR5 &= Mask;
+      0001FC C6 7F 74         [ 1]  428 	ld	a, 0x7f74
+      0001FF 14 02            [ 1]  429 	and	a, (0x02, sp)
+      000201 C7 7F 74         [ 1]  430 	ld	0x7f74, a
+                                    431 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 298: ITC->ISPR5 |= NewPriority;
+      000204 C6 7F 74         [ 1]  432 	ld	a, 0x7f74
+      000207 1A 03            [ 1]  433 	or	a, (0x03, sp)
+      000209 C7 7F 74         [ 1]  434 	ld	0x7f74, a
+                                    435 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 299: break;
+      00020C 20 22            [ 2]  436 	jra	00124$
+                                    437 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 321: case ITC_IRQ_TIM4_OVF:
+      00020E                        438 00120$:
+                                    439 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 323: ITC->ISPR6 &= Mask;
+      00020E C6 7F 75         [ 1]  440 	ld	a, 0x7f75
+      000211 14 02            [ 1]  441 	and	a, (0x02, sp)
+      000213 C7 7F 75         [ 1]  442 	ld	0x7f75, a
+                                    443 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 324: ITC->ISPR6 |= NewPriority;
+      000216 C6 7F 75         [ 1]  444 	ld	a, 0x7f75
+      000219 1A 03            [ 1]  445 	or	a, (0x03, sp)
+      00021B C7 7F 75         [ 1]  446 	ld	0x7f75, a
+                                    447 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 325: break;
+      00021E 20 10            [ 2]  448 	jra	00124$
+                                    449 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 327: case ITC_IRQ_EEPROM_EEC:
+      000220                        450 00121$:
+                                    451 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 328: ITC->ISPR7 &= Mask;
+      000220 C6 7F 76         [ 1]  452 	ld	a, 0x7f76
+      000223 14 02            [ 1]  453 	and	a, (0x02, sp)
+      000225 C7 7F 76         [ 1]  454 	ld	0x7f76, a
+                                    455 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 329: ITC->ISPR7 |= NewPriority;
+      000228 C6 7F 76         [ 1]  456 	ld	a, 0x7f76
+      00022B 1A 03            [ 1]  457 	or	a, (0x03, sp)
+      00022D C7 7F 76         [ 1]  458 	ld	0x7f76, a
+                                    459 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 334: }
+      000230                        460 00124$:
+                                    461 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_itc.c: 335: }
+      000230 5B 03            [ 2]  462 	addw	sp, #3
+      000232 81               [ 4]  463 	ret
+                                    464 	.area CODE
+                                    465 	.area CONST
+                                    466 	.area CONST
+      000000                        467 ___str_0:
+      000000 43 3A                  468 	.ascii "C:"
+      000002 5C                     469 	.db 0x5c
+      000003 55 73 65 72 73         470 	.ascii "Users"
+      000008 5C                     471 	.db 0x5c
+      000009 41 64 6D 69 6E         472 	.ascii "Admin"
+      00000E 5C                     473 	.db 0x5c
+      00000F 2E 70 6C 61 74 66 6F   474 	.ascii ".platformio"
+             72 6D 69 6F
+      00001A 5C                     475 	.db 0x5c
+      00001B 70 61 63 6B 61 67 65   476 	.ascii "packages"
+             73
+      000023 5C                     477 	.db 0x5c
+      000024 66 72 61 6D 65 77 6F   478 	.ascii "framework-ststm8spl"
+             72 6B 2D 73 74 73 74
+             6D 38 73 70 6C
+      000037 5C                     479 	.db 0x5c
+      000038 4C 69 62 72 61 72 69   480 	.ascii "Libraries"
+             65 73
+      000041 5C                     481 	.db 0x5c
+      000042 53 54 4D 38 53 5F 53   482 	.ascii "STM8S_StdPeriph_Driver"
+             74 64 50 65 72 69 70
+             68 5F 44 72 69 76 65
+             72
+      000058 5C                     483 	.db 0x5c
+      000059 73 72 63               484 	.ascii "src"
+      00005C 5C                     485 	.db 0x5c
+      00005D 73 74 6D 38 73 5F 69   486 	.ascii "stm8s_itc.c"
+             74 63 2E 63
+      000068 00                     487 	.db 0x00
+                                    488 	.area CODE
+                                    489 	.area INITIALIZER
+                                    490 	.area CABS (ABS)

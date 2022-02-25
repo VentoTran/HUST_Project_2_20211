@@ -1,0 +1,255 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.0 #12072 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_beep
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _assert_failed
+                                     12 	.globl _BEEP_DeInit
+                                     13 	.globl _BEEP_Init
+                                     14 	.globl _BEEP_Cmd
+                                     15 	.globl _BEEP_LSICalibrationConfig
+                                     16 ;--------------------------------------------------------
+                                     17 ; ram data
+                                     18 ;--------------------------------------------------------
+                                     19 	.area DATA
+                                     20 ;--------------------------------------------------------
+                                     21 ; ram data
+                                     22 ;--------------------------------------------------------
+                                     23 	.area INITIALIZED
+                                     24 ;--------------------------------------------------------
+                                     25 ; absolute external ram data
+                                     26 ;--------------------------------------------------------
+                                     27 	.area DABS (ABS)
+                                     28 
+                                     29 ; default segment ordering for linker
+                                     30 	.area HOME
+                                     31 	.area GSINIT
+                                     32 	.area GSFINAL
+                                     33 	.area CONST
+                                     34 	.area INITIALIZER
+                                     35 	.area CODE
+                                     36 
+                                     37 ;--------------------------------------------------------
+                                     38 ; global & static initialisations
+                                     39 ;--------------------------------------------------------
+                                     40 	.area HOME
+                                     41 	.area GSINIT
+                                     42 	.area GSFINAL
+                                     43 	.area GSINIT
+                                     44 ;--------------------------------------------------------
+                                     45 ; Home
+                                     46 ;--------------------------------------------------------
+                                     47 	.area HOME
+                                     48 	.area HOME
+                                     49 ;--------------------------------------------------------
+                                     50 ; code
+                                     51 ;--------------------------------------------------------
+                                     52 	.area CODE
+                                     53 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 54: void BEEP_DeInit(void)
+                                     54 ;	-----------------------------------------
+                                     55 ;	 function BEEP_DeInit
+                                     56 ;	-----------------------------------------
+      000000                         57 _BEEP_DeInit:
+                                     58 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 56: BEEP->CSR = BEEP_CSR_RESET_VALUE;
+      000000 35 1F 50 F3      [ 1]   59 	mov	0x50f3+0, #0x1f
+                                     60 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 57: }
+      000004 81               [ 4]   61 	ret
+                                     62 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 67: void BEEP_Init(BEEP_Frequency_TypeDef BEEP_Frequency)
+                                     63 ;	-----------------------------------------
+                                     64 ;	 function BEEP_Init
+                                     65 ;	-----------------------------------------
+      000005                         66 _BEEP_Init:
+                                     67 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 70: assert_param(IS_BEEP_FREQUENCY_OK(BEEP_Frequency));
+      000005 0D 03            [ 1]   68 	tnz	(0x03, sp)
+      000007 27 1B            [ 1]   69 	jreq	00106$
+      000009 7B 03            [ 1]   70 	ld	a, (0x03, sp)
+      00000B A1 40            [ 1]   71 	cp	a, #0x40
+      00000D 27 15            [ 1]   72 	jreq	00106$
+      00000F 7B 03            [ 1]   73 	ld	a, (0x03, sp)
+      000011 A1 80            [ 1]   74 	cp	a, #0x80
+      000013 27 0F            [ 1]   75 	jreq	00106$
+      000015 4B 46            [ 1]   76 	push	#0x46
+      000017 5F               [ 1]   77 	clrw	x
+      000018 89               [ 2]   78 	pushw	x
+      000019 4B 00            [ 1]   79 	push	#0x00
+      00001B 4Br00            [ 1]   80 	push	#<(___str_0+0)
+      00001D 4Bs00            [ 1]   81 	push	#((___str_0+0) >> 8)
+      00001F CDr00r00         [ 4]   82 	call	_assert_failed
+      000022 5B 06            [ 2]   83 	addw	sp, #6
+      000024                         84 00106$:
+                                     85 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 73: if ((BEEP->CSR & BEEP_CSR_BEEPDIV) == BEEP_CSR_BEEPDIV)
+      000024 C6 50 F3         [ 1]   86 	ld	a, 0x50f3
+      000027 A4 1F            [ 1]   87 	and	a, #0x1f
+      000029 A1 1F            [ 1]   88 	cp	a, #0x1f
+      00002B 26 10            [ 1]   89 	jrne	00102$
+                                     90 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 75: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPDIV); /* Clear bits */
+      00002D C6 50 F3         [ 1]   91 	ld	a, 0x50f3
+      000030 A4 E0            [ 1]   92 	and	a, #0xe0
+      000032 C7 50 F3         [ 1]   93 	ld	0x50f3, a
+                                     94 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 76: BEEP->CSR |= BEEP_CALIBRATION_DEFAULT;
+      000035 C6 50 F3         [ 1]   95 	ld	a, 0x50f3
+      000038 AA 0B            [ 1]   96 	or	a, #0x0b
+      00003A C7 50 F3         [ 1]   97 	ld	0x50f3, a
+      00003D                         98 00102$:
+                                     99 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 80: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPSEL);
+      00003D C6 50 F3         [ 1]  100 	ld	a, 0x50f3
+      000040 A4 3F            [ 1]  101 	and	a, #0x3f
+      000042 C7 50 F3         [ 1]  102 	ld	0x50f3, a
+                                    103 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 81: BEEP->CSR |= (uint8_t)(BEEP_Frequency);
+      000045 C6 50 F3         [ 1]  104 	ld	a, 0x50f3
+      000048 1A 03            [ 1]  105 	or	a, (0x03, sp)
+      00004A C7 50 F3         [ 1]  106 	ld	0x50f3, a
+                                    107 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 82: }
+      00004D 81               [ 4]  108 	ret
+                                    109 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 91: void BEEP_Cmd(FunctionalState NewState)
+                                    110 ;	-----------------------------------------
+                                    111 ;	 function BEEP_Cmd
+                                    112 ;	-----------------------------------------
+      00004E                        113 _BEEP_Cmd:
+                                    114 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 96: BEEP->CSR |= BEEP_CSR_BEEPEN;
+      00004E C6 50 F3         [ 1]  115 	ld	a, 0x50f3
+                                    116 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 93: if (NewState != DISABLE)
+      000051 0D 03            [ 1]  117 	tnz	(0x03, sp)
+      000053 27 06            [ 1]  118 	jreq	00102$
+                                    119 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 96: BEEP->CSR |= BEEP_CSR_BEEPEN;
+      000055 AA 20            [ 1]  120 	or	a, #0x20
+      000057 C7 50 F3         [ 1]  121 	ld	0x50f3, a
+      00005A 81               [ 4]  122 	ret
+      00005B                        123 00102$:
+                                    124 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 101: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPEN);
+      00005B A4 DF            [ 1]  125 	and	a, #0xdf
+      00005D C7 50 F3         [ 1]  126 	ld	0x50f3, a
+                                    127 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 103: }
+      000060 81               [ 4]  128 	ret
+                                    129 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 118: void BEEP_LSICalibrationConfig(uint32_t LSIFreqHz)
+                                    130 ;	-----------------------------------------
+                                    131 ;	 function BEEP_LSICalibrationConfig
+                                    132 ;	-----------------------------------------
+      000061                        133 _BEEP_LSICalibrationConfig:
+      000061 52 07            [ 2]  134 	sub	sp, #7
+                                    135 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 124: assert_param(IS_LSI_FREQUENCY_OK(LSIFreqHz));
+      000063 1E 0C            [ 2]  136 	ldw	x, (0x0c, sp)
+      000065 A3 AD B0         [ 2]  137 	cpw	x, #0xadb0
+      000068 7B 0B            [ 1]  138 	ld	a, (0x0b, sp)
+      00006A A2 01            [ 1]  139 	sbc	a, #0x01
+      00006C 7B 0A            [ 1]  140 	ld	a, (0x0a, sp)
+      00006E A2 00            [ 1]  141 	sbc	a, #0x00
+      000070 25 0E            [ 1]  142 	jrc	00106$
+      000072 AE 49 F0         [ 2]  143 	ldw	x, #0x49f0
+      000075 13 0C            [ 2]  144 	cpw	x, (0x0c, sp)
+      000077 A6 02            [ 1]  145 	ld	a, #0x02
+      000079 12 0B            [ 1]  146 	sbc	a, (0x0b, sp)
+      00007B 4F               [ 1]  147 	clr	a
+      00007C 12 0A            [ 1]  148 	sbc	a, (0x0a, sp)
+      00007E 24 0F            [ 1]  149 	jrnc	00107$
+      000080                        150 00106$:
+      000080 4B 7C            [ 1]  151 	push	#0x7c
+      000082 5F               [ 1]  152 	clrw	x
+      000083 89               [ 2]  153 	pushw	x
+      000084 4B 00            [ 1]  154 	push	#0x00
+      000086 4Br00            [ 1]  155 	push	#<(___str_0+0)
+      000088 4Bs00            [ 1]  156 	push	#((___str_0+0) >> 8)
+      00008A CDr00r00         [ 4]  157 	call	_assert_failed
+      00008D 5B 06            [ 2]  158 	addw	sp, #6
+      00008F                        159 00107$:
+                                    160 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 126: lsifreqkhz = (uint16_t)(LSIFreqHz / 1000); /* Converts value in kHz */
+      00008F 4B E8            [ 1]  161 	push	#0xe8
+      000091 4B 03            [ 1]  162 	push	#0x03
+      000093 5F               [ 1]  163 	clrw	x
+      000094 89               [ 2]  164 	pushw	x
+      000095 1E 10            [ 2]  165 	ldw	x, (0x10, sp)
+      000097 89               [ 2]  166 	pushw	x
+      000098 1E 10            [ 2]  167 	ldw	x, (0x10, sp)
+      00009A 89               [ 2]  168 	pushw	x
+      00009B CDr00r00         [ 4]  169 	call	__divulong
+      00009E 5B 08            [ 2]  170 	addw	sp, #8
+      0000A0 51               [ 1]  171 	exgw	x, y
+                                    172 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 130: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPDIV); /* Clear bits */
+      0000A1 C6 50 F3         [ 1]  173 	ld	a, 0x50f3
+      0000A4 A4 E0            [ 1]  174 	and	a, #0xe0
+      0000A6 C7 50 F3         [ 1]  175 	ld	0x50f3, a
+                                    176 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 132: A = (uint16_t)(lsifreqkhz >> 3U); /* Division by 8, keep integer part only */
+      0000A9 93               [ 1]  177 	ldw	x, y
+      0000AA 54               [ 2]  178 	srlw	x
+      0000AB 54               [ 2]  179 	srlw	x
+      0000AC 54               [ 2]  180 	srlw	x
+                                    181 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 134: if ((8U * A) >= ((lsifreqkhz - (8U * A)) * (1U + (2U * A))))
+      0000AD 1F 01            [ 2]  182 	ldw	(0x01, sp), x
+      0000AF 1F 06            [ 2]  183 	ldw	(0x06, sp), x
+      0000B1 58               [ 2]  184 	sllw	x
+      0000B2 58               [ 2]  185 	sllw	x
+      0000B3 58               [ 2]  186 	sllw	x
+      0000B4 1F 03            [ 2]  187 	ldw	(0x03, sp), x
+      0000B6 72 F2 03         [ 2]  188 	subw	y, (0x03, sp)
+      0000B9 1E 06            [ 2]  189 	ldw	x, (0x06, sp)
+      0000BB 58               [ 2]  190 	sllw	x
+      0000BC 5C               [ 1]  191 	incw	x
+      0000BD 89               [ 2]  192 	pushw	x
+      0000BE 90 89            [ 2]  193 	pushw	y
+                                    194 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 130: BEEP->CSR &= (uint8_t)(~BEEP_CSR_BEEPDIV); /* Clear bits */
+      0000C0 CDr00r00         [ 4]  195 	call	__mulint
+      0000C3 5B 04            [ 2]  196 	addw	sp, #4
+      0000C5 1F 05            [ 2]  197 	ldw	(0x05, sp), x
+      0000C7 C6 50 F3         [ 1]  198 	ld	a, 0x50f3
+      0000CA 6B 07            [ 1]  199 	ld	(0x07, sp), a
+                                    200 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 136: BEEP->CSR |= (uint8_t)(A - 2U);
+      0000CC 7B 02            [ 1]  201 	ld	a, (0x02, sp)
+                                    202 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 134: if ((8U * A) >= ((lsifreqkhz - (8U * A)) * (1U + (2U * A))))
+      0000CE 1E 03            [ 2]  203 	ldw	x, (0x03, sp)
+      0000D0 13 05            [ 2]  204 	cpw	x, (0x05, sp)
+      0000D2 25 09            [ 1]  205 	jrc	00102$
+                                    206 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 136: BEEP->CSR |= (uint8_t)(A - 2U);
+      0000D4 A0 02            [ 1]  207 	sub	a, #0x02
+      0000D6 1A 07            [ 1]  208 	or	a, (0x07, sp)
+      0000D8 C7 50 F3         [ 1]  209 	ld	0x50f3, a
+      0000DB 20 06            [ 2]  210 	jra	00104$
+      0000DD                        211 00102$:
+                                    212 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 140: BEEP->CSR |= (uint8_t)(A - 1U);
+      0000DD 4A               [ 1]  213 	dec	a
+      0000DE 1A 07            [ 1]  214 	or	a, (0x07, sp)
+      0000E0 C7 50 F3         [ 1]  215 	ld	0x50f3, a
+      0000E3                        216 00104$:
+                                    217 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_beep.c: 142: }
+      0000E3 5B 07            [ 2]  218 	addw	sp, #7
+      0000E5 81               [ 4]  219 	ret
+                                    220 	.area CODE
+                                    221 	.area CONST
+                                    222 	.area CONST
+      000000                        223 ___str_0:
+      000000 43 3A                  224 	.ascii "C:"
+      000002 5C                     225 	.db 0x5c
+      000003 55 73 65 72 73         226 	.ascii "Users"
+      000008 5C                     227 	.db 0x5c
+      000009 41 64 6D 69 6E         228 	.ascii "Admin"
+      00000E 5C                     229 	.db 0x5c
+      00000F 2E 70 6C 61 74 66 6F   230 	.ascii ".platformio"
+             72 6D 69 6F
+      00001A 5C                     231 	.db 0x5c
+      00001B 70 61 63 6B 61 67 65   232 	.ascii "packages"
+             73
+      000023 5C                     233 	.db 0x5c
+      000024 66 72 61 6D 65 77 6F   234 	.ascii "framework-ststm8spl"
+             72 6B 2D 73 74 73 74
+             6D 38 73 70 6C
+      000037 5C                     235 	.db 0x5c
+      000038 4C 69 62 72 61 72 69   236 	.ascii "Libraries"
+             65 73
+      000041 5C                     237 	.db 0x5c
+      000042 53 54 4D 38 53 5F 53   238 	.ascii "STM8S_StdPeriph_Driver"
+             74 64 50 65 72 69 70
+             68 5F 44 72 69 76 65
+             72
+      000058 5C                     239 	.db 0x5c
+      000059 73 72 63               240 	.ascii "src"
+      00005C 5C                     241 	.db 0x5c
+      00005D 73 74 6D 38 73 5F 62   242 	.ascii "stm8s_beep.c"
+             65 65 70 2E 63
+      000069 00                     243 	.db 0x00
+                                    244 	.area CODE
+                                    245 	.area INITIALIZER
+                                    246 	.area CABS (ABS)

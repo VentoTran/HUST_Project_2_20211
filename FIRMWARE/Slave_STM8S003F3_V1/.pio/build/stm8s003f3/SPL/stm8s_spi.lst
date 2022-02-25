@@ -1,0 +1,824 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.0 #12072 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module stm8s_spi
+                                      6 	.optsdcc -mstm8
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _assert_failed
+                                     12 	.globl _SPI_DeInit
+                                     13 	.globl _SPI_Init
+                                     14 	.globl _SPI_Cmd
+                                     15 	.globl _SPI_ITConfig
+                                     16 	.globl _SPI_SendData
+                                     17 	.globl _SPI_ReceiveData
+                                     18 	.globl _SPI_NSSInternalSoftwareCmd
+                                     19 	.globl _SPI_TransmitCRC
+                                     20 	.globl _SPI_CalculateCRCCmd
+                                     21 	.globl _SPI_GetCRC
+                                     22 	.globl _SPI_ResetCRC
+                                     23 	.globl _SPI_GetCRCPolynomial
+                                     24 	.globl _SPI_BiDirectionalLineConfig
+                                     25 	.globl _SPI_GetFlagStatus
+                                     26 	.globl _SPI_ClearFlag
+                                     27 	.globl _SPI_GetITStatus
+                                     28 	.globl _SPI_ClearITPendingBit
+                                     29 ;--------------------------------------------------------
+                                     30 ; ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DATA
+                                     33 ;--------------------------------------------------------
+                                     34 ; ram data
+                                     35 ;--------------------------------------------------------
+                                     36 	.area INITIALIZED
+                                     37 ;--------------------------------------------------------
+                                     38 ; absolute external ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area DABS (ABS)
+                                     41 
+                                     42 ; default segment ordering for linker
+                                     43 	.area HOME
+                                     44 	.area GSINIT
+                                     45 	.area GSFINAL
+                                     46 	.area CONST
+                                     47 	.area INITIALIZER
+                                     48 	.area CODE
+                                     49 
+                                     50 ;--------------------------------------------------------
+                                     51 ; global & static initialisations
+                                     52 ;--------------------------------------------------------
+                                     53 	.area HOME
+                                     54 	.area GSINIT
+                                     55 	.area GSFINAL
+                                     56 	.area GSINIT
+                                     57 ;--------------------------------------------------------
+                                     58 ; Home
+                                     59 ;--------------------------------------------------------
+                                     60 	.area HOME
+                                     61 	.area HOME
+                                     62 ;--------------------------------------------------------
+                                     63 ; code
+                                     64 ;--------------------------------------------------------
+                                     65 	.area CODE
+                                     66 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 50: void SPI_DeInit(void)
+                                     67 ;	-----------------------------------------
+                                     68 ;	 function SPI_DeInit
+                                     69 ;	-----------------------------------------
+      000000                         70 _SPI_DeInit:
+                                     71 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 52: SPI->CR1    = SPI_CR1_RESET_VALUE;
+      000000 35 00 52 00      [ 1]   72 	mov	0x5200+0, #0x00
+                                     73 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 53: SPI->CR2    = SPI_CR2_RESET_VALUE;
+      000004 35 00 52 01      [ 1]   74 	mov	0x5201+0, #0x00
+                                     75 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 54: SPI->ICR    = SPI_ICR_RESET_VALUE;
+      000008 35 00 52 02      [ 1]   76 	mov	0x5202+0, #0x00
+                                     77 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 55: SPI->SR     = SPI_SR_RESET_VALUE;
+      00000C 35 02 52 03      [ 1]   78 	mov	0x5203+0, #0x02
+                                     79 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 56: SPI->CRCPR  = SPI_CRCPR_RESET_VALUE;
+      000010 35 07 52 05      [ 1]   80 	mov	0x5205+0, #0x07
+                                     81 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 57: }
+      000014 81               [ 4]   82 	ret
+                                     83 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 78: void SPI_Init(SPI_FirstBit_TypeDef FirstBit, SPI_BaudRatePrescaler_TypeDef BaudRatePrescaler, SPI_Mode_TypeDef Mode, SPI_ClockPolarity_TypeDef ClockPolarity, SPI_ClockPhase_TypeDef ClockPhase, SPI_DataDirection_TypeDef Data_Direction, SPI_NSS_TypeDef Slave_Management, uint8_t CRCPolynomial)
+                                     84 ;	-----------------------------------------
+                                     85 ;	 function SPI_Init
+                                     86 ;	-----------------------------------------
+      000015                         87 _SPI_Init:
+      000015 89               [ 2]   88 	pushw	x
+                                     89 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 81: assert_param(IS_SPI_FIRSTBIT_OK(FirstBit));
+      000016 0D 05            [ 1]   90 	tnz	(0x05, sp)
+      000018 27 15            [ 1]   91 	jreq	00107$
+      00001A 7B 05            [ 1]   92 	ld	a, (0x05, sp)
+      00001C A1 80            [ 1]   93 	cp	a, #0x80
+      00001E 27 0F            [ 1]   94 	jreq	00107$
+      000020 4B 51            [ 1]   95 	push	#0x51
+      000022 5F               [ 1]   96 	clrw	x
+      000023 89               [ 2]   97 	pushw	x
+      000024 4B 00            [ 1]   98 	push	#0x00
+      000026 4Br00            [ 1]   99 	push	#<(___str_0+0)
+      000028 4Bs00            [ 1]  100 	push	#((___str_0+0) >> 8)
+      00002A CDr00r00         [ 4]  101 	call	_assert_failed
+      00002D 5B 06            [ 2]  102 	addw	sp, #6
+      00002F                        103 00107$:
+                                    104 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 82: assert_param(IS_SPI_BAUDRATE_PRESCALER_OK(BaudRatePrescaler));
+      00002F 0D 06            [ 1]  105 	tnz	(0x06, sp)
+      000031 27 39            [ 1]  106 	jreq	00112$
+      000033 7B 06            [ 1]  107 	ld	a, (0x06, sp)
+      000035 A1 08            [ 1]  108 	cp	a, #0x08
+      000037 27 33            [ 1]  109 	jreq	00112$
+      000039 7B 06            [ 1]  110 	ld	a, (0x06, sp)
+      00003B A1 10            [ 1]  111 	cp	a, #0x10
+      00003D 27 2D            [ 1]  112 	jreq	00112$
+      00003F 7B 06            [ 1]  113 	ld	a, (0x06, sp)
+      000041 A1 18            [ 1]  114 	cp	a, #0x18
+      000043 27 27            [ 1]  115 	jreq	00112$
+      000045 7B 06            [ 1]  116 	ld	a, (0x06, sp)
+      000047 A1 20            [ 1]  117 	cp	a, #0x20
+      000049 27 21            [ 1]  118 	jreq	00112$
+      00004B 7B 06            [ 1]  119 	ld	a, (0x06, sp)
+      00004D A1 28            [ 1]  120 	cp	a, #0x28
+      00004F 27 1B            [ 1]  121 	jreq	00112$
+      000051 7B 06            [ 1]  122 	ld	a, (0x06, sp)
+      000053 A1 30            [ 1]  123 	cp	a, #0x30
+      000055 27 15            [ 1]  124 	jreq	00112$
+      000057 7B 06            [ 1]  125 	ld	a, (0x06, sp)
+      000059 A1 38            [ 1]  126 	cp	a, #0x38
+      00005B 27 0F            [ 1]  127 	jreq	00112$
+      00005D 4B 52            [ 1]  128 	push	#0x52
+      00005F 5F               [ 1]  129 	clrw	x
+      000060 89               [ 2]  130 	pushw	x
+      000061 4B 00            [ 1]  131 	push	#0x00
+      000063 4Br00            [ 1]  132 	push	#<(___str_0+0)
+      000065 4Bs00            [ 1]  133 	push	#((___str_0+0) >> 8)
+      000067 CDr00r00         [ 4]  134 	call	_assert_failed
+      00006A 5B 06            [ 2]  135 	addw	sp, #6
+      00006C                        136 00112$:
+                                    137 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 83: assert_param(IS_SPI_MODE_OK(Mode));
+      00006C 7B 07            [ 1]  138 	ld	a, (0x07, sp)
+      00006E A1 04            [ 1]  139 	cp	a, #0x04
+      000070 26 05            [ 1]  140 	jrne	00314$
+      000072 A6 01            [ 1]  141 	ld	a, #0x01
+      000074 6B 01            [ 1]  142 	ld	(0x01, sp), a
+      000076 C5                     143 	.byte 0xc5
+      000077                        144 00314$:
+      000077 0F 01            [ 1]  145 	clr	(0x01, sp)
+      000079                        146 00315$:
+      000079 0D 01            [ 1]  147 	tnz	(0x01, sp)
+      00007B 26 13            [ 1]  148 	jrne	00135$
+      00007D 0D 07            [ 1]  149 	tnz	(0x07, sp)
+      00007F 27 0F            [ 1]  150 	jreq	00135$
+      000081 4B 53            [ 1]  151 	push	#0x53
+      000083 5F               [ 1]  152 	clrw	x
+      000084 89               [ 2]  153 	pushw	x
+      000085 4B 00            [ 1]  154 	push	#0x00
+      000087 4Br00            [ 1]  155 	push	#<(___str_0+0)
+      000089 4Bs00            [ 1]  156 	push	#((___str_0+0) >> 8)
+      00008B CDr00r00         [ 4]  157 	call	_assert_failed
+      00008E 5B 06            [ 2]  158 	addw	sp, #6
+      000090                        159 00135$:
+                                    160 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 84: assert_param(IS_SPI_POLARITY_OK(ClockPolarity));
+      000090 0D 08            [ 1]  161 	tnz	(0x08, sp)
+      000092 27 15            [ 1]  162 	jreq	00140$
+      000094 7B 08            [ 1]  163 	ld	a, (0x08, sp)
+      000096 A1 02            [ 1]  164 	cp	a, #0x02
+      000098 27 0F            [ 1]  165 	jreq	00140$
+      00009A 4B 54            [ 1]  166 	push	#0x54
+      00009C 5F               [ 1]  167 	clrw	x
+      00009D 89               [ 2]  168 	pushw	x
+      00009E 4B 00            [ 1]  169 	push	#0x00
+      0000A0 4Br00            [ 1]  170 	push	#<(___str_0+0)
+      0000A2 4Bs00            [ 1]  171 	push	#((___str_0+0) >> 8)
+      0000A4 CDr00r00         [ 4]  172 	call	_assert_failed
+      0000A7 5B 06            [ 2]  173 	addw	sp, #6
+      0000A9                        174 00140$:
+                                    175 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 85: assert_param(IS_SPI_PHASE_OK(ClockPhase));
+      0000A9 0D 09            [ 1]  176 	tnz	(0x09, sp)
+      0000AB 27 14            [ 1]  177 	jreq	00145$
+      0000AD 7B 09            [ 1]  178 	ld	a, (0x09, sp)
+      0000AF 4A               [ 1]  179 	dec	a
+      0000B0 27 0F            [ 1]  180 	jreq	00145$
+      0000B2 4B 55            [ 1]  181 	push	#0x55
+      0000B4 5F               [ 1]  182 	clrw	x
+      0000B5 89               [ 2]  183 	pushw	x
+      0000B6 4B 00            [ 1]  184 	push	#0x00
+      0000B8 4Br00            [ 1]  185 	push	#<(___str_0+0)
+      0000BA 4Bs00            [ 1]  186 	push	#((___str_0+0) >> 8)
+      0000BC CDr00r00         [ 4]  187 	call	_assert_failed
+      0000BF 5B 06            [ 2]  188 	addw	sp, #6
+      0000C1                        189 00145$:
+                                    190 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 86: assert_param(IS_SPI_DATA_DIRECTION_OK(Data_Direction));
+      0000C1 0D 0A            [ 1]  191 	tnz	(0x0a, sp)
+      0000C3 27 21            [ 1]  192 	jreq	00150$
+      0000C5 7B 0A            [ 1]  193 	ld	a, (0x0a, sp)
+      0000C7 A1 04            [ 1]  194 	cp	a, #0x04
+      0000C9 27 1B            [ 1]  195 	jreq	00150$
+      0000CB 7B 0A            [ 1]  196 	ld	a, (0x0a, sp)
+      0000CD A1 80            [ 1]  197 	cp	a, #0x80
+      0000CF 27 15            [ 1]  198 	jreq	00150$
+      0000D1 7B 0A            [ 1]  199 	ld	a, (0x0a, sp)
+      0000D3 A1 C0            [ 1]  200 	cp	a, #0xc0
+      0000D5 27 0F            [ 1]  201 	jreq	00150$
+      0000D7 4B 56            [ 1]  202 	push	#0x56
+      0000D9 5F               [ 1]  203 	clrw	x
+      0000DA 89               [ 2]  204 	pushw	x
+      0000DB 4B 00            [ 1]  205 	push	#0x00
+      0000DD 4Br00            [ 1]  206 	push	#<(___str_0+0)
+      0000DF 4Bs00            [ 1]  207 	push	#((___str_0+0) >> 8)
+      0000E1 CDr00r00         [ 4]  208 	call	_assert_failed
+      0000E4 5B 06            [ 2]  209 	addw	sp, #6
+      0000E6                        210 00150$:
+                                    211 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 87: assert_param(IS_SPI_SLAVEMANAGEMENT_OK(Slave_Management));
+      0000E6 7B 0B            [ 1]  212 	ld	a, (0x0b, sp)
+      0000E8 A1 02            [ 1]  213 	cp	a, #0x02
+      0000EA 27 13            [ 1]  214 	jreq	00161$
+      0000EC 0D 0B            [ 1]  215 	tnz	(0x0b, sp)
+      0000EE 27 0F            [ 1]  216 	jreq	00161$
+      0000F0 4B 57            [ 1]  217 	push	#0x57
+      0000F2 5F               [ 1]  218 	clrw	x
+      0000F3 89               [ 2]  219 	pushw	x
+      0000F4 4B 00            [ 1]  220 	push	#0x00
+      0000F6 4Br00            [ 1]  221 	push	#<(___str_0+0)
+      0000F8 4Bs00            [ 1]  222 	push	#((___str_0+0) >> 8)
+      0000FA CDr00r00         [ 4]  223 	call	_assert_failed
+      0000FD 5B 06            [ 2]  224 	addw	sp, #6
+      0000FF                        225 00161$:
+                                    226 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 88: assert_param(IS_SPI_CRC_POLYNOMIAL_OK(CRCPolynomial));
+      0000FF 0D 0C            [ 1]  227 	tnz	(0x0c, sp)
+      000101 26 0F            [ 1]  228 	jrne	00166$
+      000103 4B 58            [ 1]  229 	push	#0x58
+      000105 5F               [ 1]  230 	clrw	x
+      000106 89               [ 2]  231 	pushw	x
+      000107 4B 00            [ 1]  232 	push	#0x00
+      000109 4Br00            [ 1]  233 	push	#<(___str_0+0)
+      00010B 4Bs00            [ 1]  234 	push	#((___str_0+0) >> 8)
+      00010D CDr00r00         [ 4]  235 	call	_assert_failed
+      000110 5B 06            [ 2]  236 	addw	sp, #6
+      000112                        237 00166$:
+                                    238 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 91: SPI->CR1 = (uint8_t)((uint8_t)((uint8_t)FirstBit | BaudRatePrescaler) |
+      000112 7B 05            [ 1]  239 	ld	a, (0x05, sp)
+      000114 1A 06            [ 1]  240 	or	a, (0x06, sp)
+      000116 6B 02            [ 1]  241 	ld	(0x02, sp), a
+                                    242 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 92: (uint8_t)((uint8_t)ClockPolarity | ClockPhase));
+      000118 7B 08            [ 1]  243 	ld	a, (0x08, sp)
+      00011A 1A 09            [ 1]  244 	or	a, (0x09, sp)
+      00011C 1A 02            [ 1]  245 	or	a, (0x02, sp)
+      00011E C7 52 00         [ 1]  246 	ld	0x5200, a
+                                    247 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 95: SPI->CR2 = (uint8_t)((uint8_t)(Data_Direction) | (uint8_t)(Slave_Management));
+      000121 7B 0A            [ 1]  248 	ld	a, (0x0a, sp)
+      000123 1A 0B            [ 1]  249 	or	a, (0x0b, sp)
+      000125 C7 52 01         [ 1]  250 	ld	0x5201, a
+                                    251 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 99: SPI->CR2 |= (uint8_t)SPI_CR2_SSI;
+      000128 C6 52 01         [ 1]  252 	ld	a, 0x5201
+      00012B 97               [ 1]  253 	ld	xl, a
+                                    254 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 97: if (Mode == SPI_MODE_MASTER)
+      00012C 7B 01            [ 1]  255 	ld	a, (0x01, sp)
+      00012E 27 08            [ 1]  256 	jreq	00102$
+                                    257 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 99: SPI->CR2 |= (uint8_t)SPI_CR2_SSI;
+      000130 9F               [ 1]  258 	ld	a, xl
+      000131 AA 01            [ 1]  259 	or	a, #0x01
+      000133 C7 52 01         [ 1]  260 	ld	0x5201, a
+      000136 20 06            [ 2]  261 	jra	00103$
+      000138                        262 00102$:
+                                    263 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 103: SPI->CR2 &= (uint8_t)~(SPI_CR2_SSI);
+      000138 9F               [ 1]  264 	ld	a, xl
+      000139 A4 FE            [ 1]  265 	and	a, #0xfe
+      00013B C7 52 01         [ 1]  266 	ld	0x5201, a
+      00013E                        267 00103$:
+                                    268 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 107: SPI->CR1 |= (uint8_t)(Mode);
+      00013E C6 52 00         [ 1]  269 	ld	a, 0x5200
+      000141 1A 07            [ 1]  270 	or	a, (0x07, sp)
+      000143 C7 52 00         [ 1]  271 	ld	0x5200, a
+                                    272 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 110: SPI->CRCPR = (uint8_t)CRCPolynomial;
+      000146 AE 52 05         [ 2]  273 	ldw	x, #0x5205
+      000149 7B 0C            [ 1]  274 	ld	a, (0x0c, sp)
+      00014B F7               [ 1]  275 	ld	(x), a
+                                    276 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 111: }
+      00014C 85               [ 2]  277 	popw	x
+      00014D 81               [ 4]  278 	ret
+                                    279 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 119: void SPI_Cmd(FunctionalState NewState)
+                                    280 ;	-----------------------------------------
+                                    281 ;	 function SPI_Cmd
+                                    282 ;	-----------------------------------------
+      00014E                        283 _SPI_Cmd:
+                                    284 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 122: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+      00014E 0D 03            [ 1]  285 	tnz	(0x03, sp)
+      000150 27 14            [ 1]  286 	jreq	00107$
+      000152 7B 03            [ 1]  287 	ld	a, (0x03, sp)
+      000154 4A               [ 1]  288 	dec	a
+      000155 27 0F            [ 1]  289 	jreq	00107$
+      000157 4B 7A            [ 1]  290 	push	#0x7a
+      000159 5F               [ 1]  291 	clrw	x
+      00015A 89               [ 2]  292 	pushw	x
+      00015B 4B 00            [ 1]  293 	push	#0x00
+      00015D 4Br00            [ 1]  294 	push	#<(___str_0+0)
+      00015F 4Bs00            [ 1]  295 	push	#((___str_0+0) >> 8)
+      000161 CDr00r00         [ 4]  296 	call	_assert_failed
+      000164 5B 06            [ 2]  297 	addw	sp, #6
+      000166                        298 00107$:
+                                    299 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 126: SPI->CR1 |= SPI_CR1_SPE; /* Enable the SPI peripheral*/
+      000166 C6 52 00         [ 1]  300 	ld	a, 0x5200
+                                    301 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 124: if (NewState != DISABLE)
+      000169 0D 03            [ 1]  302 	tnz	(0x03, sp)
+      00016B 27 06            [ 1]  303 	jreq	00102$
+                                    304 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 126: SPI->CR1 |= SPI_CR1_SPE; /* Enable the SPI peripheral*/
+      00016D AA 40            [ 1]  305 	or	a, #0x40
+      00016F C7 52 00         [ 1]  306 	ld	0x5200, a
+      000172 81               [ 4]  307 	ret
+      000173                        308 00102$:
+                                    309 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 130: SPI->CR1 &= (uint8_t)(~SPI_CR1_SPE); /* Disable the SPI peripheral*/
+      000173 A4 BF            [ 1]  310 	and	a, #0xbf
+      000175 C7 52 00         [ 1]  311 	ld	0x5200, a
+                                    312 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 132: }
+      000178 81               [ 4]  313 	ret
+                                    314 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 141: void SPI_ITConfig(SPI_IT_TypeDef SPI_IT, FunctionalState NewState)
+                                    315 ;	-----------------------------------------
+                                    316 ;	 function SPI_ITConfig
+                                    317 ;	-----------------------------------------
+      000179                        318 _SPI_ITConfig:
+      000179 88               [ 1]  319 	push	a
+                                    320 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 145: assert_param(IS_SPI_CONFIG_IT_OK(SPI_IT));
+      00017A 7B 04            [ 1]  321 	ld	a, (0x04, sp)
+      00017C A1 17            [ 1]  322 	cp	a, #0x17
+      00017E 27 21            [ 1]  323 	jreq	00107$
+      000180 7B 04            [ 1]  324 	ld	a, (0x04, sp)
+      000182 A1 06            [ 1]  325 	cp	a, #0x06
+      000184 27 1B            [ 1]  326 	jreq	00107$
+      000186 7B 04            [ 1]  327 	ld	a, (0x04, sp)
+      000188 A1 05            [ 1]  328 	cp	a, #0x05
+      00018A 27 15            [ 1]  329 	jreq	00107$
+      00018C 7B 04            [ 1]  330 	ld	a, (0x04, sp)
+      00018E A1 34            [ 1]  331 	cp	a, #0x34
+      000190 27 0F            [ 1]  332 	jreq	00107$
+      000192 4B 91            [ 1]  333 	push	#0x91
+      000194 5F               [ 1]  334 	clrw	x
+      000195 89               [ 2]  335 	pushw	x
+      000196 4B 00            [ 1]  336 	push	#0x00
+      000198 4Br00            [ 1]  337 	push	#<(___str_0+0)
+      00019A 4Bs00            [ 1]  338 	push	#((___str_0+0) >> 8)
+      00019C CDr00r00         [ 4]  339 	call	_assert_failed
+      00019F 5B 06            [ 2]  340 	addw	sp, #6
+      0001A1                        341 00107$:
+                                    342 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 146: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+      0001A1 0D 05            [ 1]  343 	tnz	(0x05, sp)
+      0001A3 27 14            [ 1]  344 	jreq	00118$
+      0001A5 7B 05            [ 1]  345 	ld	a, (0x05, sp)
+      0001A7 4A               [ 1]  346 	dec	a
+      0001A8 27 0F            [ 1]  347 	jreq	00118$
+      0001AA 4B 92            [ 1]  348 	push	#0x92
+      0001AC 5F               [ 1]  349 	clrw	x
+      0001AD 89               [ 2]  350 	pushw	x
+      0001AE 4B 00            [ 1]  351 	push	#0x00
+      0001B0 4Br00            [ 1]  352 	push	#<(___str_0+0)
+      0001B2 4Bs00            [ 1]  353 	push	#((___str_0+0) >> 8)
+      0001B4 CDr00r00         [ 4]  354 	call	_assert_failed
+      0001B7 5B 06            [ 2]  355 	addw	sp, #6
+      0001B9                        356 00118$:
+                                    357 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 149: itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)SPI_IT & (uint8_t)0x0F));
+      0001B9 7B 04            [ 1]  358 	ld	a, (0x04, sp)
+      0001BB A4 0F            [ 1]  359 	and	a, #0x0f
+      0001BD 97               [ 1]  360 	ld	xl, a
+      0001BE A6 01            [ 1]  361 	ld	a, #0x01
+      0001C0 88               [ 1]  362 	push	a
+      0001C1 9F               [ 1]  363 	ld	a, xl
+      0001C2 4D               [ 1]  364 	tnz	a
+      0001C3 27 05            [ 1]  365 	jreq	00174$
+      0001C5                        366 00173$:
+      0001C5 08 01            [ 1]  367 	sll	(1, sp)
+      0001C7 4A               [ 1]  368 	dec	a
+      0001C8 26 FB            [ 1]  369 	jrne	00173$
+      0001CA                        370 00174$:
+      0001CA 84               [ 1]  371 	pop	a
+                                    372 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 153: SPI->ICR |= itpos; /* Enable interrupt*/
+      0001CB AE 52 02         [ 2]  373 	ldw	x, #0x5202
+      0001CE 88               [ 1]  374 	push	a
+      0001CF F6               [ 1]  375 	ld	a, (x)
+      0001D0 6B 02            [ 1]  376 	ld	(0x02, sp), a
+      0001D2 84               [ 1]  377 	pop	a
+                                    378 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 151: if (NewState != DISABLE)
+      0001D3 0D 05            [ 1]  379 	tnz	(0x05, sp)
+      0001D5 27 07            [ 1]  380 	jreq	00102$
+                                    381 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 153: SPI->ICR |= itpos; /* Enable interrupt*/
+      0001D7 1A 01            [ 1]  382 	or	a, (0x01, sp)
+      0001D9 C7 52 02         [ 1]  383 	ld	0x5202, a
+      0001DC 20 06            [ 2]  384 	jra	00104$
+      0001DE                        385 00102$:
+                                    386 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 157: SPI->ICR &= (uint8_t)(~itpos); /* Disable interrupt*/
+      0001DE 43               [ 1]  387 	cpl	a
+      0001DF 14 01            [ 1]  388 	and	a, (0x01, sp)
+      0001E1 C7 52 02         [ 1]  389 	ld	0x5202, a
+      0001E4                        390 00104$:
+                                    391 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 159: }
+      0001E4 84               [ 1]  392 	pop	a
+      0001E5 81               [ 4]  393 	ret
+                                    394 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 166: void SPI_SendData(uint8_t Data)
+                                    395 ;	-----------------------------------------
+                                    396 ;	 function SPI_SendData
+                                    397 ;	-----------------------------------------
+      0001E6                        398 _SPI_SendData:
+                                    399 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 168: SPI->DR = Data; /* Write in the DR register the data to be sent*/
+      0001E6 AE 52 04         [ 2]  400 	ldw	x, #0x5204
+      0001E9 7B 03            [ 1]  401 	ld	a, (0x03, sp)
+      0001EB F7               [ 1]  402 	ld	(x), a
+                                    403 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 169: }
+      0001EC 81               [ 4]  404 	ret
+                                    405 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 176: uint8_t SPI_ReceiveData(void)
+                                    406 ;	-----------------------------------------
+                                    407 ;	 function SPI_ReceiveData
+                                    408 ;	-----------------------------------------
+      0001ED                        409 _SPI_ReceiveData:
+                                    410 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 178: return ((uint8_t)SPI->DR); /* Return the data in the DR register*/
+      0001ED C6 52 04         [ 1]  411 	ld	a, 0x5204
+                                    412 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 179: }
+      0001F0 81               [ 4]  413 	ret
+                                    414 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 187: void SPI_NSSInternalSoftwareCmd(FunctionalState NewState)
+                                    415 ;	-----------------------------------------
+                                    416 ;	 function SPI_NSSInternalSoftwareCmd
+                                    417 ;	-----------------------------------------
+      0001F1                        418 _SPI_NSSInternalSoftwareCmd:
+                                    419 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 190: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+      0001F1 0D 03            [ 1]  420 	tnz	(0x03, sp)
+      0001F3 27 14            [ 1]  421 	jreq	00107$
+      0001F5 7B 03            [ 1]  422 	ld	a, (0x03, sp)
+      0001F7 4A               [ 1]  423 	dec	a
+      0001F8 27 0F            [ 1]  424 	jreq	00107$
+      0001FA 4B BE            [ 1]  425 	push	#0xbe
+      0001FC 5F               [ 1]  426 	clrw	x
+      0001FD 89               [ 2]  427 	pushw	x
+      0001FE 4B 00            [ 1]  428 	push	#0x00
+      000200 4Br00            [ 1]  429 	push	#<(___str_0+0)
+      000202 4Bs00            [ 1]  430 	push	#((___str_0+0) >> 8)
+      000204 CDr00r00         [ 4]  431 	call	_assert_failed
+      000207 5B 06            [ 2]  432 	addw	sp, #6
+      000209                        433 00107$:
+                                    434 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 194: SPI->CR2 |= SPI_CR2_SSI; /* Set NSS pin internally by software*/
+      000209 C6 52 01         [ 1]  435 	ld	a, 0x5201
+                                    436 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 192: if (NewState != DISABLE)
+      00020C 0D 03            [ 1]  437 	tnz	(0x03, sp)
+      00020E 27 06            [ 1]  438 	jreq	00102$
+                                    439 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 194: SPI->CR2 |= SPI_CR2_SSI; /* Set NSS pin internally by software*/
+      000210 AA 01            [ 1]  440 	or	a, #0x01
+      000212 C7 52 01         [ 1]  441 	ld	0x5201, a
+      000215 81               [ 4]  442 	ret
+      000216                        443 00102$:
+                                    444 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 198: SPI->CR2 &= (uint8_t)(~SPI_CR2_SSI); /* Reset NSS pin internally by software*/
+      000216 A4 FE            [ 1]  445 	and	a, #0xfe
+      000218 C7 52 01         [ 1]  446 	ld	0x5201, a
+                                    447 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 200: }
+      00021B 81               [ 4]  448 	ret
+                                    449 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 207: void SPI_TransmitCRC(void)
+                                    450 ;	-----------------------------------------
+                                    451 ;	 function SPI_TransmitCRC
+                                    452 ;	-----------------------------------------
+      00021C                        453 _SPI_TransmitCRC:
+                                    454 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 209: SPI->CR2 |= SPI_CR2_CRCNEXT; /* Enable the CRC transmission*/
+      00021C 72 18 52 01      [ 1]  455 	bset	20993, #4
+                                    456 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 210: }
+      000220 81               [ 4]  457 	ret
+                                    458 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 218: void SPI_CalculateCRCCmd(FunctionalState NewState)
+                                    459 ;	-----------------------------------------
+                                    460 ;	 function SPI_CalculateCRCCmd
+                                    461 ;	-----------------------------------------
+      000221                        462 _SPI_CalculateCRCCmd:
+                                    463 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 221: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+      000221 0D 03            [ 1]  464 	tnz	(0x03, sp)
+      000223 27 14            [ 1]  465 	jreq	00107$
+      000225 7B 03            [ 1]  466 	ld	a, (0x03, sp)
+      000227 4A               [ 1]  467 	dec	a
+      000228 27 0F            [ 1]  468 	jreq	00107$
+      00022A 4B DD            [ 1]  469 	push	#0xdd
+      00022C 5F               [ 1]  470 	clrw	x
+      00022D 89               [ 2]  471 	pushw	x
+      00022E 4B 00            [ 1]  472 	push	#0x00
+      000230 4Br00            [ 1]  473 	push	#<(___str_0+0)
+      000232 4Bs00            [ 1]  474 	push	#((___str_0+0) >> 8)
+      000234 CDr00r00         [ 4]  475 	call	_assert_failed
+      000237 5B 06            [ 2]  476 	addw	sp, #6
+      000239                        477 00107$:
+                                    478 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 225: SPI->CR2 |= SPI_CR2_CRCEN; /* Enable the CRC calculation*/
+      000239 C6 52 01         [ 1]  479 	ld	a, 0x5201
+                                    480 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 223: if (NewState != DISABLE)
+      00023C 0D 03            [ 1]  481 	tnz	(0x03, sp)
+      00023E 27 06            [ 1]  482 	jreq	00102$
+                                    483 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 225: SPI->CR2 |= SPI_CR2_CRCEN; /* Enable the CRC calculation*/
+      000240 AA 20            [ 1]  484 	or	a, #0x20
+      000242 C7 52 01         [ 1]  485 	ld	0x5201, a
+      000245 81               [ 4]  486 	ret
+      000246                        487 00102$:
+                                    488 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 229: SPI->CR2 &= (uint8_t)(~SPI_CR2_CRCEN); /* Disable the CRC calculation*/
+      000246 A4 DF            [ 1]  489 	and	a, #0xdf
+      000248 C7 52 01         [ 1]  490 	ld	0x5201, a
+                                    491 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 231: }
+      00024B 81               [ 4]  492 	ret
+                                    493 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 238: uint8_t SPI_GetCRC(SPI_CRC_TypeDef SPI_CRC)
+                                    494 ;	-----------------------------------------
+                                    495 ;	 function SPI_GetCRC
+                                    496 ;	-----------------------------------------
+      00024C                        497 _SPI_GetCRC:
+                                    498 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 243: assert_param(IS_SPI_CRC_OK(SPI_CRC));
+      00024C 7B 03            [ 1]  499 	ld	a, (0x03, sp)
+      00024E 4A               [ 1]  500 	dec	a
+      00024F 27 13            [ 1]  501 	jreq	00107$
+      000251 0D 03            [ 1]  502 	tnz	(0x03, sp)
+      000253 27 0F            [ 1]  503 	jreq	00107$
+      000255 4B F3            [ 1]  504 	push	#0xf3
+      000257 5F               [ 1]  505 	clrw	x
+      000258 89               [ 2]  506 	pushw	x
+      000259 4B 00            [ 1]  507 	push	#0x00
+      00025B 4Br00            [ 1]  508 	push	#<(___str_0+0)
+      00025D 4Bs00            [ 1]  509 	push	#((___str_0+0) >> 8)
+      00025F CDr00r00         [ 4]  510 	call	_assert_failed
+      000262 5B 06            [ 2]  511 	addw	sp, #6
+      000264                        512 00107$:
+                                    513 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 245: if (SPI_CRC != SPI_CRC_RX)
+      000264 0D 03            [ 1]  514 	tnz	(0x03, sp)
+      000266 27 04            [ 1]  515 	jreq	00102$
+                                    516 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 247: crcreg = SPI->TXCRCR;  /* Get the Tx CRC register*/
+      000268 C6 52 07         [ 1]  517 	ld	a, 0x5207
+      00026B 81               [ 4]  518 	ret
+      00026C                        519 00102$:
+                                    520 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 251: crcreg = SPI->RXCRCR; /* Get the Rx CRC register*/
+      00026C C6 52 06         [ 1]  521 	ld	a, 0x5206
+                                    522 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 255: return crcreg;
+                                    523 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 256: }
+      00026F 81               [ 4]  524 	ret
+                                    525 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 263: void SPI_ResetCRC(void)
+                                    526 ;	-----------------------------------------
+                                    527 ;	 function SPI_ResetCRC
+                                    528 ;	-----------------------------------------
+      000270                        529 _SPI_ResetCRC:
+                                    530 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 267: SPI_CalculateCRCCmd(ENABLE);
+      000270 4B 01            [ 1]  531 	push	#0x01
+      000272 CDr02r21         [ 4]  532 	call	_SPI_CalculateCRCCmd
+      000275 84               [ 1]  533 	pop	a
+                                    534 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 270: SPI_Cmd(ENABLE);
+      000276 4B 01            [ 1]  535 	push	#0x01
+      000278 CDr01r4E         [ 4]  536 	call	_SPI_Cmd
+      00027B 84               [ 1]  537 	pop	a
+                                    538 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 271: }
+      00027C 81               [ 4]  539 	ret
+                                    540 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 278: uint8_t SPI_GetCRCPolynomial(void)
+                                    541 ;	-----------------------------------------
+                                    542 ;	 function SPI_GetCRCPolynomial
+                                    543 ;	-----------------------------------------
+      00027D                        544 _SPI_GetCRCPolynomial:
+                                    545 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 280: return SPI->CRCPR; /* Return the CRC polynomial register */
+      00027D C6 52 05         [ 1]  546 	ld	a, 0x5205
+                                    547 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 281: }
+      000280 81               [ 4]  548 	ret
+                                    549 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 288: void SPI_BiDirectionalLineConfig(SPI_Direction_TypeDef SPI_Direction)
+                                    550 ;	-----------------------------------------
+                                    551 ;	 function SPI_BiDirectionalLineConfig
+                                    552 ;	-----------------------------------------
+      000281                        553 _SPI_BiDirectionalLineConfig:
+                                    554 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 291: assert_param(IS_SPI_DIRECTION_OK(SPI_Direction));
+      000281 0D 03            [ 1]  555 	tnz	(0x03, sp)
+      000283 27 14            [ 1]  556 	jreq	00107$
+      000285 7B 03            [ 1]  557 	ld	a, (0x03, sp)
+      000287 4A               [ 1]  558 	dec	a
+      000288 27 0F            [ 1]  559 	jreq	00107$
+      00028A 4B 23            [ 1]  560 	push	#0x23
+      00028C 4B 01            [ 1]  561 	push	#0x01
+      00028E 5F               [ 1]  562 	clrw	x
+      00028F 89               [ 2]  563 	pushw	x
+      000290 4Br00            [ 1]  564 	push	#<(___str_0+0)
+      000292 4Bs00            [ 1]  565 	push	#((___str_0+0) >> 8)
+      000294 CDr00r00         [ 4]  566 	call	_assert_failed
+      000297 5B 06            [ 2]  567 	addw	sp, #6
+      000299                        568 00107$:
+                                    569 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 295: SPI->CR2 |= SPI_CR2_BDOE; /* Set the Tx only mode*/
+      000299 C6 52 01         [ 1]  570 	ld	a, 0x5201
+                                    571 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 293: if (SPI_Direction != SPI_DIRECTION_RX)
+      00029C 0D 03            [ 1]  572 	tnz	(0x03, sp)
+      00029E 27 06            [ 1]  573 	jreq	00102$
+                                    574 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 295: SPI->CR2 |= SPI_CR2_BDOE; /* Set the Tx only mode*/
+      0002A0 AA 40            [ 1]  575 	or	a, #0x40
+      0002A2 C7 52 01         [ 1]  576 	ld	0x5201, a
+      0002A5 81               [ 4]  577 	ret
+      0002A6                        578 00102$:
+                                    579 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 299: SPI->CR2 &= (uint8_t)(~SPI_CR2_BDOE); /* Set the Rx only mode*/
+      0002A6 A4 BF            [ 1]  580 	and	a, #0xbf
+      0002A8 C7 52 01         [ 1]  581 	ld	0x5201, a
+                                    582 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 301: }
+      0002AB 81               [ 4]  583 	ret
+                                    584 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 311: FlagStatus SPI_GetFlagStatus(SPI_Flag_TypeDef SPI_FLAG)
+                                    585 ;	-----------------------------------------
+                                    586 ;	 function SPI_GetFlagStatus
+                                    587 ;	-----------------------------------------
+      0002AC                        588 _SPI_GetFlagStatus:
+                                    589 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 315: assert_param(IS_SPI_FLAGS_OK(SPI_FLAG));
+      0002AC 7B 03            [ 1]  590 	ld	a, (0x03, sp)
+      0002AE A1 40            [ 1]  591 	cp	a, #0x40
+      0002B0 27 32            [ 1]  592 	jreq	00107$
+      0002B2 7B 03            [ 1]  593 	ld	a, (0x03, sp)
+      0002B4 A1 20            [ 1]  594 	cp	a, #0x20
+      0002B6 27 2C            [ 1]  595 	jreq	00107$
+      0002B8 7B 03            [ 1]  596 	ld	a, (0x03, sp)
+      0002BA A1 10            [ 1]  597 	cp	a, #0x10
+      0002BC 27 26            [ 1]  598 	jreq	00107$
+      0002BE 7B 03            [ 1]  599 	ld	a, (0x03, sp)
+      0002C0 A1 08            [ 1]  600 	cp	a, #0x08
+      0002C2 27 20            [ 1]  601 	jreq	00107$
+      0002C4 7B 03            [ 1]  602 	ld	a, (0x03, sp)
+      0002C6 A1 02            [ 1]  603 	cp	a, #0x02
+      0002C8 27 1A            [ 1]  604 	jreq	00107$
+      0002CA 7B 03            [ 1]  605 	ld	a, (0x03, sp)
+      0002CC 4A               [ 1]  606 	dec	a
+      0002CD 27 15            [ 1]  607 	jreq	00107$
+      0002CF 7B 03            [ 1]  608 	ld	a, (0x03, sp)
+      0002D1 A1 80            [ 1]  609 	cp	a, #0x80
+      0002D3 27 0F            [ 1]  610 	jreq	00107$
+      0002D5 4B 3B            [ 1]  611 	push	#0x3b
+      0002D7 4B 01            [ 1]  612 	push	#0x01
+      0002D9 5F               [ 1]  613 	clrw	x
+      0002DA 89               [ 2]  614 	pushw	x
+      0002DB 4Br00            [ 1]  615 	push	#<(___str_0+0)
+      0002DD 4Bs00            [ 1]  616 	push	#((___str_0+0) >> 8)
+      0002DF CDr00r00         [ 4]  617 	call	_assert_failed
+      0002E2 5B 06            [ 2]  618 	addw	sp, #6
+      0002E4                        619 00107$:
+                                    620 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 318: if ((SPI->SR & (uint8_t)SPI_FLAG) != (uint8_t)RESET)
+      0002E4 C6 52 03         [ 1]  621 	ld	a, 0x5203
+      0002E7 14 03            [ 1]  622 	and	a, (0x03, sp)
+      0002E9 27 03            [ 1]  623 	jreq	00102$
+                                    624 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 320: status = SET; /* SPI_FLAG is set */
+      0002EB A6 01            [ 1]  625 	ld	a, #0x01
+      0002ED 81               [ 4]  626 	ret
+      0002EE                        627 00102$:
+                                    628 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 324: status = RESET; /* SPI_FLAG is reset*/
+      0002EE 4F               [ 1]  629 	clr	a
+                                    630 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 328: return status;
+                                    631 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 329: }
+      0002EF 81               [ 4]  632 	ret
+                                    633 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 346: void SPI_ClearFlag(SPI_Flag_TypeDef SPI_FLAG)
+                                    634 ;	-----------------------------------------
+                                    635 ;	 function SPI_ClearFlag
+                                    636 ;	-----------------------------------------
+      0002F0                        637 _SPI_ClearFlag:
+                                    638 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 348: assert_param(IS_SPI_CLEAR_FLAGS_OK(SPI_FLAG));
+      0002F0 7B 03            [ 1]  639 	ld	a, (0x03, sp)
+      0002F2 A1 10            [ 1]  640 	cp	a, #0x10
+      0002F4 27 15            [ 1]  641 	jreq	00104$
+      0002F6 7B 03            [ 1]  642 	ld	a, (0x03, sp)
+      0002F8 A1 08            [ 1]  643 	cp	a, #0x08
+      0002FA 27 0F            [ 1]  644 	jreq	00104$
+      0002FC 4B 5C            [ 1]  645 	push	#0x5c
+      0002FE 4B 01            [ 1]  646 	push	#0x01
+      000300 5F               [ 1]  647 	clrw	x
+      000301 89               [ 2]  648 	pushw	x
+      000302 4Br00            [ 1]  649 	push	#<(___str_0+0)
+      000304 4Bs00            [ 1]  650 	push	#((___str_0+0) >> 8)
+      000306 CDr00r00         [ 4]  651 	call	_assert_failed
+      000309 5B 06            [ 2]  652 	addw	sp, #6
+      00030B                        653 00104$:
+                                    654 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 350: SPI->SR = (uint8_t)(~SPI_FLAG);
+      00030B 7B 03            [ 1]  655 	ld	a, (0x03, sp)
+      00030D 43               [ 1]  656 	cpl	a
+      00030E C7 52 03         [ 1]  657 	ld	0x5203, a
+                                    658 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 351: }
+      000311 81               [ 4]  659 	ret
+                                    660 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 366: ITStatus SPI_GetITStatus(SPI_IT_TypeDef SPI_IT)
+                                    661 ;	-----------------------------------------
+                                    662 ;	 function SPI_GetITStatus
+                                    663 ;	-----------------------------------------
+      000312                        664 _SPI_GetITStatus:
+      000312 89               [ 2]  665 	pushw	x
+                                    666 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 373: assert_param(IS_SPI_GET_IT_OK(SPI_IT));
+      000313 7B 05            [ 1]  667 	ld	a, (0x05, sp)
+      000315 A1 65            [ 1]  668 	cp	a, #0x65
+      000317 27 2D            [ 1]  669 	jreq	00108$
+      000319 7B 05            [ 1]  670 	ld	a, (0x05, sp)
+      00031B A1 55            [ 1]  671 	cp	a, #0x55
+      00031D 27 27            [ 1]  672 	jreq	00108$
+      00031F 7B 05            [ 1]  673 	ld	a, (0x05, sp)
+      000321 A1 45            [ 1]  674 	cp	a, #0x45
+      000323 27 21            [ 1]  675 	jreq	00108$
+      000325 7B 05            [ 1]  676 	ld	a, (0x05, sp)
+      000327 A1 34            [ 1]  677 	cp	a, #0x34
+      000329 27 1B            [ 1]  678 	jreq	00108$
+      00032B 7B 05            [ 1]  679 	ld	a, (0x05, sp)
+      00032D A1 17            [ 1]  680 	cp	a, #0x17
+      00032F 27 15            [ 1]  681 	jreq	00108$
+      000331 7B 05            [ 1]  682 	ld	a, (0x05, sp)
+      000333 A1 06            [ 1]  683 	cp	a, #0x06
+      000335 27 0F            [ 1]  684 	jreq	00108$
+      000337 4B 75            [ 1]  685 	push	#0x75
+      000339 4B 01            [ 1]  686 	push	#0x01
+      00033B 5F               [ 1]  687 	clrw	x
+      00033C 89               [ 2]  688 	pushw	x
+      00033D 4Br00            [ 1]  689 	push	#<(___str_0+0)
+      00033F 4Bs00            [ 1]  690 	push	#((___str_0+0) >> 8)
+      000341 CDr00r00         [ 4]  691 	call	_assert_failed
+      000344 5B 06            [ 2]  692 	addw	sp, #6
+      000346                        693 00108$:
+                                    694 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 375: itpos = (uint8_t)((uint8_t)1 << ((uint8_t)SPI_IT & (uint8_t)0x0F));
+      000346 7B 05            [ 1]  695 	ld	a, (0x05, sp)
+      000348 A4 0F            [ 1]  696 	and	a, #0x0f
+      00034A 88               [ 1]  697 	push	a
+      00034B A6 01            [ 1]  698 	ld	a, #0x01
+      00034D 6B 02            [ 1]  699 	ld	(0x02, sp), a
+      00034F 84               [ 1]  700 	pop	a
+      000350 4D               [ 1]  701 	tnz	a
+      000351 27 05            [ 1]  702 	jreq	00183$
+      000353                        703 00182$:
+      000353 08 01            [ 1]  704 	sll	(0x01, sp)
+      000355 4A               [ 1]  705 	dec	a
+      000356 26 FB            [ 1]  706 	jrne	00182$
+      000358                        707 00183$:
+                                    708 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 378: itmask1 = (uint8_t)((uint8_t)SPI_IT >> (uint8_t)4);
+      000358 7B 05            [ 1]  709 	ld	a, (0x05, sp)
+      00035A 4E               [ 1]  710 	swap	a
+      00035B A4 0F            [ 1]  711 	and	a, #0x0f
+                                    712 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 380: itmask2 = (uint8_t)((uint8_t)1 << itmask1);
+      00035D 88               [ 1]  713 	push	a
+      00035E A6 01            [ 1]  714 	ld	a, #0x01
+      000360 6B 03            [ 1]  715 	ld	(0x03, sp), a
+      000362 84               [ 1]  716 	pop	a
+      000363 4D               [ 1]  717 	tnz	a
+      000364 27 05            [ 1]  718 	jreq	00185$
+      000366                        719 00184$:
+      000366 08 02            [ 1]  720 	sll	(0x02, sp)
+      000368 4A               [ 1]  721 	dec	a
+      000369 26 FB            [ 1]  722 	jrne	00184$
+      00036B                        723 00185$:
+                                    724 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 382: enablestatus = (uint8_t)((uint8_t)SPI->SR & itmask2);
+      00036B C6 52 03         [ 1]  725 	ld	a, 0x5203
+      00036E 14 02            [ 1]  726 	and	a, (0x02, sp)
+      000370 97               [ 1]  727 	ld	xl, a
+                                    728 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 384: if (((SPI->ICR & itpos) != RESET) && enablestatus)
+      000371 C6 52 02         [ 1]  729 	ld	a, 0x5202
+      000374 14 01            [ 1]  730 	and	a, (0x01, sp)
+      000376 27 07            [ 1]  731 	jreq	00102$
+      000378 9F               [ 1]  732 	ld	a, xl
+      000379 4D               [ 1]  733 	tnz	a
+      00037A 27 03            [ 1]  734 	jreq	00102$
+                                    735 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 387: pendingbitstatus = SET;
+      00037C A6 01            [ 1]  736 	ld	a, #0x01
+                                    737 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 392: pendingbitstatus = RESET;
+      00037E 21                     738 	.byte 0x21
+      00037F                        739 00102$:
+      00037F 4F               [ 1]  740 	clr	a
+      000380                        741 00103$:
+                                    742 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 395: return  pendingbitstatus;
+                                    743 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 396: }
+      000380 85               [ 2]  744 	popw	x
+      000381 81               [ 4]  745 	ret
+                                    746 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 412: void SPI_ClearITPendingBit(SPI_IT_TypeDef SPI_IT)
+                                    747 ;	-----------------------------------------
+                                    748 ;	 function SPI_ClearITPendingBit
+                                    749 ;	-----------------------------------------
+      000382                        750 _SPI_ClearITPendingBit:
+                                    751 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 415: assert_param(IS_SPI_CLEAR_IT_OK(SPI_IT));
+      000382 7B 03            [ 1]  752 	ld	a, (0x03, sp)
+      000384 A1 45            [ 1]  753 	cp	a, #0x45
+      000386 27 15            [ 1]  754 	jreq	00104$
+      000388 7B 03            [ 1]  755 	ld	a, (0x03, sp)
+      00038A A1 34            [ 1]  756 	cp	a, #0x34
+      00038C 27 0F            [ 1]  757 	jreq	00104$
+      00038E 4B 9F            [ 1]  758 	push	#0x9f
+      000390 4B 01            [ 1]  759 	push	#0x01
+      000392 5F               [ 1]  760 	clrw	x
+      000393 89               [ 2]  761 	pushw	x
+      000394 4Br00            [ 1]  762 	push	#<(___str_0+0)
+      000396 4Bs00            [ 1]  763 	push	#((___str_0+0) >> 8)
+      000398 CDr00r00         [ 4]  764 	call	_assert_failed
+      00039B 5B 06            [ 2]  765 	addw	sp, #6
+      00039D                        766 00104$:
+                                    767 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 420: itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)(SPI_IT & (uint8_t)0xF0) >> 4));
+      00039D 7B 03            [ 1]  768 	ld	a, (0x03, sp)
+      00039F A4 F0            [ 1]  769 	and	a, #0xf0
+      0003A1 4E               [ 1]  770 	swap	a
+      0003A2 A4 0F            [ 1]  771 	and	a, #0x0f
+      0003A4 97               [ 1]  772 	ld	xl, a
+      0003A5 A6 01            [ 1]  773 	ld	a, #0x01
+      0003A7 88               [ 1]  774 	push	a
+      0003A8 9F               [ 1]  775 	ld	a, xl
+      0003A9 4D               [ 1]  776 	tnz	a
+      0003AA 27 05            [ 1]  777 	jreq	00125$
+      0003AC                        778 00124$:
+      0003AC 08 01            [ 1]  779 	sll	(1, sp)
+      0003AE 4A               [ 1]  780 	dec	a
+      0003AF 26 FB            [ 1]  781 	jrne	00124$
+      0003B1                        782 00125$:
+      0003B1 84               [ 1]  783 	pop	a
+                                    784 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 422: SPI->SR = (uint8_t)(~itpos);
+      0003B2 43               [ 1]  785 	cpl	a
+      0003B3 C7 52 03         [ 1]  786 	ld	0x5203, a
+                                    787 ;	C:\Users\Admin\.platformio\packages\framework-ststm8spl\Libraries\STM8S_StdPeriph_Driver\src\stm8s_spi.c: 424: }
+      0003B6 81               [ 4]  788 	ret
+                                    789 	.area CODE
+                                    790 	.area CONST
+                                    791 	.area CONST
+      000000                        792 ___str_0:
+      000000 43 3A                  793 	.ascii "C:"
+      000002 5C                     794 	.db 0x5c
+      000003 55 73 65 72 73         795 	.ascii "Users"
+      000008 5C                     796 	.db 0x5c
+      000009 41 64 6D 69 6E         797 	.ascii "Admin"
+      00000E 5C                     798 	.db 0x5c
+      00000F 2E 70 6C 61 74 66 6F   799 	.ascii ".platformio"
+             72 6D 69 6F
+      00001A 5C                     800 	.db 0x5c
+      00001B 70 61 63 6B 61 67 65   801 	.ascii "packages"
+             73
+      000023 5C                     802 	.db 0x5c
+      000024 66 72 61 6D 65 77 6F   803 	.ascii "framework-ststm8spl"
+             72 6B 2D 73 74 73 74
+             6D 38 73 70 6C
+      000037 5C                     804 	.db 0x5c
+      000038 4C 69 62 72 61 72 69   805 	.ascii "Libraries"
+             65 73
+      000041 5C                     806 	.db 0x5c
+      000042 53 54 4D 38 53 5F 53   807 	.ascii "STM8S_StdPeriph_Driver"
+             74 64 50 65 72 69 70
+             68 5F 44 72 69 76 65
+             72
+      000058 5C                     808 	.db 0x5c
+      000059 73 72 63               809 	.ascii "src"
+      00005C 5C                     810 	.db 0x5c
+      00005D 73 74 6D 38 73 5F 73   811 	.ascii "stm8s_spi.c"
+             70 69 2E 63
+      000068 00                     812 	.db 0x00
+                                    813 	.area CODE
+                                    814 	.area INITIALIZER
+                                    815 	.area CABS (ABS)
