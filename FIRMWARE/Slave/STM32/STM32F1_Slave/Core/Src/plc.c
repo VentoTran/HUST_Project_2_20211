@@ -71,4 +71,23 @@ HAL_StatusTypeDef PLC_MessageParser(uint8_t* buffer, PLCMessage* message)
     return HAL_OK;
 }
 
+void PLC_ResponseMessageGenerate(uint8_t* buffer, PLCMessage message)
+{
+  
+  buffer[0] = '$';
+  buffer[1] = PLC_LEN_OF_MESSAGE;
+  buffer[2] = PLC_RESPONSE_MESSAGE;
+  buffer[3] = (message.device.roomAddr << 4 ) 
+              | (message.device.deviceAddr << 2)
+              | (message.device.channel);
+  buffer[4] = 0x00;
+  buffer[5] = 0x01; 
+  uint16_t crc = PLC_getCRC16(buffer);
+  buffer[6] = (crc >> 8) & (0xFF);
+  buffer[7] = (crc & 0xFF);
+  buffer[8] = '\r';
+  buffer[9] = '\n';
+}
+
+
 

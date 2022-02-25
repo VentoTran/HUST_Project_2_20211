@@ -11,6 +11,8 @@
 #define PLC_CHANNEL_01        (01)
 #define PLC_CHANNEL_02        (02)
 #define PLC_LEN_OF_MESSAGE    (10)
+#define ON 1
+#define OFF 0
 typedef struct 
 {
   uint8_t roomAddr:4;
@@ -20,10 +22,19 @@ typedef struct
 
 typedef struct 
 {
+  uint8_t channel;
+  uint8_t onoff;
+  uint16_t value;
+  uint8_t messageType;
+}lightChannel;
+
+typedef struct 
+{
   uint8_t messageType;
   uint16_t payload;
   PLCDevice device;
 }PLCMessage;
+
 
 void PLC_MessageGenerate(uint8_t* buffer, PLCMessage message);
 HAL_StatusTypeDef PLC_MessageParser(uint8_t* buffer, PLCMessage* message);

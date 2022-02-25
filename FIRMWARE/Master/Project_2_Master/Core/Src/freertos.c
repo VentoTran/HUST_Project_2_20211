@@ -29,6 +29,7 @@
 #include "math.h"
 #include "timers.h"
 #include "plc.h"
+#include "queue.h"
 
 /* USER CODE END Includes */
 
@@ -47,6 +48,20 @@ typedef struct
   uint32_t time;
   uint8_t history[120];
 } Channel;
+
+lightChannel channel01 = {
+  .onoff = OFF,
+  .value = 0,
+  .channel = PLC_CHANNEL_01,
+  .messageType = 0,
+};
+
+lightChannel channel02 = {
+  .onoff = OFF,
+  .value = 0,
+  .channel = PLC_CHANNEL_02,
+  .messageType = 0,
+};
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -129,6 +144,8 @@ const osSemaphoreAttr_t PLCSem_attributes = {
   .name = "PLCSem"
 };
 
+osMessageQueueId_t PLC_MsgQueue;
+
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void ControlPageDisplay(void);
@@ -208,6 +225,7 @@ void MX_FREERTOS_Init(void) {
   /* creation of Button */
   ButtonHandle = osThreadNew(IRQ_Task, NULL, &Button_attributes);
 
+  PLC_MsgQueue = osMessageQueueNew(2, sizeof(lightChannel), NULL);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -283,16 +301,28 @@ void PLC_Task(void *argument)
       //HAL_UART_Transmit(&huart1, (uint8_t*)UART1_txBuffer, 2, 10);
 
     //}
-    PLCMessage message;
-    uint8_t buffer[10];
-    message.messageType = PLC_PWM_MESSAGE;
-    message.payload = 100;
-    message.device.roomAddr = PLC_ROOM_ADDR;
-    message.device.deviceAddr = PLC_DEVICE_ADDR;
-    message.device.channel = PLC_CHANNEL_01;
-    PLC_MessageGenerate(buffer, message);
-    HAL_UART_Transmit_IT(&huart1, buffer, 10);
-    osDelay(10000);
+    lightChannel channel;
+    if (osMessageQueueGet(PLC_MsgQueue, &channel, NULL, portMAX_DELAY) == osOK)
+    {
+      PLCMessage message;
+      uint8_t buffer[10];
+      message.messageType = channel.messageType;
+      if (channel.messageType == PLC_ONOFF_MESSAGE)
+      {
+        message.payload = channel.onoff;
+      }
+      else
+      if (channel.messageType == PLC_PWM_MESSAGE)
+      {
+        message.payload = channel.value;
+      }
+      message.device.roomAddr = PLC_ROOM_ADDR;
+      message.device.deviceAddr = PLC_DEVICE_ADDR;
+      message.device.channel = PLC_CHANNEL_01;
+      PLC_MessageGenerate(buffer, message);
+      HAL_UART_Transmit_IT(&huart1, buffer, 10);
+      //osDelay(10000);
+    }
   }
   /* USER CODE END PLC_Task */
 }
@@ -672,12 +702,18 @@ void ControlPageHandler(uint16_t x, uint16_t y)
       Channel_1.state = true;
       ILI9341_FillCircle(Channel_1.pos_x, Channel_1.pos_y, Channel_1.shape_r, ILI9341_GREEN);
       ILI9341_WriteString(Channel_1.pos_x-10, Channel_1.pos_y-5, "ON", Font_11x18, ILI9341_BLACK, ILI9341_GREEN);
+      channel01.onoff = ON;
+      channel01.messageType = PLC_ONOFF_MESSAGE;
+      osMessageQueuePut(PLC_MsgQueue, &channel01, 0U, 0U);
     }
     else
     {
       Channel_1.state = false;
       ILI9341_FillCircle(Channel_1.pos_x, Channel_1.pos_y, Channel_1.shape_r, ILI9341_RED);
       ILI9341_WriteString(Channel_1.pos_x-15, Channel_1.pos_y-5, "OFF", Font_11x18, ILI9341_BLACK, ILI9341_RED);
+      channel01.onoff = OFF;
+      channel01.messageType = PLC_ONOFF_MESSAGE;
+      osMessageQueuePut(PLC_MsgQueue, &channel01, 0U, 0U);
     }
   }
 
@@ -688,12 +724,18 @@ void ControlPageHandler(uint16_t x, uint16_t y)
       Channel_2.state = true;
       ILI9341_FillCircle(Channel_2.pos_x, Channel_2.pos_y, Channel_2.shape_r, ILI9341_GREEN);
       ILI9341_WriteString(Channel_2.pos_x-10, Channel_2.pos_y-5, "ON", Font_11x18, ILI9341_BLACK, ILI9341_GREEN);
+      channel02.onoff = ON;
+      channel02.messageType = PLC_ONOFF_MESSAGE;
+      osMessageQueuePut(PLC_MsgQueue, &channel02, 0U, 0U);
     }
     else
     {
       Channel_2.state = false;
       ILI9341_FillCircle(Channel_2.pos_x, Channel_2.pos_y, Channel_2.shape_r, ILI9341_RED);
       ILI9341_WriteString(Channel_2.pos_x-15, Channel_2.pos_y-5, "OFF", Font_11x18, ILI9341_BLACK, ILI9341_RED);
+      channel02.onoff = OFF;
+      channel02.messageType = PLC_ONOFF_MESSAGE;
+      osMessageQueuePut(PLC_MsgQueue, &channel02, 0U, 0U);
     }
   }
 

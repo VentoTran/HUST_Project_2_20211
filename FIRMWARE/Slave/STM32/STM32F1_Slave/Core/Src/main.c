@@ -59,6 +59,64 @@
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
+void PLC_MessageHandle(PLCMessage message)
+{
+  switch(message.messageType)
+  {
+    case (PLC_ONOFF_MESSAGE):
+    {
+      switch(message.device.channel)
+      {
+        case (PLC_CHANNEL_01):
+          if (message.payload == ON)
+          {
+            HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+            HAL_GPIO_WritePin(OF_CN1_GPIO_Port, OF_CN1_Pin, 1);
+          }
+          else
+          {
+            HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
+            HAL_GPIO_WritePin(OF_CN1_GPIO_Port, OF_CN1_Pin, 0);
+          }
+          break;
+        case (PLC_CHANNEL_02):
+          if (message.payload == OFF)
+          {
+            HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+            HAL_GPIO_WritePin(OF_CN2_GPIO_Port, OF_CN2_Pin, 1);
+          }
+          else
+          {
+            HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
+            HAL_GPIO_WritePin(OF_CN2_GPIO_Port, OF_CN2_Pin, 0);
+          }
+          break; 
+      }
+      break;
+    }
+    case (PLC_PWM_MESSAGE):
+    {
+      switch (message.device.channel)
+      {
+        case (PLC_CHANNEL_01):
+          __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, message.payload);
+          break;
+        case (PLC_CHANNEL_02):
+          __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, message.payload);
+          break;  
+      }
+      break;
+    }
+    case (PLC_RESPONSE_MESSAGE):
+      break;
+    default:
+      break;
+  }
+  uint8_t buffer[10];
+  PLC_ResponseMessageGenerate(buffer, message);
+  HAL_UART_Transmit_IT(&huart1, buffer, 10);
+}
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -102,13 +160,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 10);
 
-  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
-
-  // HAL_GPIO_WritePin(OF_CN1_GPIO_Port, OF_CN1_Pin, 1);
-  // HAL_GPIO_WritePin(OF_CN2_GPIO_Port, OF_CN2_Pin, 1);
-
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -139,7 +190,6 @@ int main(void)
     // HAL_GPIO_TogglePin(OF_CN1_GPIO_Port, OF_CN1_Pin);
     if (is_new_message == 1)
     {
-      
       HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
       PLCMessage message;
       uint8_t buffer[10];
@@ -150,8 +200,7 @@ int main(void)
       }
       else
       {
-        PLC_MessageGenerate(buffer, message);
-        HAL_UART_Transmit_IT(&huart1, buffer, 10);
+        PLC_MessageHandle(message);
       }
       
       // message.messageType = PLC_PWM_MESSAGE;
@@ -166,7 +215,6 @@ int main(void)
   }
   /* USER CODE END 3 */
 }
-
 /**
   * @brief System Clock Configuration
   * @retval None
