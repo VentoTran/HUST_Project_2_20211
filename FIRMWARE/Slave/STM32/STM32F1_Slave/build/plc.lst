@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 1
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -43,644 +43,588 @@ ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 1
   34 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
   35              		.loc 1 7 8 view .LVU3
   36 0002 242B     		cmp	r3, #36
-  37 0004 0AD1     		bne	.L3
+  37 0004 04D1     		bne	.L3
   38              		.loc 1 7 38 discriminator 1 view .LVU4
   39 0006 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
   40              		.loc 1 7 28 discriminator 1 view .LVU5
-  41 0008 0A2B     		cmp	r3, #10
-  42 000a 09D1     		bne	.L4
+  41 0008 082B     		cmp	r3, #8
+  42 000a 03D1     		bne	.L4
    8:Core/Src/plc.c ****     {
    9:Core/Src/plc.c ****         return HAL_ERROR;
   10:Core/Src/plc.c ****     }
-  11:Core/Src/plc.c ****     if ((buffer[8] != '\r') || (buffer[9] != '\n'))
-  43              		.loc 1 11 5 is_stmt 1 view .LVU6
-  44              		.loc 1 11 16 is_stmt 0 view .LVU7
-  45 000c 037A     		ldrb	r3, [r0, #8]	@ zero_extendqisi2
-  46              		.loc 1 11 8 view .LVU8
-  47 000e 0D2B     		cmp	r3, #13
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 2
+  11:Core/Src/plc.c ****     return HAL_OK;
+  43              		.loc 1 11 12 view .LVU6
+  44 000c 0020     		movs	r0, #0
+  45              	.LVL1:
+  46              		.loc 1 11 12 view .LVU7
+  47 000e 7047     		bx	lr
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 2
 
 
-  48 0010 08D1     		bne	.L5
-  49              		.loc 1 11 39 discriminator 1 view .LVU9
-  50 0012 437A     		ldrb	r3, [r0, #9]	@ zero_extendqisi2
-  51              		.loc 1 11 29 discriminator 1 view .LVU10
-  52 0014 0A2B     		cmp	r3, #10
-  53 0016 07D1     		bne	.L6
-  12:Core/Src/plc.c ****     {
-  13:Core/Src/plc.c ****         return HAL_ERROR;
-  14:Core/Src/plc.c ****     }
-  15:Core/Src/plc.c ****     return HAL_OK;
-  54              		.loc 1 15 12 view .LVU11
-  55 0018 0020     		movs	r0, #0
-  56              	.LVL1:
-  57              		.loc 1 15 12 view .LVU12
-  58 001a 7047     		bx	lr
-  59              	.LVL2:
-  60              	.L3:
+  48              	.LVL2:
+  49              	.L3:
    9:Core/Src/plc.c ****     }
-  61              		.loc 1 9 16 view .LVU13
-  62 001c 0120     		movs	r0, #1
-  63              	.LVL3:
+  50              		.loc 1 9 16 view .LVU8
+  51 0010 0120     		movs	r0, #1
+  52              	.LVL3:
    9:Core/Src/plc.c ****     }
-  64              		.loc 1 9 16 view .LVU14
-  65 001e 7047     		bx	lr
-  66              	.LVL4:
-  67              	.L4:
+  53              		.loc 1 9 16 view .LVU9
+  54 0012 7047     		bx	lr
+  55              	.LVL4:
+  56              	.L4:
    9:Core/Src/plc.c ****     }
-  68              		.loc 1 9 16 view .LVU15
-  69 0020 0120     		movs	r0, #1
-  70              	.LVL5:
-   9:Core/Src/plc.c ****     }
-  71              		.loc 1 9 16 view .LVU16
-  72 0022 7047     		bx	lr
+  57              		.loc 1 9 16 view .LVU10
+  58 0014 0120     		movs	r0, #1
+  59              	.LVL5:
+  12:Core/Src/plc.c **** }
+  60              		.loc 1 12 1 view .LVU11
+  61 0016 7047     		bx	lr
+  62              		.cfi_endproc
+  63              	.LFE68:
+  65              		.section	.text.PLC_getCRC16,"ax",%progbits
+  66              		.align	1
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  70              		.fpu softvfp
+  72              	PLC_getCRC16:
   73              	.LVL6:
-  74              	.L5:
-  13:Core/Src/plc.c ****     }
-  75              		.loc 1 13 16 view .LVU17
-  76 0024 0120     		movs	r0, #1
-  77              	.LVL7:
-  13:Core/Src/plc.c ****     }
-  78              		.loc 1 13 16 view .LVU18
-  79 0026 7047     		bx	lr
-  80              	.LVL8:
-  81              	.L6:
-  13:Core/Src/plc.c ****     }
-  82              		.loc 1 13 16 view .LVU19
-  83 0028 0120     		movs	r0, #1
-  84              	.LVL9:
-  16:Core/Src/plc.c **** }
-  85              		.loc 1 16 1 view .LVU20
-  86 002a 7047     		bx	lr
-  87              		.cfi_endproc
-  88              	.LFE68:
-  90              		.section	.text.PLC_getCRC16,"ax",%progbits
-  91              		.align	1
-  92              		.syntax unified
-  93              		.thumb
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 3
+  74              	.LFB69:
+  13:Core/Src/plc.c **** static uint16_t PLC_getCRC16(uint8_t* data)
+  14:Core/Src/plc.c **** {
+  75              		.loc 1 14 1 is_stmt 1 view -0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 8
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79              		@ link register save eliminated.
+  80              		.loc 1 14 1 is_stmt 0 view .LVU13
+  81 0000 10B4     		push	{r4}
+  82              	.LCFI0:
+  83              		.cfi_def_cfa_offset 4
+  84              		.cfi_offset 4, -4
+  85 0002 83B0     		sub	sp, sp, #12
+  86              	.LCFI1:
+  87              		.cfi_def_cfa_offset 16
+  15:Core/Src/plc.c ****   uint16_t crc = 0xFFFF;
+  88              		.loc 1 15 3 is_stmt 1 view .LVU14
+  89              		.loc 1 15 12 is_stmt 0 view .LVU15
+  90 0004 4FF6FF73 		movw	r3, #65535
+  91 0008 ADF80630 		strh	r3, [sp, #6]	@ movhi
+  16:Core/Src/plc.c ****   uint8_t i;
+  92              		.loc 1 16 3 is_stmt 1 view .LVU16
+  17:Core/Src/plc.c ****   uint8_t len = 6;
+  93              		.loc 1 17 3 view .LVU17
+  94              	.LVL7:
+  18:Core/Src/plc.c ****   while (len--) {
+  95              		.loc 1 18 3 view .LVU18
+  17:Core/Src/plc.c ****   uint8_t len = 6;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 3
 
 
-  94              		.thumb_func
-  95              		.fpu softvfp
-  97              	PLC_getCRC16:
-  98              	.LVL10:
-  99              	.LFB69:
-  17:Core/Src/plc.c **** static uint16_t PLC_getCRC16(uint8_t* data)
-  18:Core/Src/plc.c **** {
- 100              		.loc 1 18 1 is_stmt 1 view -0
- 101              		.cfi_startproc
- 102              		@ args = 0, pretend = 0, frame = 8
- 103              		@ frame_needed = 0, uses_anonymous_args = 0
- 104              		@ link register save eliminated.
- 105              		.loc 1 18 1 is_stmt 0 view .LVU22
- 106 0000 10B4     		push	{r4}
- 107              	.LCFI0:
- 108              		.cfi_def_cfa_offset 4
- 109              		.cfi_offset 4, -4
- 110 0002 83B0     		sub	sp, sp, #12
- 111              	.LCFI1:
- 112              		.cfi_def_cfa_offset 16
-  19:Core/Src/plc.c ****   uint16_t crc = 0xFFFF;
- 113              		.loc 1 19 3 is_stmt 1 view .LVU23
- 114              		.loc 1 19 12 is_stmt 0 view .LVU24
- 115 0004 4FF6FF73 		movw	r3, #65535
- 116 0008 ADF80630 		strh	r3, [sp, #6]	@ movhi
-  20:Core/Src/plc.c ****   uint8_t i;
- 117              		.loc 1 20 3 is_stmt 1 view .LVU25
-  21:Core/Src/plc.c ****   uint8_t len = 6;
- 118              		.loc 1 21 3 view .LVU26
- 119              	.LVL11:
-  22:Core/Src/plc.c ****   while (len--) {
- 120              		.loc 1 22 3 view .LVU27
-  21:Core/Src/plc.c ****   uint8_t len = 6;
- 121              		.loc 1 21 11 is_stmt 0 view .LVU28
- 122 000c 0624     		movs	r4, #6
- 123              	.LVL12:
- 124              	.L8:
- 125              		.loc 1 22 9 is_stmt 1 view .LVU29
- 126 000e 2346     		mov	r3, r4
- 127              		.loc 1 22 13 is_stmt 0 view .LVU30
- 128 0010 013C     		subs	r4, r4, #1
- 129              	.LVL13:
- 130              		.loc 1 22 13 view .LVU31
- 131 0012 E4B2     		uxtb	r4, r4
- 132              	.LVL14:
- 133              		.loc 1 22 9 view .LVU32
- 134 0014 DBB1     		cbz	r3, .L15
-  23:Core/Src/plc.c ****       i = *data++;
- 135              		.loc 1 23 7 is_stmt 1 view .LVU33
- 136              	.LVL15:
- 137              		.loc 1 23 9 is_stmt 0 view .LVU34
- 138 0016 10F8013B 		ldrb	r3, [r0], #1	@ zero_extendqisi2
- 139              	.LVL16:
-  24:Core/Src/plc.c ****       *(uint8_t *)&crc  ^= i;
- 140              		.loc 1 24 7 is_stmt 1 view .LVU35
- 141              		.loc 1 24 25 is_stmt 0 view .LVU36
- 142 001a 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 4
+  96              		.loc 1 17 11 is_stmt 0 view .LVU19
+  97 000c 0624     		movs	r4, #6
+  98              	.LVL8:
+  99              	.L6:
+ 100              		.loc 1 18 9 is_stmt 1 view .LVU20
+ 101 000e 2346     		mov	r3, r4
+ 102              		.loc 1 18 13 is_stmt 0 view .LVU21
+ 103 0010 013C     		subs	r4, r4, #1
+ 104              	.LVL9:
+ 105              		.loc 1 18 13 view .LVU22
+ 106 0012 E4B2     		uxtb	r4, r4
+ 107              	.LVL10:
+ 108              		.loc 1 18 9 view .LVU23
+ 109 0014 DBB1     		cbz	r3, .L13
+  19:Core/Src/plc.c ****       i = *data++;
+ 110              		.loc 1 19 7 is_stmt 1 view .LVU24
+ 111              	.LVL11:
+ 112              		.loc 1 19 9 is_stmt 0 view .LVU25
+ 113 0016 10F8013B 		ldrb	r3, [r0], #1	@ zero_extendqisi2
+ 114              	.LVL12:
+  20:Core/Src/plc.c ****       *(uint8_t *)&crc  ^= i;
+ 115              		.loc 1 20 7 is_stmt 1 view .LVU26
+ 116              		.loc 1 20 25 is_stmt 0 view .LVU27
+ 117 001a 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
+ 118 001e 5340     		eors	r3, r3, r2
+ 119              	.LVL13:
+ 120              		.loc 1 20 25 view .LVU28
+ 121 0020 8DF80630 		strb	r3, [sp, #6]
+ 122              	.LVL14:
+  21:Core/Src/plc.c **** 
+  22:Core/Src/plc.c ****       for (i = 0; i != 8; i++) {
+ 123              		.loc 1 22 7 is_stmt 1 view .LVU29
+ 124              		.loc 1 22 14 is_stmt 0 view .LVU30
+ 125 0024 0023     		movs	r3, #0
+ 126              		.loc 1 22 7 view .LVU31
+ 127 0026 04E0     		b	.L7
+ 128              	.LVL15:
+ 129              	.L8:
+  23:Core/Src/plc.c ****           if (crc & 0x0001) {
+  24:Core/Src/plc.c ****               crc = (crc >> 1);
+  25:Core/Src/plc.c ****               crc ^= 0xA001;
+  26:Core/Src/plc.c ****           } else {
+  27:Core/Src/plc.c ****               crc = (crc >> 1);
+ 130              		.loc 1 27 15 is_stmt 1 view .LVU32
+ 131              		.loc 1 27 19 is_stmt 0 view .LVU33
+ 132 0028 5208     		lsrs	r2, r2, #1
+ 133 002a ADF80620 		strh	r2, [sp, #6]	@ movhi
+ 134              	.L9:
+  22:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 135              		.loc 1 22 27 is_stmt 1 discriminator 2 view .LVU34
+  22:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 136              		.loc 1 22 28 is_stmt 0 discriminator 2 view .LVU35
+ 137 002e 0133     		adds	r3, r3, #1
+ 138              	.LVL16:
+  22:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 139              		.loc 1 22 28 discriminator 2 view .LVU36
+ 140 0030 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 4
 
 
- 143 001e 5340     		eors	r3, r3, r2
- 144              	.LVL17:
- 145              		.loc 1 24 25 view .LVU37
- 146 0020 8DF80630 		strb	r3, [sp, #6]
- 147              	.LVL18:
-  25:Core/Src/plc.c **** 
-  26:Core/Src/plc.c ****       for (i = 0; i != 8; i++) {
- 148              		.loc 1 26 7 is_stmt 1 view .LVU38
- 149              		.loc 1 26 14 is_stmt 0 view .LVU39
- 150 0024 0023     		movs	r3, #0
- 151              		.loc 1 26 7 view .LVU40
- 152 0026 04E0     		b	.L9
- 153              	.LVL19:
- 154              	.L10:
-  27:Core/Src/plc.c ****           if (crc & 0x0001) {
-  28:Core/Src/plc.c ****               crc = (crc >> 1);
-  29:Core/Src/plc.c ****               crc ^= 0xA001;
-  30:Core/Src/plc.c ****           } else {
-  31:Core/Src/plc.c ****               crc = (crc >> 1);
- 155              		.loc 1 31 15 is_stmt 1 view .LVU41
- 156              		.loc 1 31 19 is_stmt 0 view .LVU42
- 157 0028 5208     		lsrs	r2, r2, #1
- 158 002a ADF80620 		strh	r2, [sp, #6]	@ movhi
- 159              	.L11:
-  26:Core/Src/plc.c ****           if (crc & 0x0001) {
- 160              		.loc 1 26 27 is_stmt 1 discriminator 2 view .LVU43
-  26:Core/Src/plc.c ****           if (crc & 0x0001) {
- 161              		.loc 1 26 28 is_stmt 0 discriminator 2 view .LVU44
- 162 002e 0133     		adds	r3, r3, #1
- 163              	.LVL20:
-  26:Core/Src/plc.c ****           if (crc & 0x0001) {
- 164              		.loc 1 26 28 discriminator 2 view .LVU45
- 165 0030 DBB2     		uxtb	r3, r3
- 166              	.LVL21:
- 167              	.L9:
-  26:Core/Src/plc.c ****           if (crc & 0x0001) {
- 168              		.loc 1 26 19 is_stmt 1 discriminator 1 view .LVU46
-  26:Core/Src/plc.c ****           if (crc & 0x0001) {
- 169              		.loc 1 26 7 is_stmt 0 discriminator 1 view .LVU47
- 170 0032 082B     		cmp	r3, #8
- 171 0034 EBD0     		beq	.L8
-  27:Core/Src/plc.c ****           if (crc & 0x0001) {
- 172              		.loc 1 27 11 is_stmt 1 view .LVU48
-  27:Core/Src/plc.c ****           if (crc & 0x0001) {
- 173              		.loc 1 27 19 is_stmt 0 view .LVU49
- 174 0036 BDF80620 		ldrh	r2, [sp, #6]
-  27:Core/Src/plc.c ****           if (crc & 0x0001) {
- 175              		.loc 1 27 14 view .LVU50
- 176 003a 12F0010F 		tst	r2, #1
- 177 003e F3D0     		beq	.L10
-  28:Core/Src/plc.c ****               crc ^= 0xA001;
- 178              		.loc 1 28 15 is_stmt 1 view .LVU51
-  29:Core/Src/plc.c ****           } else {
- 179              		.loc 1 29 15 view .LVU52
-  29:Core/Src/plc.c ****           } else {
- 180              		.loc 1 29 19 is_stmt 0 view .LVU53
- 181 0040 4AF20101 		movw	r1, #40961
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 5
+ 141              	.LVL17:
+ 142              	.L7:
+  22:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 143              		.loc 1 22 19 is_stmt 1 discriminator 1 view .LVU37
+  22:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 144              		.loc 1 22 7 is_stmt 0 discriminator 1 view .LVU38
+ 145 0032 082B     		cmp	r3, #8
+ 146 0034 EBD0     		beq	.L6
+  23:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 147              		.loc 1 23 11 is_stmt 1 view .LVU39
+  23:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 148              		.loc 1 23 19 is_stmt 0 view .LVU40
+ 149 0036 BDF80620 		ldrh	r2, [sp, #6]
+  23:Core/Src/plc.c ****           if (crc & 0x0001) {
+ 150              		.loc 1 23 14 view .LVU41
+ 151 003a 12F0010F 		tst	r2, #1
+ 152 003e F3D0     		beq	.L8
+  24:Core/Src/plc.c ****               crc ^= 0xA001;
+ 153              		.loc 1 24 15 is_stmt 1 view .LVU42
+  25:Core/Src/plc.c ****           } else {
+ 154              		.loc 1 25 15 view .LVU43
+  25:Core/Src/plc.c ****           } else {
+ 155              		.loc 1 25 19 is_stmt 0 view .LVU44
+ 156 0040 4AF20101 		movw	r1, #40961
+ 157 0044 81EA5202 		eor	r2, r1, r2, lsr #1
+ 158 0048 ADF80620 		strh	r2, [sp, #6]	@ movhi
+ 159 004c EFE7     		b	.L9
+ 160              	.LVL18:
+ 161              	.L13:
+  28:Core/Src/plc.c ****           }
+  29:Core/Src/plc.c ****       }
+  30:Core/Src/plc.c ****   }
+  31:Core/Src/plc.c ****   return crc;
+ 162              		.loc 1 31 3 is_stmt 1 view .LVU45
+  32:Core/Src/plc.c **** }
+ 163              		.loc 1 32 1 is_stmt 0 view .LVU46
+ 164 004e BDF80600 		ldrh	r0, [sp, #6]
+ 165              	.LVL19:
+ 166              		.loc 1 32 1 view .LVU47
+ 167 0052 03B0     		add	sp, sp, #12
+ 168              	.LCFI2:
+ 169              		.cfi_def_cfa_offset 4
+ 170              		@ sp needed
+ 171 0054 10BC     		pop	{r4}
+ 172              	.LCFI3:
+ 173              		.cfi_restore 4
+ 174              		.cfi_def_cfa_offset 0
+ 175              	.LVL20:
+ 176              		.loc 1 32 1 view .LVU48
+ 177 0056 7047     		bx	lr
+ 178              		.cfi_endproc
+ 179              	.LFE69:
+ 181              		.section	.text.PLC_MessageGenerate,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	PLC_MessageGenerate
+ 184              		.syntax unified
+ 185              		.thumb
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 5
 
 
- 182 0044 81EA5202 		eor	r2, r1, r2, lsr #1
- 183 0048 ADF80620 		strh	r2, [sp, #6]	@ movhi
- 184 004c EFE7     		b	.L11
- 185              	.LVL22:
- 186              	.L15:
-  32:Core/Src/plc.c ****           }
-  33:Core/Src/plc.c ****       }
-  34:Core/Src/plc.c ****   }
-  35:Core/Src/plc.c ****   return crc;
- 187              		.loc 1 35 3 is_stmt 1 view .LVU54
-  36:Core/Src/plc.c **** }
- 188              		.loc 1 36 1 is_stmt 0 view .LVU55
- 189 004e BDF80600 		ldrh	r0, [sp, #6]
- 190              	.LVL23:
- 191              		.loc 1 36 1 view .LVU56
- 192 0052 03B0     		add	sp, sp, #12
- 193              	.LCFI2:
- 194              		.cfi_def_cfa_offset 4
- 195              		@ sp needed
- 196 0054 10BC     		pop	{r4}
- 197              	.LCFI3:
- 198              		.cfi_restore 4
- 199              		.cfi_def_cfa_offset 0
- 200              	.LVL24:
- 201              		.loc 1 36 1 view .LVU57
- 202 0056 7047     		bx	lr
- 203              		.cfi_endproc
- 204              	.LFE69:
- 206              		.section	.text.PLC_MessageGenerate,"ax",%progbits
- 207              		.align	1
- 208              		.global	PLC_MessageGenerate
- 209              		.syntax unified
- 210              		.thumb
- 211              		.thumb_func
- 212              		.fpu softvfp
- 214              	PLC_MessageGenerate:
- 215              	.LVL25:
- 216              	.LFB70:
-  37:Core/Src/plc.c **** void PLC_MessageGenerate(uint8_t* buffer, PLCMessage message)
-  38:Core/Src/plc.c **** {
- 217              		.loc 1 38 1 is_stmt 1 view -0
- 218              		.cfi_startproc
- 219              		@ args = 0, pretend = 0, frame = 8
- 220              		@ frame_needed = 0, uses_anonymous_args = 0
- 221              		.loc 1 38 1 is_stmt 0 view .LVU59
- 222 0000 30B5     		push	{r4, r5, lr}
- 223              	.LCFI4:
- 224              		.cfi_def_cfa_offset 12
- 225              		.cfi_offset 4, -12
- 226              		.cfi_offset 5, -8
- 227              		.cfi_offset 14, -4
- 228 0002 83B0     		sub	sp, sp, #12
- 229              	.LCFI5:
- 230              		.cfi_def_cfa_offset 24
- 231 0004 0446     		mov	r4, r0
- 232 0006 02AB     		add	r3, sp, #8
- 233 0008 03E90600 		stmdb	r3, {r1, r2}
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 6
+ 186              		.thumb_func
+ 187              		.fpu softvfp
+ 189              	PLC_MessageGenerate:
+ 190              	.LVL21:
+ 191              	.LFB70:
+  33:Core/Src/plc.c **** void PLC_MessageGenerate(uint8_t* buffer, PLCMessage message)
+  34:Core/Src/plc.c **** {
+ 192              		.loc 1 34 1 is_stmt 1 view -0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 8
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196              		.loc 1 34 1 is_stmt 0 view .LVU50
+ 197 0000 10B5     		push	{r4, lr}
+ 198              	.LCFI4:
+ 199              		.cfi_def_cfa_offset 8
+ 200              		.cfi_offset 4, -8
+ 201              		.cfi_offset 14, -4
+ 202 0002 82B0     		sub	sp, sp, #8
+ 203              	.LCFI5:
+ 204              		.cfi_def_cfa_offset 16
+ 205 0004 0446     		mov	r4, r0
+ 206 0006 02AB     		add	r3, sp, #8
+ 207 0008 03E90600 		stmdb	r3, {r1, r2}
+  35:Core/Src/plc.c ****   
+  36:Core/Src/plc.c ****   buffer[0] = '$';
+ 208              		.loc 1 36 3 is_stmt 1 view .LVU51
+ 209              		.loc 1 36 13 is_stmt 0 view .LVU52
+ 210 000c 2423     		movs	r3, #36
+ 211 000e 0370     		strb	r3, [r0]
+  37:Core/Src/plc.c ****   buffer[1] = PLC_LEN_OF_MESSAGE;
+ 212              		.loc 1 37 3 is_stmt 1 view .LVU53
+ 213              		.loc 1 37 13 is_stmt 0 view .LVU54
+ 214 0010 0823     		movs	r3, #8
+ 215 0012 4370     		strb	r3, [r0, #1]
+  38:Core/Src/plc.c ****   buffer[2] = message.messageType;
+ 216              		.loc 1 38 3 is_stmt 1 view .LVU55
+ 217              		.loc 1 38 22 is_stmt 0 view .LVU56
+ 218 0014 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 219              		.loc 1 38 13 view .LVU57
+ 220 0018 8370     		strb	r3, [r0, #2]
+  39:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
+ 221              		.loc 1 39 3 is_stmt 1 view .LVU58
+ 222              		.loc 1 39 30 is_stmt 0 view .LVU59
+ 223 001a 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 224 001e 02F00F01 		and	r1, r2, #15
+  40:Core/Src/plc.c ****               | (message.device.deviceAddr << 2)
+ 225              		.loc 1 40 32 view .LVU60
+ 226 0022 C2F30113 		ubfx	r3, r2, #4, #2
+ 227              		.loc 1 40 44 view .LVU61
+ 228 0026 9B00     		lsls	r3, r3, #2
+ 229              		.loc 1 40 15 view .LVU62
+ 230 0028 43EA0113 		orr	r3, r3, r1, lsl #4
+ 231 002c 5BB2     		sxtb	r3, r3
+  41:Core/Src/plc.c ****               | (message.device.channel);
+ 232              		.loc 1 41 15 view .LVU63
+ 233 002e 43EA9213 		orr	r3, r3, r2, lsr #6
+  39:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 6
 
 
-  39:Core/Src/plc.c ****   
-  40:Core/Src/plc.c ****   buffer[0] = '$';
- 234              		.loc 1 40 3 is_stmt 1 view .LVU60
- 235              		.loc 1 40 13 is_stmt 0 view .LVU61
- 236 000c 2423     		movs	r3, #36
- 237 000e 0370     		strb	r3, [r0]
-  41:Core/Src/plc.c ****   buffer[1] = PLC_LEN_OF_MESSAGE;
- 238              		.loc 1 41 3 is_stmt 1 view .LVU62
- 239              		.loc 1 41 13 is_stmt 0 view .LVU63
- 240 0010 0A25     		movs	r5, #10
- 241 0012 4570     		strb	r5, [r0, #1]
-  42:Core/Src/plc.c ****   buffer[2] = message.messageType;
- 242              		.loc 1 42 3 is_stmt 1 view .LVU64
- 243              		.loc 1 42 22 is_stmt 0 view .LVU65
- 244 0014 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
- 245              		.loc 1 42 13 view .LVU66
- 246 0018 8370     		strb	r3, [r0, #2]
-  43:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
- 247              		.loc 1 43 3 is_stmt 1 view .LVU67
- 248              		.loc 1 43 30 is_stmt 0 view .LVU68
- 249 001a 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
- 250 001e 02F00F01 		and	r1, r2, #15
-  44:Core/Src/plc.c ****               | (message.device.deviceAddr << 2)
- 251              		.loc 1 44 32 view .LVU69
- 252 0022 C2F30113 		ubfx	r3, r2, #4, #2
- 253              		.loc 1 44 44 view .LVU70
- 254 0026 9B00     		lsls	r3, r3, #2
- 255              		.loc 1 44 15 view .LVU71
- 256 0028 43EA0113 		orr	r3, r3, r1, lsl #4
- 257 002c 5BB2     		sxtb	r3, r3
-  45:Core/Src/plc.c ****               | (message.device.channel);
- 258              		.loc 1 45 15 view .LVU72
- 259 002e 43EA9213 		orr	r3, r3, r2, lsr #6
-  43:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
- 260              		.loc 1 43 13 view .LVU73
- 261 0032 C370     		strb	r3, [r0, #3]
-  46:Core/Src/plc.c ****   buffer[4] = (message.payload >> 8) & (0xFF);
- 262              		.loc 1 46 3 is_stmt 1 view .LVU74
- 263              		.loc 1 46 23 is_stmt 0 view .LVU75
- 264 0034 BDF80230 		ldrh	r3, [sp, #2]
- 265              		.loc 1 46 13 view .LVU76
- 266 0038 1A0A     		lsrs	r2, r3, #8
- 267 003a 0271     		strb	r2, [r0, #4]
-  47:Core/Src/plc.c ****   buffer[5] = (message.payload & 0xFF); 
- 268              		.loc 1 47 3 is_stmt 1 view .LVU77
- 269              		.loc 1 47 13 is_stmt 0 view .LVU78
- 270 003c 4371     		strb	r3, [r0, #5]
-  48:Core/Src/plc.c ****   uint16_t crc = PLC_getCRC16(buffer);
- 271              		.loc 1 48 3 is_stmt 1 view .LVU79
- 272              		.loc 1 48 18 is_stmt 0 view .LVU80
- 273 003e FFF7FEFF 		bl	PLC_getCRC16
- 274              	.LVL26:
-  49:Core/Src/plc.c ****   buffer[6] = (crc >> 8) & (0xFF);
- 275              		.loc 1 49 3 is_stmt 1 view .LVU81
- 276              		.loc 1 49 13 is_stmt 0 view .LVU82
- 277 0042 030A     		lsrs	r3, r0, #8
- 278 0044 A371     		strb	r3, [r4, #6]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 7
+ 234              		.loc 1 39 13 view .LVU64
+ 235 0032 C370     		strb	r3, [r0, #3]
+  42:Core/Src/plc.c ****   buffer[4] = (message.payload >> 8) & (0xFF);
+ 236              		.loc 1 42 3 is_stmt 1 view .LVU65
+ 237              		.loc 1 42 23 is_stmt 0 view .LVU66
+ 238 0034 BDF80230 		ldrh	r3, [sp, #2]
+ 239              		.loc 1 42 13 view .LVU67
+ 240 0038 1A0A     		lsrs	r2, r3, #8
+ 241 003a 0271     		strb	r2, [r0, #4]
+  43:Core/Src/plc.c ****   buffer[5] = (message.payload & 0xFF); 
+ 242              		.loc 1 43 3 is_stmt 1 view .LVU68
+ 243              		.loc 1 43 13 is_stmt 0 view .LVU69
+ 244 003c 4371     		strb	r3, [r0, #5]
+  44:Core/Src/plc.c ****   uint16_t crc = PLC_getCRC16(buffer);
+ 245              		.loc 1 44 3 is_stmt 1 view .LVU70
+ 246              		.loc 1 44 18 is_stmt 0 view .LVU71
+ 247 003e FFF7FEFF 		bl	PLC_getCRC16
+ 248              	.LVL22:
+  45:Core/Src/plc.c ****   buffer[6] = (crc >> 8) & (0xFF);
+ 249              		.loc 1 45 3 is_stmt 1 view .LVU72
+ 250              		.loc 1 45 13 is_stmt 0 view .LVU73
+ 251 0042 030A     		lsrs	r3, r0, #8
+ 252 0044 A371     		strb	r3, [r4, #6]
+  46:Core/Src/plc.c ****   buffer[7] = (crc & 0xFF);
+ 253              		.loc 1 46 3 is_stmt 1 view .LVU74
+ 254              		.loc 1 46 13 is_stmt 0 view .LVU75
+ 255 0046 E071     		strb	r0, [r4, #7]
+  47:Core/Src/plc.c **** }
+ 256              		.loc 1 47 1 view .LVU76
+ 257 0048 02B0     		add	sp, sp, #8
+ 258              	.LCFI6:
+ 259              		.cfi_def_cfa_offset 8
+ 260              		@ sp needed
+ 261 004a 10BD     		pop	{r4, pc}
+ 262              		.loc 1 47 1 view .LVU77
+ 263              		.cfi_endproc
+ 264              	.LFE70:
+ 266              		.section	.text.PLC_MessageParser,"ax",%progbits
+ 267              		.align	1
+ 268              		.global	PLC_MessageParser
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 272              		.fpu softvfp
+ 274              	PLC_MessageParser:
+ 275              	.LVL23:
+ 276              	.LFB71:
+  48:Core/Src/plc.c **** 
+  49:Core/Src/plc.c **** HAL_StatusTypeDef PLC_MessageParser(uint8_t* buffer, PLCMessage* message)
+  50:Core/Src/plc.c **** {
+ 277              		.loc 1 50 1 is_stmt 1 view -0
+ 278              		.cfi_startproc
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 281              		.loc 1 50 1 is_stmt 0 view .LVU79
+ 282 0000 70B5     		push	{r4, r5, r6, lr}
+ 283              	.LCFI7:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 7
 
 
-  50:Core/Src/plc.c ****   buffer[7] = (crc & 0xFF);
- 279              		.loc 1 50 3 is_stmt 1 view .LVU83
- 280              		.loc 1 50 13 is_stmt 0 view .LVU84
- 281 0046 E071     		strb	r0, [r4, #7]
-  51:Core/Src/plc.c ****   buffer[8] = '\r';
- 282              		.loc 1 51 3 is_stmt 1 view .LVU85
- 283              		.loc 1 51 13 is_stmt 0 view .LVU86
- 284 0048 0D23     		movs	r3, #13
- 285 004a 2372     		strb	r3, [r4, #8]
-  52:Core/Src/plc.c ****   buffer[9] = '\n';
- 286              		.loc 1 52 3 is_stmt 1 view .LVU87
- 287              		.loc 1 52 13 is_stmt 0 view .LVU88
- 288 004c 6572     		strb	r5, [r4, #9]
-  53:Core/Src/plc.c **** }
- 289              		.loc 1 53 1 view .LVU89
- 290 004e 03B0     		add	sp, sp, #12
- 291              	.LCFI6:
- 292              		.cfi_def_cfa_offset 12
- 293              		@ sp needed
- 294 0050 30BD     		pop	{r4, r5, pc}
- 295              		.loc 1 53 1 view .LVU90
- 296              		.cfi_endproc
- 297              	.LFE70:
- 299              		.section	.text.PLC_MessageParser,"ax",%progbits
- 300              		.align	1
- 301              		.global	PLC_MessageParser
- 302              		.syntax unified
- 303              		.thumb
- 304              		.thumb_func
- 305              		.fpu softvfp
- 307              	PLC_MessageParser:
- 308              	.LVL27:
- 309              	.LFB71:
-  54:Core/Src/plc.c **** 
-  55:Core/Src/plc.c **** HAL_StatusTypeDef PLC_MessageParser(uint8_t* buffer, PLCMessage* message)
-  56:Core/Src/plc.c **** {
- 310              		.loc 1 56 1 is_stmt 1 view -0
- 311              		.cfi_startproc
- 312              		@ args = 0, pretend = 0, frame = 0
- 313              		@ frame_needed = 0, uses_anonymous_args = 0
- 314              		.loc 1 56 1 is_stmt 0 view .LVU92
- 315 0000 70B5     		push	{r4, r5, r6, lr}
- 316              	.LCFI7:
- 317              		.cfi_def_cfa_offset 16
- 318              		.cfi_offset 4, -16
- 319              		.cfi_offset 5, -12
- 320              		.cfi_offset 6, -8
- 321              		.cfi_offset 14, -4
- 322 0002 0446     		mov	r4, r0
- 323 0004 0D46     		mov	r5, r1
-  57:Core/Src/plc.c ****     if (PLC_MessageChecking(buffer) != HAL_OK)
- 324              		.loc 1 57 5 is_stmt 1 view .LVU93
- 325              		.loc 1 57 9 is_stmt 0 view .LVU94
- 326 0006 FFF7FEFF 		bl	PLC_MessageChecking
- 327              	.LVL28:
- 328              		.loc 1 57 8 view .LVU95
- 329 000a 10B1     		cbz	r0, .L23
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 8
+ 284              		.cfi_def_cfa_offset 16
+ 285              		.cfi_offset 4, -16
+ 286              		.cfi_offset 5, -12
+ 287              		.cfi_offset 6, -8
+ 288              		.cfi_offset 14, -4
+ 289 0002 0446     		mov	r4, r0
+ 290 0004 0D46     		mov	r5, r1
+  51:Core/Src/plc.c ****     if (PLC_MessageChecking(buffer) != HAL_OK)
+ 291              		.loc 1 51 5 is_stmt 1 view .LVU80
+ 292              		.loc 1 51 9 is_stmt 0 view .LVU81
+ 293 0006 FFF7FEFF 		bl	PLC_MessageChecking
+ 294              	.LVL24:
+ 295              		.loc 1 51 8 view .LVU82
+ 296 000a 10B1     		cbz	r0, .L21
+  52:Core/Src/plc.c ****     {
+  53:Core/Src/plc.c ****         return HAL_ERROR;
+ 297              		.loc 1 53 16 view .LVU83
+ 298 000c 0126     		movs	r6, #1
+ 299              	.L17:
+  54:Core/Src/plc.c ****     }
+  55:Core/Src/plc.c ****     message->messageType = buffer[2];
+  56:Core/Src/plc.c ****     message->device.roomAddr = buffer[3] >> 4;
+  57:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
+  58:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
+  59:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
+  60:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
+  61:Core/Src/plc.c ****     if (crc != ((buffer[6] << 8) | (buffer[7])))
+  62:Core/Src/plc.c ****     {
+  63:Core/Src/plc.c ****         return HAL_ERROR;
+  64:Core/Src/plc.c ****     }
+  65:Core/Src/plc.c ****     return HAL_OK;
+  66:Core/Src/plc.c **** }
+ 300              		.loc 1 66 1 view .LVU84
+ 301 000e 3046     		mov	r0, r6
+ 302 0010 70BD     		pop	{r4, r5, r6, pc}
+ 303              	.LVL25:
+ 304              	.L21:
+ 305              		.loc 1 66 1 view .LVU85
+ 306 0012 0646     		mov	r6, r0
+  55:Core/Src/plc.c ****     message->device.roomAddr = buffer[3] >> 4;
+ 307              		.loc 1 55 5 is_stmt 1 view .LVU86
+  55:Core/Src/plc.c ****     message->device.roomAddr = buffer[3] >> 4;
+ 308              		.loc 1 55 26 is_stmt 0 view .LVU87
+ 309 0014 A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+ 310 0016 2B70     		strb	r3, [r5]
+  56:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
+ 311              		.loc 1 56 5 is_stmt 1 view .LVU88
+  56:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
+ 312              		.loc 1 56 38 is_stmt 0 view .LVU89
+ 313 0018 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+  56:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
+ 314              		.loc 1 56 42 view .LVU90
+ 315 001a 1B09     		lsrs	r3, r3, #4
+  56:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
+ 316              		.loc 1 56 30 view .LVU91
+ 317 001c 2A79     		ldrb	r2, [r5, #4]	@ zero_extendqisi2
+ 318 001e 63F30302 		bfi	r2, r3, #0, #4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 8
 
 
-  58:Core/Src/plc.c ****     {
-  59:Core/Src/plc.c ****         return HAL_ERROR;
- 330              		.loc 1 59 16 view .LVU96
- 331 000c 0126     		movs	r6, #1
- 332              	.L19:
-  60:Core/Src/plc.c ****     }
-  61:Core/Src/plc.c ****     message->messageType = buffer[2];
-  62:Core/Src/plc.c ****     message->device.roomAddr = buffer[3] >> 4;
-  63:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
-  64:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
-  65:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
-  66:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
-  67:Core/Src/plc.c ****     if (crc != ((buffer[6] << 8) | (buffer[7])))
-  68:Core/Src/plc.c ****     {
-  69:Core/Src/plc.c ****         return HAL_ERROR;
-  70:Core/Src/plc.c ****     }
-  71:Core/Src/plc.c ****     return HAL_OK;
-  72:Core/Src/plc.c **** }
- 333              		.loc 1 72 1 view .LVU97
- 334 000e 3046     		mov	r0, r6
- 335 0010 70BD     		pop	{r4, r5, r6, pc}
- 336              	.LVL29:
- 337              	.L23:
- 338              		.loc 1 72 1 view .LVU98
- 339 0012 0646     		mov	r6, r0
-  61:Core/Src/plc.c ****     message->device.roomAddr = buffer[3] >> 4;
- 340              		.loc 1 61 5 is_stmt 1 view .LVU99
-  61:Core/Src/plc.c ****     message->device.roomAddr = buffer[3] >> 4;
- 341              		.loc 1 61 26 is_stmt 0 view .LVU100
- 342 0014 A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
- 343 0016 2B70     		strb	r3, [r5]
-  62:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
- 344              		.loc 1 62 5 is_stmt 1 view .LVU101
-  62:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
- 345              		.loc 1 62 38 is_stmt 0 view .LVU102
- 346 0018 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
-  62:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
- 347              		.loc 1 62 42 view .LVU103
- 348 001a 1B09     		lsrs	r3, r3, #4
-  62:Core/Src/plc.c ****     message->device.deviceAddr = (buffer[3] >> 2) & 0x03;
- 349              		.loc 1 62 30 view .LVU104
- 350 001c 2A79     		ldrb	r2, [r5, #4]	@ zero_extendqisi2
- 351 001e 63F30302 		bfi	r2, r3, #0, #4
- 352 0022 2A71     		strb	r2, [r5, #4]
-  63:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
- 353              		.loc 1 63 5 is_stmt 1 view .LVU105
-  63:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
- 354              		.loc 1 63 41 is_stmt 0 view .LVU106
- 355 0024 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
-  63:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
- 356              		.loc 1 63 51 view .LVU107
- 357 0026 C3F38103 		ubfx	r3, r3, #2, #2
-  63:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
- 358              		.loc 1 63 32 view .LVU108
- 359 002a D2B2     		uxtb	r2, r2
- 360 002c 63F30512 		bfi	r2, r3, #4, #2
- 361 0030 2A71     		strb	r2, [r5, #4]
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 9
+ 319 0022 2A71     		strb	r2, [r5, #4]
+  57:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
+ 320              		.loc 1 57 5 is_stmt 1 view .LVU92
+  57:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
+ 321              		.loc 1 57 41 is_stmt 0 view .LVU93
+ 322 0024 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+  57:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
+ 323              		.loc 1 57 51 view .LVU94
+ 324 0026 C3F38103 		ubfx	r3, r3, #2, #2
+  57:Core/Src/plc.c ****     message->device.channel = buffer[3] & 0x03;
+ 325              		.loc 1 57 32 view .LVU95
+ 326 002a D2B2     		uxtb	r2, r2
+ 327 002c 63F30512 		bfi	r2, r3, #4, #2
+ 328 0030 2A71     		strb	r2, [r5, #4]
+  58:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
+ 329              		.loc 1 58 5 is_stmt 1 view .LVU96
+  58:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
+ 330              		.loc 1 58 37 is_stmt 0 view .LVU97
+ 331 0032 E278     		ldrb	r2, [r4, #3]	@ zero_extendqisi2
+  58:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
+ 332              		.loc 1 58 29 view .LVU98
+ 333 0034 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
+ 334 0036 62F38713 		bfi	r3, r2, #6, #2
+ 335 003a 2B71     		strb	r3, [r5, #4]
+  59:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
+ 336              		.loc 1 59 5 is_stmt 1 view .LVU99
+  59:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
+ 337              		.loc 1 59 31 is_stmt 0 view .LVU100
+ 338 003c 2279     		ldrb	r2, [r4, #4]	@ zero_extendqisi2
+  59:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
+ 339              		.loc 1 59 50 view .LVU101
+ 340 003e 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+  59:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
+ 341              		.loc 1 59 41 view .LVU102
+ 342 0040 43EA0223 		orr	r3, r3, r2, lsl #8
+  59:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
+ 343              		.loc 1 59 22 view .LVU103
+ 344 0044 6B80     		strh	r3, [r5, #2]	@ movhi
+  60:Core/Src/plc.c ****     if (crc != ((buffer[6] << 8) | (buffer[7])))
+ 345              		.loc 1 60 5 is_stmt 1 view .LVU104
+  60:Core/Src/plc.c ****     if (crc != ((buffer[6] << 8) | (buffer[7])))
+ 346              		.loc 1 60 20 is_stmt 0 view .LVU105
+ 347 0046 2046     		mov	r0, r4
+ 348 0048 FFF7FEFF 		bl	PLC_getCRC16
+ 349              	.LVL26:
+  61:Core/Src/plc.c ****     {
+ 350              		.loc 1 61 5 is_stmt 1 view .LVU106
+  61:Core/Src/plc.c ****     {
+ 351              		.loc 1 61 24 is_stmt 0 view .LVU107
+ 352 004c A279     		ldrb	r2, [r4, #6]	@ zero_extendqisi2
+  61:Core/Src/plc.c ****     {
+ 353              		.loc 1 61 43 view .LVU108
+ 354 004e E379     		ldrb	r3, [r4, #7]	@ zero_extendqisi2
+  61:Core/Src/plc.c ****     {
+ 355              		.loc 1 61 34 view .LVU109
+ 356 0050 43EA0223 		orr	r3, r3, r2, lsl #8
+  61:Core/Src/plc.c ****     {
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 9
 
 
-  64:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
- 362              		.loc 1 64 5 is_stmt 1 view .LVU109
-  64:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
- 363              		.loc 1 64 37 is_stmt 0 view .LVU110
- 364 0032 E278     		ldrb	r2, [r4, #3]	@ zero_extendqisi2
-  64:Core/Src/plc.c ****     message->payload = (buffer[4] << 8) | (buffer[5]);
- 365              		.loc 1 64 29 view .LVU111
- 366 0034 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
- 367 0036 62F38713 		bfi	r3, r2, #6, #2
- 368 003a 2B71     		strb	r3, [r5, #4]
-  65:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
- 369              		.loc 1 65 5 is_stmt 1 view .LVU112
-  65:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
- 370              		.loc 1 65 31 is_stmt 0 view .LVU113
- 371 003c 2279     		ldrb	r2, [r4, #4]	@ zero_extendqisi2
-  65:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
- 372              		.loc 1 65 50 view .LVU114
- 373 003e 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
-  65:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
- 374              		.loc 1 65 41 view .LVU115
- 375 0040 43EA0223 		orr	r3, r3, r2, lsl #8
-  65:Core/Src/plc.c ****     uint16_t crc = PLC_getCRC16(buffer);
- 376              		.loc 1 65 22 view .LVU116
- 377 0044 6B80     		strh	r3, [r5, #2]	@ movhi
-  66:Core/Src/plc.c ****     if (crc != ((buffer[6] << 8) | (buffer[7])))
- 378              		.loc 1 66 5 is_stmt 1 view .LVU117
-  66:Core/Src/plc.c ****     if (crc != ((buffer[6] << 8) | (buffer[7])))
- 379              		.loc 1 66 20 is_stmt 0 view .LVU118
- 380 0046 2046     		mov	r0, r4
- 381 0048 FFF7FEFF 		bl	PLC_getCRC16
- 382              	.LVL30:
-  67:Core/Src/plc.c ****     {
- 383              		.loc 1 67 5 is_stmt 1 view .LVU119
-  67:Core/Src/plc.c ****     {
- 384              		.loc 1 67 24 is_stmt 0 view .LVU120
- 385 004c A279     		ldrb	r2, [r4, #6]	@ zero_extendqisi2
-  67:Core/Src/plc.c ****     {
- 386              		.loc 1 67 43 view .LVU121
- 387 004e E379     		ldrb	r3, [r4, #7]	@ zero_extendqisi2
-  67:Core/Src/plc.c ****     {
- 388              		.loc 1 67 34 view .LVU122
- 389 0050 43EA0223 		orr	r3, r3, r2, lsl #8
-  67:Core/Src/plc.c ****     {
- 390              		.loc 1 67 8 view .LVU123
- 391 0054 9842     		cmp	r0, r3
- 392 0056 DAD0     		beq	.L19
-  69:Core/Src/plc.c ****     }
- 393              		.loc 1 69 16 view .LVU124
- 394 0058 0126     		movs	r6, #1
- 395 005a D8E7     		b	.L19
- 396              		.cfi_endproc
- 397              	.LFE71:
- 399              		.section	.text.PLC_ResponseMessageGenerate,"ax",%progbits
- 400              		.align	1
- 401              		.global	PLC_ResponseMessageGenerate
- 402              		.syntax unified
- 403              		.thumb
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 10
+ 357              		.loc 1 61 8 view .LVU110
+ 358 0054 9842     		cmp	r0, r3
+ 359 0056 DAD0     		beq	.L17
+  63:Core/Src/plc.c ****     }
+ 360              		.loc 1 63 16 view .LVU111
+ 361 0058 0126     		movs	r6, #1
+ 362 005a D8E7     		b	.L17
+ 363              		.cfi_endproc
+ 364              	.LFE71:
+ 366              		.section	.text.PLC_ResponseMessageGenerate,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	PLC_ResponseMessageGenerate
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 372              		.fpu softvfp
+ 374              	PLC_ResponseMessageGenerate:
+ 375              	.LVL27:
+ 376              	.LFB72:
+  67:Core/Src/plc.c **** 
+  68:Core/Src/plc.c **** void PLC_ResponseMessageGenerate(uint8_t* buffer, PLCMessage message)
+  69:Core/Src/plc.c **** {
+ 377              		.loc 1 69 1 is_stmt 1 view -0
+ 378              		.cfi_startproc
+ 379              		@ args = 0, pretend = 0, frame = 8
+ 380              		@ frame_needed = 0, uses_anonymous_args = 0
+ 381              		.loc 1 69 1 is_stmt 0 view .LVU113
+ 382 0000 30B5     		push	{r4, r5, lr}
+ 383              	.LCFI8:
+ 384              		.cfi_def_cfa_offset 12
+ 385              		.cfi_offset 4, -12
+ 386              		.cfi_offset 5, -8
+ 387              		.cfi_offset 14, -4
+ 388 0002 83B0     		sub	sp, sp, #12
+ 389              	.LCFI9:
+ 390              		.cfi_def_cfa_offset 24
+ 391 0004 0446     		mov	r4, r0
+ 392 0006 02AB     		add	r3, sp, #8
+ 393 0008 03E90600 		stmdb	r3, {r1, r2}
+  70:Core/Src/plc.c ****   
+  71:Core/Src/plc.c ****   buffer[0] = '$';
+ 394              		.loc 1 71 3 is_stmt 1 view .LVU114
+ 395              		.loc 1 71 13 is_stmt 0 view .LVU115
+ 396 000c 2423     		movs	r3, #36
+ 397 000e 0370     		strb	r3, [r0]
+  72:Core/Src/plc.c ****   buffer[1] = PLC_LEN_OF_MESSAGE;
+ 398              		.loc 1 72 3 is_stmt 1 view .LVU116
+ 399              		.loc 1 72 13 is_stmt 0 view .LVU117
+ 400 0010 0823     		movs	r3, #8
+ 401 0012 4370     		strb	r3, [r0, #1]
+  73:Core/Src/plc.c ****   buffer[2] = PLC_RESPONSE_MESSAGE;
+ 402              		.loc 1 73 3 is_stmt 1 view .LVU118
+ 403              		.loc 1 73 13 is_stmt 0 view .LVU119
+ 404 0014 0121     		movs	r1, #1
+ 405 0016 8170     		strb	r1, [r0, #2]
+  74:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
+ 406              		.loc 1 74 3 is_stmt 1 view .LVU120
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 10
 
 
- 404              		.thumb_func
- 405              		.fpu softvfp
- 407              	PLC_ResponseMessageGenerate:
- 408              	.LVL31:
- 409              	.LFB72:
-  73:Core/Src/plc.c **** 
-  74:Core/Src/plc.c **** void PLC_ResponseMessageGenerate(uint8_t* buffer, PLCMessage message)
-  75:Core/Src/plc.c **** {
- 410              		.loc 1 75 1 is_stmt 1 view -0
- 411              		.cfi_startproc
- 412              		@ args = 0, pretend = 0, frame = 8
- 413              		@ frame_needed = 0, uses_anonymous_args = 0
- 414              		.loc 1 75 1 is_stmt 0 view .LVU126
- 415 0000 70B5     		push	{r4, r5, r6, lr}
- 416              	.LCFI8:
- 417              		.cfi_def_cfa_offset 16
- 418              		.cfi_offset 4, -16
- 419              		.cfi_offset 5, -12
- 420              		.cfi_offset 6, -8
- 421              		.cfi_offset 14, -4
- 422 0002 82B0     		sub	sp, sp, #8
- 423              	.LCFI9:
- 424              		.cfi_def_cfa_offset 24
- 425 0004 0446     		mov	r4, r0
- 426 0006 02AB     		add	r3, sp, #8
- 427 0008 03E90600 		stmdb	r3, {r1, r2}
-  76:Core/Src/plc.c ****   
-  77:Core/Src/plc.c ****   buffer[0] = '$';
- 428              		.loc 1 77 3 is_stmt 1 view .LVU127
- 429              		.loc 1 77 13 is_stmt 0 view .LVU128
- 430 000c 2423     		movs	r3, #36
- 431 000e 0370     		strb	r3, [r0]
-  78:Core/Src/plc.c ****   buffer[1] = PLC_LEN_OF_MESSAGE;
- 432              		.loc 1 78 3 is_stmt 1 view .LVU129
- 433              		.loc 1 78 13 is_stmt 0 view .LVU130
- 434 0010 0A25     		movs	r5, #10
- 435 0012 4570     		strb	r5, [r0, #1]
-  79:Core/Src/plc.c ****   buffer[2] = PLC_RESPONSE_MESSAGE;
- 436              		.loc 1 79 3 is_stmt 1 view .LVU131
- 437              		.loc 1 79 13 is_stmt 0 view .LVU132
- 438 0014 0121     		movs	r1, #1
- 439 0016 8170     		strb	r1, [r0, #2]
-  80:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
- 440              		.loc 1 80 3 is_stmt 1 view .LVU133
- 441              		.loc 1 80 30 is_stmt 0 view .LVU134
- 442 0018 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
- 443 001c 02F00F06 		and	r6, r2, #15
-  81:Core/Src/plc.c ****               | (message.device.deviceAddr << 2)
- 444              		.loc 1 81 32 view .LVU135
- 445 0020 C2F30113 		ubfx	r3, r2, #4, #2
- 446              		.loc 1 81 44 view .LVU136
- 447 0024 9B00     		lsls	r3, r3, #2
- 448              		.loc 1 81 15 view .LVU137
- 449 0026 43EA0613 		orr	r3, r3, r6, lsl #4
- 450 002a 5BB2     		sxtb	r3, r3
-  82:Core/Src/plc.c ****               | (message.device.channel);
- 451              		.loc 1 82 15 view .LVU138
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 11
+ 407              		.loc 1 74 30 is_stmt 0 view .LVU121
+ 408 0018 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 409 001c 02F00F05 		and	r5, r2, #15
+  75:Core/Src/plc.c ****               | (message.device.deviceAddr << 2)
+ 410              		.loc 1 75 32 view .LVU122
+ 411 0020 C2F30113 		ubfx	r3, r2, #4, #2
+ 412              		.loc 1 75 44 view .LVU123
+ 413 0024 9B00     		lsls	r3, r3, #2
+ 414              		.loc 1 75 15 view .LVU124
+ 415 0026 43EA0513 		orr	r3, r3, r5, lsl #4
+ 416 002a 5BB2     		sxtb	r3, r3
+  76:Core/Src/plc.c ****               | (message.device.channel);
+ 417              		.loc 1 76 15 view .LVU125
+ 418 002c 43EA9213 		orr	r3, r3, r2, lsr #6
+  74:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
+ 419              		.loc 1 74 13 view .LVU126
+ 420 0030 C370     		strb	r3, [r0, #3]
+  77:Core/Src/plc.c ****   buffer[4] = 0x00;
+ 421              		.loc 1 77 3 is_stmt 1 view .LVU127
+ 422              		.loc 1 77 13 is_stmt 0 view .LVU128
+ 423 0032 0023     		movs	r3, #0
+ 424 0034 0371     		strb	r3, [r0, #4]
+  78:Core/Src/plc.c ****   buffer[5] = 0x01; 
+ 425              		.loc 1 78 3 is_stmt 1 view .LVU129
+ 426              		.loc 1 78 13 is_stmt 0 view .LVU130
+ 427 0036 4171     		strb	r1, [r0, #5]
+  79:Core/Src/plc.c ****   uint16_t crc = PLC_getCRC16(buffer);
+ 428              		.loc 1 79 3 is_stmt 1 view .LVU131
+ 429              		.loc 1 79 18 is_stmt 0 view .LVU132
+ 430 0038 FFF7FEFF 		bl	PLC_getCRC16
+ 431              	.LVL28:
+  80:Core/Src/plc.c ****   buffer[6] = (crc >> 8) & (0xFF);
+ 432              		.loc 1 80 3 is_stmt 1 view .LVU133
+ 433              		.loc 1 80 13 is_stmt 0 view .LVU134
+ 434 003c 030A     		lsrs	r3, r0, #8
+ 435 003e A371     		strb	r3, [r4, #6]
+  81:Core/Src/plc.c ****   buffer[7] = (crc & 0xFF);
+ 436              		.loc 1 81 3 is_stmt 1 view .LVU135
+ 437              		.loc 1 81 13 is_stmt 0 view .LVU136
+ 438 0040 E071     		strb	r0, [r4, #7]
+  82:Core/Src/plc.c **** }
+ 439              		.loc 1 82 1 view .LVU137
+ 440 0042 03B0     		add	sp, sp, #12
+ 441              	.LCFI10:
+ 442              		.cfi_def_cfa_offset 12
+ 443              		@ sp needed
+ 444 0044 30BD     		pop	{r4, r5, pc}
+ 445              		.loc 1 82 1 view .LVU138
+ 446              		.cfi_endproc
+ 447              	.LFE72:
+ 449              		.text
+ 450              	.Letext0:
+ 451              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 452              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 453              		.file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none
+ 454              		.file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 455              		.file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 11
 
 
- 452 002c 43EA9213 		orr	r3, r3, r2, lsr #6
-  80:Core/Src/plc.c ****   buffer[3] = (message.device.roomAddr << 4 ) 
- 453              		.loc 1 80 13 view .LVU139
- 454 0030 C370     		strb	r3, [r0, #3]
-  83:Core/Src/plc.c ****   buffer[4] = 0x00;
- 455              		.loc 1 83 3 is_stmt 1 view .LVU140
- 456              		.loc 1 83 13 is_stmt 0 view .LVU141
- 457 0032 0023     		movs	r3, #0
- 458 0034 0371     		strb	r3, [r0, #4]
-  84:Core/Src/plc.c ****   buffer[5] = 0x01; 
- 459              		.loc 1 84 3 is_stmt 1 view .LVU142
- 460              		.loc 1 84 13 is_stmt 0 view .LVU143
- 461 0036 4171     		strb	r1, [r0, #5]
-  85:Core/Src/plc.c ****   uint16_t crc = PLC_getCRC16(buffer);
- 462              		.loc 1 85 3 is_stmt 1 view .LVU144
- 463              		.loc 1 85 18 is_stmt 0 view .LVU145
- 464 0038 FFF7FEFF 		bl	PLC_getCRC16
- 465              	.LVL32:
-  86:Core/Src/plc.c ****   buffer[6] = (crc >> 8) & (0xFF);
- 466              		.loc 1 86 3 is_stmt 1 view .LVU146
- 467              		.loc 1 86 13 is_stmt 0 view .LVU147
- 468 003c 030A     		lsrs	r3, r0, #8
- 469 003e A371     		strb	r3, [r4, #6]
-  87:Core/Src/plc.c ****   buffer[7] = (crc & 0xFF);
- 470              		.loc 1 87 3 is_stmt 1 view .LVU148
- 471              		.loc 1 87 13 is_stmt 0 view .LVU149
- 472 0040 E071     		strb	r0, [r4, #7]
-  88:Core/Src/plc.c ****   buffer[8] = '\r';
- 473              		.loc 1 88 3 is_stmt 1 view .LVU150
- 474              		.loc 1 88 13 is_stmt 0 view .LVU151
- 475 0042 0D23     		movs	r3, #13
- 476 0044 2372     		strb	r3, [r4, #8]
-  89:Core/Src/plc.c ****   buffer[9] = '\n';
- 477              		.loc 1 89 3 is_stmt 1 view .LVU152
- 478              		.loc 1 89 13 is_stmt 0 view .LVU153
- 479 0046 6572     		strb	r5, [r4, #9]
-  90:Core/Src/plc.c **** }
- 480              		.loc 1 90 1 view .LVU154
- 481 0048 02B0     		add	sp, sp, #8
- 482              	.LCFI10:
- 483              		.cfi_def_cfa_offset 16
- 484              		@ sp needed
- 485 004a 70BD     		pop	{r4, r5, r6, pc}
- 486              		.loc 1 90 1 view .LVU155
- 487              		.cfi_endproc
- 488              	.LFE72:
- 490              		.text
- 491              	.Letext0:
- 492              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 493              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 494              		.file 4 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\lib\\gcc\\arm-none
- 495              		.file 5 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 496              		.file 6 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 497              		.file 7 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
- 498              		.file 8 "Drivers/CMSIS/Include/core_cm3.h"
- 499              		.file 9 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
- 500              		.file 10 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 12
-
-
- 501              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 502              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 503              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
- 504              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
- 505              		.file 15 "Core/Inc/plc.h"
- 506              		.file 16 "Core/Inc/usart.h"
-ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s 			page 13
+ 456              		.file 7 "c:\\program files (x86)\\gnu arm embedded toolchain\\9 2020-q2-update\\arm-none-eabi\\inc
+ 457              		.file 8 "Drivers/CMSIS/Include/core_cm3.h"
+ 458              		.file 9 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 459              		.file 10 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 460              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 461              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 462              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 463              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 464              		.file 15 "Core/Inc/plc.h"
+ 465              		.file 16 "Core/Inc/usart.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 plc.c
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:16     .text.PLC_MessageChecking:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:23     .text.PLC_MessageChecking:00000000 PLC_MessageChecking
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:91     .text.PLC_getCRC16:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:97     .text.PLC_getCRC16:00000000 PLC_getCRC16
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:207    .text.PLC_MessageGenerate:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:214    .text.PLC_MessageGenerate:00000000 PLC_MessageGenerate
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:300    .text.PLC_MessageParser:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:307    .text.PLC_MessageParser:00000000 PLC_MessageParser
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:400    .text.PLC_ResponseMessageGenerate:00000000 $t
-C:\Users\Admin\AppData\Local\Temp\ccgNd7Fi.s:407    .text.PLC_ResponseMessageGenerate:00000000 PLC_ResponseMessageGenerate
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:16     .text.PLC_MessageChecking:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:23     .text.PLC_MessageChecking:00000000 PLC_MessageChecking
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:66     .text.PLC_getCRC16:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:72     .text.PLC_getCRC16:00000000 PLC_getCRC16
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:182    .text.PLC_MessageGenerate:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:189    .text.PLC_MessageGenerate:00000000 PLC_MessageGenerate
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:267    .text.PLC_MessageParser:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:274    .text.PLC_MessageParser:00000000 PLC_MessageParser
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:367    .text.PLC_ResponseMessageGenerate:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccHPEjJk.s:374    .text.PLC_ResponseMessageGenerate:00000000 PLC_ResponseMessageGenerate
 
 NO UNDEFINED SYMBOLS

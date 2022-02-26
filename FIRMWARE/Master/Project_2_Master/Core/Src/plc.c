@@ -8,10 +8,10 @@ static HAL_StatusTypeDef PLC_MessageChecking(uint8_t* buffer)
     {
         return HAL_ERROR;
     }
-    if ((buffer[8] != '\r') || (buffer[9] != '\n'))
-    {
-        return HAL_ERROR;
-    }
+    // if ((buffer[8] != '\r') || (buffer[9] != '\n'))
+    // {
+    //     return HAL_ERROR;
+    // }
     return HAL_OK;
 }
 static uint16_t PLC_getCRC16(uint8_t* data)
@@ -48,8 +48,8 @@ void PLC_MessageGenerate(uint8_t* buffer, PLCMessage message)
   uint16_t crc = PLC_getCRC16(buffer);
   buffer[6] = (crc >> 8) & (0xFF);
   buffer[7] = (crc & 0xFF);
-  buffer[8] = '\r';
-  buffer[9] = '\n';
+//   buffer[8] = '\r';
+//   buffer[9] = '\n';
 }
 
 HAL_StatusTypeDef PLC_MessageParser(uint8_t* buffer, PLCMessage* message)

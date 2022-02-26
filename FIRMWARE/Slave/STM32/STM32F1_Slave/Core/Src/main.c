@@ -52,7 +52,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+typedef enum{
+  GET_BYTES,
+  GET_NEW_MESSAGE,
+  PROCESS_MESSAGE
+}UARTState;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -80,7 +84,7 @@ void PLC_MessageHandle(PLCMessage message)
           }
           break;
         case (PLC_CHANNEL_02):
-          if (message.payload == OFF)
+          if (message.payload == ON)
           {
             HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
             HAL_GPIO_WritePin(OF_CN2_GPIO_Port, OF_CN2_Pin, 1);
@@ -112,17 +116,19 @@ void PLC_MessageHandle(PLCMessage message)
     default:
       break;
   }
-  uint8_t buffer[10];
+  uint8_t buffer[8];
   PLC_ResponseMessageGenerate(buffer, message);
-  HAL_UART_Transmit_IT(&huart1, buffer, 10);
+  HAL_UART_Transmit_IT(&huart1, buffer, 8);
 }
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t UART1_rxBuffer[10];
-uint8_t is_new_message = 0;
+uint8_t UART1_rxBuffer[1];
+uint8_t message_buffer[PLC_LEN_OF_MESSAGE];
+uint8_t byte_count = 0;
+UARTState state = GET_BYTES;
 /* USER CODE END 0 */
 
 /**
@@ -158,7 +164,7 @@ int main(void)
   MX_DMA_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 10);
+  HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
 
   /* USER CODE END 2 */
 
@@ -188,30 +194,35 @@ int main(void)
     // }
 
     // HAL_GPIO_TogglePin(OF_CN1_GPIO_Port, OF_CN1_Pin);
-    if (is_new_message == 1)
-    {
-      HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-      PLCMessage message;
-      uint8_t buffer[10];
-      char* error = "error";
-      if (PLC_MessageParser(UART1_rxBuffer, &message) != HAL_OK)
+      // HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+      // PLCMessage message;
+      // uint8_t buffer[10];
+      // char* error = "error";
+      // if (PLC_MessageParser(UART1_rxBuffer, &message) != HAL_OK)
+      // {
+      //   HAL_UART_Transmit_IT(&huart1, (uint8_t*)error, 5);
+      // }
+      // else
+      // {
+      //   PLC_MessageHandle(message);
+      // }   
+      if (state == PROCESS_MESSAGE)
       {
-        HAL_UART_Transmit_IT(&huart1, (uint8_t*)error, 5);
+        //HAL_UART_Transmit_IT(&huart1, message_buffer, 10);
+        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+        PLCMessage message;
+        if (PLC_MessageParser(message_buffer, &message) != HAL_OK)
+        {
+          char* error = "error";
+          HAL_UART_Transmit_IT(&huart1, (uint8_t*)error, 5);
+        }
+        else
+        {
+          PLC_MessageHandle(message);
+        }
+        state = GET_BYTES;
+        HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
       }
-      else
-      {
-        PLC_MessageHandle(message);
-      }
-      
-      // message.messageType = PLC_PWM_MESSAGE;
-      // message.payload = 100;
-      // message.device.roomAddr = PLC_ROOM_ADDR;
-      // message.device.deviceAddr = PLC_DEVICE_ADDR;
-      // message.device.channel = PLC_CHANNEL_01;
-      
-      is_new_message = 0;
-      //HAL_Delay(1000);
-    }
   }
   /* USER CODE END 3 */
 }
@@ -263,8 +274,38 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 10);
-  is_new_message = 1;
+  switch (state)
+  {
+    case (GET_BYTES):
+    {
+      if (UART1_rxBuffer[0] == '$')
+      {
+        state = GET_NEW_MESSAGE;
+        message_buffer[0] = '$';
+        byte_count = 1;
+      }
+      HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
+      break;
+    }
+    case (GET_NEW_MESSAGE):
+    {
+      if (byte_count > 8)
+      {
+        state = PROCESS_MESSAGE;
+        break;
+      }
+      else
+      {
+        message_buffer[byte_count] = UART1_rxBuffer[0];
+        byte_count++;
+        HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
+      }
+      break;
+    }
+    default:
+      break;
+  }
+  //HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
 }
 /* USER CODE END 4 */
 

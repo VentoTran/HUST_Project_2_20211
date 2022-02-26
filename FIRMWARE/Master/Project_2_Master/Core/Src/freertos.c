@@ -52,14 +52,14 @@ typedef struct
 lightChannel channel01 = {
   .onoff = OFF,
   .value = 0,
-  .channel = PLC_CHANNEL_01,
+  .channel_num = PLC_CHANNEL_01,
   .messageType = 0,
 };
 
 lightChannel channel02 = {
   .onoff = OFF,
   .value = 0,
-  .channel = PLC_CHANNEL_02,
+  .channel_num = PLC_CHANNEL_02,
   .messageType = 0,
 };
 /* USER CODE END PTD */
@@ -305,7 +305,7 @@ void PLC_Task(void *argument)
     if (osMessageQueueGet(PLC_MsgQueue, &channel, NULL, portMAX_DELAY) == osOK)
     {
       PLCMessage message;
-      uint8_t buffer[10];
+      uint8_t buffer[8];
       message.messageType = channel.messageType;
       if (channel.messageType == PLC_ONOFF_MESSAGE)
       {
@@ -318,9 +318,9 @@ void PLC_Task(void *argument)
       }
       message.device.roomAddr = PLC_ROOM_ADDR;
       message.device.deviceAddr = PLC_DEVICE_ADDR;
-      message.device.channel = PLC_CHANNEL_01;
+      message.device.channel = channel.channel_num;
       PLC_MessageGenerate(buffer, message);
-      HAL_UART_Transmit_IT(&huart1, buffer, 10);
+      HAL_UART_Transmit_IT(&huart1, buffer, 8);
       //osDelay(10000);
     }
   }
@@ -756,7 +756,7 @@ void ControlPageHandler(uint16_t x, uint16_t y)
   
 }
 
-void SettingPageHandler(uint16_t x, uint16_t y)
+void SettingPageHandler(uint16_t x, uint16_t y) 
 {
   if ((x <= (Control_Setting.pos_y + (Control_Setting.shape_h/2))) && 
       (x >= (Control_Setting.pos_y - (Control_Setting.shape_h/2))) && 
@@ -775,7 +775,9 @@ void SettingPageHandler(uint16_t x, uint16_t y)
     ILI9341_WriteString(109, 40, temp, Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
     ILI9341_FillRectangle(22, 72, 277, 17, ILI9341_BLACK);
     ILI9341_FillRectangle(22, 72, 278*((double)Channel01.PWM_percent/100) - 1, 17, ILI9341_GREEN);
-    osSemaphoreRelease(PLCSemHandle);
+    channel01.value = Channel01.PWM_percent * 8;
+    channel01.messageType = PLC_PWM_MESSAGE;
+    osMessageQueuePut(PLC_MsgQueue, &channel01, 0U, 0U);
   }
 
   if ((x >= 160) && (x <= 180) && (y >= 20) && (y <= 300))
@@ -786,6 +788,9 @@ void SettingPageHandler(uint16_t x, uint16_t y)
     ILI9341_WriteString(109, 130, temp, Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
     ILI9341_FillRectangle(22, 162, 277, 17, ILI9341_BLACK);
     ILI9341_FillRectangle(22, 162, 278*((double)Channel02.PWM_percent/100) - 1, 17, ILI9341_GREEN);
+    channel02.value = Channel02.PWM_percent * 8;
+    channel02.messageType = PLC_PWM_MESSAGE;
+    osMessageQueuePut(PLC_MsgQueue, &channel02, 0U, 0U);
   }
 }
 

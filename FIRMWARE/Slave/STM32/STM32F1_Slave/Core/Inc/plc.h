@@ -10,7 +10,7 @@
 #define PLC_DEVICE_ADDR       (01)
 #define PLC_CHANNEL_01        (01)
 #define PLC_CHANNEL_02        (02)
-#define PLC_LEN_OF_MESSAGE    (10)
+#define PLC_LEN_OF_MESSAGE    (8)
 #define ON 1
 #define OFF 0
 typedef struct 
