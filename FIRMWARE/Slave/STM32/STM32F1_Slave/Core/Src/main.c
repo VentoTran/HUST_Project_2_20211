@@ -116,9 +116,6 @@ void PLC_MessageHandle(PLCMessage message)
     default:
       break;
   }
-  uint8_t buffer[8];
-  PLC_ResponseMessageGenerate(buffer, message);
-  HAL_UART_Transmit_IT(&huart1, buffer, 8);
 }
 
 /* USER CODE END PFP */
