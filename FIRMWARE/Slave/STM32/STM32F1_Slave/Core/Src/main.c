@@ -457,8 +457,8 @@ void PLC_MessageHandle(PLCMessage message)
     case (PLC_REQUEST_CURRENT):
     {
       uint8_t current[8];
-      if (message.device.channel == PLC_CHANNEL_01)   {message.payload = Current.CN1_Current_mA;}
-      else                                            {message.payload = Current.CN2_Current_mA;}
+      if (message.device.channel == PLC_CHANNEL_01)       {message.payload = Current.CN1_Current_mA;}
+      else if (message.device.channel == PLC_CHANNEL_02)  {message.payload = Current.CN2_Current_mA;}
       PLC_MessageGenerate(current, message);
       HAL_UART_Transmit(&huart1, (uint8_t*)current, 8, 10);
       break;
