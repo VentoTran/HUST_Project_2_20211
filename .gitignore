@@ -6,6 +6,7 @@
 *.ko
 *.obj
 *.elf
+*.lst
 
 # Linker output
 *.ilk
@@ -35,6 +36,7 @@
 *.i*86
 *.x86_64
 *.hex
+*.bin
 
 # Debug files
 *.dSYM/
@@ -58,7 +60,8 @@ HARDWARE/Project Outputs for Project_2/
 HARDWARE/*.log
 HARDWARE/*.OutJob
 
-
-
+# FIRMWARE files
+*.vscode/
+*build/
 
 

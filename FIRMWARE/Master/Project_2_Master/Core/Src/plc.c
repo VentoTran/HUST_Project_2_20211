@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include "usart.h"
 extern UART_HandleTypeDef huart1;
+
 static HAL_StatusTypeDef PLC_MessageChecking(uint8_t* buffer)
 {
     if ((buffer[0] != '$') || (buffer[1] != PLC_LEN_OF_MESSAGE))
@@ -14,6 +15,7 @@ static HAL_StatusTypeDef PLC_MessageChecking(uint8_t* buffer)
     // }
     return HAL_OK;
 }
+
 static uint16_t PLC_getCRC16(uint8_t* data)
 {
   uint16_t crc = 0xFFFF;
@@ -34,9 +36,9 @@ static uint16_t PLC_getCRC16(uint8_t* data)
   }
   return crc;
 }
+
 void PLC_MessageGenerate(uint8_t* buffer, PLCMessage message)
 {
-  
   buffer[0] = '$';
   buffer[1] = PLC_LEN_OF_MESSAGE;
   buffer[2] = message.messageType;
