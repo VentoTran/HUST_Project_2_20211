@@ -78,13 +78,11 @@ typedef enum
 #define PWM_MIN                 (0)
 #define ADC_RESOLUTION          (4095)
 #define VCC_mV                  (3300)
-#define VOLTAGE_MEAN            (2471)
-#define DELTA_VOLTAGE_MIN_CN1   (32)
-#define DELTA_VOLTAGE_MIN_CN2   (21)
 #define ADC_MEAN                (3066)
 #define SAMPLE                  (20000)
-#define OFFSET_CN1              (15)
-#define OFFSET_CN2              (11)
+#define OFFSET_CN1_LOW          (-30)
+#define OFFSET_CN2_LOW          (-6)
+#define LOW_THR_PWM_CN2         (300)
 #define SENSITIVITY_mV_per_A    (185)
 #define DELAY_READ_CURRENT      (5000)
 #define DELAY_RX_CHECK          (5000)
@@ -117,7 +115,8 @@ uint8_t UART1_rxBuffer[1];
 uint8_t message_buffer[PLC_LEN_OF_MESSAGE];
 uint8_t byte_count = 0;
 UARTStateRX RXstate = RXREADY;
-//UARTStateTX TXstate = TXREADY;
+uint16_t CN1_PWM = 0;
+uint16_t CN2_PWM = 0;
 MeasureState Mstate = READY;
 ADC_t ADC = {0, 0, 0, {0, 0}, {0, 0}, {0.0, 0.0}};
 Current_t Current = {0.0, 0.0};
@@ -179,9 +178,9 @@ int main(void)
     
     if (RXstate == PROCESS_MESSAGE)
     {
+      HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
       if (PLC_MessageParser(message_buffer, &message) != HAL_OK)
       {
-        TickRXCheck = HAL_GetTick();
         message.device.roomAddr = PLC_ROOM_ADDR;
         message.device.deviceAddr = PLC_DEVICE_ADDR;
         message.device.channel = 0;
@@ -193,11 +192,12 @@ int main(void)
       }
       else  
       {
-        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
         PLC_MessageHandle(message);
+        HAL_Delay(1000);
+        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
       }
-      HAL_Delay(1000);
       RXstate = RXREADY;
+      TickRXCheck = HAL_GetTick();
       HAL_UART_Receive_IT(&huart1, UART1_rxBuffer, 1);
     }
 
@@ -336,7 +336,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     {
       ADC.count[0] = 0;
       ADC.ADC_RMS[0] /= SAMPLE;
-      ADC.voltage_RMS[0] = (ADC.ADC_RMS[0] * VCC_mV / ADC_RESOLUTION) + OFFSET_CN1;
+      ADC.voltage_RMS[0] = (ADC.ADC_RMS[0] * VCC_mV / ADC_RESOLUTION) + OFFSET_CN1_LOW;
       if (HAL_GPIO_ReadPin(OF_CN1_GPIO_Port, OF_CN1_Pin) == GPIO_PIN_RESET) {ADC.voltage_RMS[0] = 0;}
       Current.CN1_Current_mA = ADC.voltage_RMS[0] * 1000 / SENSITIVITY_mV_per_A;
     }
@@ -353,7 +353,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
     {
       ADC.count[1] = 0;
       ADC.ADC_RMS[1] /= SAMPLE;
-      ADC.voltage_RMS[1] = (ADC.ADC_RMS[1] * VCC_mV / ADC_RESOLUTION) + OFFSET_CN2;
+      ADC.voltage_RMS[1] = (ADC.ADC_RMS[1] * VCC_mV / ADC_RESOLUTION);
+      if (CN2_PWM <= LOW_THR_PWM_CN2)       {ADC.voltage_RMS[1] += OFFSET_CN2_LOW;}
       if (HAL_GPIO_ReadPin(OF_CN2_GPIO_Port, OF_CN2_Pin) == GPIO_PIN_RESET) {ADC.voltage_RMS[1] = 0;}
       Current.CN2_Current_mA = ADC.voltage_RMS[1] * 1000 / SENSITIVITY_mV_per_A;
       Mstate = READY;
@@ -422,11 +423,17 @@ void PLC_MessageHandle(PLCMessage message)
       switch (message.device.channel)
       {
         case (PLC_CHANNEL_01):
+        {
+          CN1_PWM = message.payload;
           __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, message.payload);
           break;
+        }
         case (PLC_CHANNEL_02):
+        {
+          CN2_PWM = message.payload;
           __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, message.payload);
-          break;  
+          break;
+        }  
       }
       
       uint8_t buffer[8];
@@ -441,19 +448,6 @@ void PLC_MessageHandle(PLCMessage message)
       
       break;
     }
-    // case (PLC_RESPONSE_MESSAGE):
-    // {
-    //   if (message.payload == PLC_RESPONSE_ERROR)
-    //   {
-    //     uint8_t current[8];
-    //     message.messageType = PLC_REQUEST_CURRENT;
-    //     if (message.device.channel == PLC_CHANNEL_01)   {message.payload = Current.CN1_Current_mA;}
-    //     else                                            {message.payload = Current.CN2_Current_mA;}
-    //     PLC_MessageGenerate(current, message);
-    //     HAL_UART_Transmit_IT(&huart1, (uint8_t*)current, 8);
-    //   }
-    //   break;
-    // }
     case (PLC_REQUEST_CURRENT):
     {
       uint8_t current[8];

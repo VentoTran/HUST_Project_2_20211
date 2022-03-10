@@ -75,20 +75,23 @@ typedef struct
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ABS(x) ((x) > 0 ? (x) : -(x))
 
 #define ControlPage     (0)
 #define SettingPage     (1)
 #define InfoPage        (2)
 #define DELAY_RX_CHECK  (5000)
+#define DELAY_RX_CHECK  (5000)
 
 #define LCD_TimeOut     (180000)
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
+#define ABS(x) ((x) > 0 ? (x) : -(x))
 /* USER CODE END PM */
+
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
@@ -205,7 +208,7 @@ void InfoPageHandler(uint16_t x, uint16_t y);
 void PLC_MessageHandle(PLCMessage message);
 
 void reverse(char* str, int len);
-int intToStr(uint8_t x, char str[], int d);
+int intToStr(uint16_t x, char str[], int d);
 void ftoa(float n, char* res, int afterpoint);
 
 void intToTime(uint32_t time, char* str);
@@ -257,7 +260,7 @@ void MX_FREERTOS_Init(void) {
   TimeoutHandle = osTimerNew(LCD_Timeout, osTimerOnce, NULL, &Timeout_attributes);
 
   /* creation of CurrentTimer */
-  CurrentTimerHandle = osTimerNew(Get_Current, osTimerOnce, NULL, &CurrentTimer_attributes);
+  CurrentTimerHandle = osTimerNew(Get_Current, osTimerPeriodic, NULL, &CurrentTimer_attributes);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -265,10 +268,10 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the queue(s) */
   /* creation of PLC_MsgQueue */
-  PLC_MsgQueueHandle = osMessageQueueNew (10, sizeof(lightChannel), &PLC_MsgQueue_attributes);
+  PLC_MsgQueueHandle = osMessageQueueNew (5, sizeof(lightChannel), &PLC_MsgQueue_attributes);
 
   /* creation of RXQueue */
-  RXQueueHandle = osMessageQueueNew (5, sizeof(UART1_rxBuffer), &RXQueue_attributes);
+  RXQueueHandle = osMessageQueueNew (8, sizeof(UART1_rxBuffer), &RXQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -355,23 +358,27 @@ void PLC_Task(void *argument)
   PLCMessage message;
   uint8_t buffer[8];
   uint32_t TickRXCheck = 0;
+  uint32_t TickTXCheck = 0;
   // osDelay(2000);
   /* Infinite loop */
   for(;;)
   {
   
-    if ((osMessageQueueGet(PLC_MsgQueueHandle, &channel, NULL, 10) == osOK) && (TXstate == TXREADY))
+    if (TXstate == TXREADY)
     {
-      TXstate = SENDING;
-      message.messageType = channel.messageType;
-      if (channel.messageType == PLC_ONOFF_MESSAGE)         {message.payload = channel.onoff;}
-      else if (channel.messageType == PLC_PWM_MESSAGE)      {message.payload = channel.value;}
-      else if (channel.messageType == PLC_REQUEST_CURRENT)  {message.payload = 0;}
-      message.device.roomAddr = PLC_ROOM_ADDR;
-      message.device.deviceAddr = PLC_DEVICE_ADDR;
-      message.device.channel = channel.channel_num;
-      PLC_MessageGenerate(buffer, message);
-      HAL_UART_Transmit(&huart1, (uint8_t*)buffer, 8, 10);
+      if (osMessageQueueGet(PLC_MsgQueueHandle, &channel, NULL, 10) == osOK)
+      {
+        TXstate = SENDING;
+        message.messageType = channel.messageType;
+        if (channel.messageType == PLC_ONOFF_MESSAGE)         {message.payload = channel.onoff;}
+        else if (channel.messageType == PLC_PWM_MESSAGE)      {message.payload = channel.value;}
+        else if (channel.messageType == PLC_REQUEST_CURRENT)  {message.payload = 0;}
+        message.device.roomAddr = PLC_ROOM_ADDR;
+        message.device.deviceAddr = PLC_DEVICE_ADDR;
+        message.device.channel = channel.channel_num;
+        PLC_MessageGenerate(buffer, message);
+        HAL_UART_Transmit_IT(&huart1, (uint8_t*)buffer, 8);
+      }
     }
 
     if (osMessageQueueGet(RXQueueHandle, &rxbyte, NULL, 10) == osOK)
@@ -396,21 +403,25 @@ void PLC_Task(void *argument)
     {
       if (PLC_MessageParser(message_buffer, &message) != HAL_OK)  {SLstate = SLAVE_nOK;}
       else  {PLC_MessageHandle(message);}
-      HAL_Delay(2000);
-      if (SLstate == SLAVE_nOK)   {HAL_UART_Transmit(&huart1, (uint8_t*)buffer, 8, 10);}
+      HAL_Delay(500);
+      while (osMessageQueueGetCount(RXQueueHandle) != 0)  {osMessageQueueGet(RXQueueHandle, &rxbyte, NULL, 10);}
+      if (SLstate == SLAVE_nOK)   {HAL_UART_Transmit_IT(&huart1, (uint8_t*)buffer, 8);}
       TickRXCheck = HAL_GetTick();
       RXstate = RXREADY;
     }
 
-    if ((RXstate == RXREADY) && (TXstate == TXREADY))   {TickRXCheck = HAL_GetTick();}
-    if (((HAL_GetTick() - TickRXCheck) > DELAY_RX_CHECK) && ((RXstate == GET_NEW_MESSAGE) || (TXstate == SENDING)))
+    if (RXstate == RXREADY)   {TickRXCheck = HAL_GetTick();}
+    if (TXstate == TXREADY)   {TickTXCheck = HAL_GetTick();}
+    if ((((HAL_GetTick() - TickRXCheck) > DELAY_RX_CHECK) || ((HAL_GetTick() - TickTXCheck) > DELAY_RX_CHECK)) && 
+        ((RXstate == GET_NEW_MESSAGE) || (TXstate == SENDING)))
     {
-      HAL_UART_Transmit(&huart1, (uint8_t*)buffer, 8, 10);
+      HAL_UART_Transmit_IT(&huart1, (uint8_t*)buffer, 8);
       TickRXCheck = HAL_GetTick();
+      TickTXCheck = HAL_GetTick();
       RXstate = RXREADY;
     }
-    
-    osDelay(10);
+
+    osDelay(1);
   }
   /* USER CODE END PLC_Task */
 }
@@ -499,8 +510,13 @@ void LED_Indicator(void *argument)
     if (currentPage == InfoPage)
     {
       char t_temp[9];
+      char temp[6];
       intToTime(Display_Channel01.time, t_temp);
       ILI9341_WriteString(90, 80, t_temp, Font_7x10, ILI9341_GREEN, ILI9341_BLACK);
+      intToStr(Display_Channel01.Current, temp, 4);
+      ILI9341_WriteString(90, 40, temp, Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
+      intToStr(Display_Channel01.Power, temp, 4);
+      ILI9341_WriteString(90, 60, temp, Font_7x10, ILI9341_RED, ILI9341_BLACK);
     }
   }
 
@@ -510,8 +526,13 @@ void LED_Indicator(void *argument)
     if (currentPage == InfoPage)
     {
       char t_temp[9];
+      char temp[6];
       intToTime(Display_Channel02.time, t_temp);
       ILI9341_WriteString(90, 170, t_temp, Font_7x10, ILI9341_GREEN, ILI9341_BLACK);
+      intToStr(Display_Channel02.Current, temp, 4);
+      ILI9341_WriteString(90, 130, temp, Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
+      intToStr(Display_Channel02.Power, temp, 4);
+      ILI9341_WriteString(90, 150, temp, Font_7x10, ILI9341_RED, ILI9341_BLACK);
     }
   }
   
@@ -533,38 +554,7 @@ void LCD_Timeout(void *argument)
 void Get_Current(void *argument)
 {
   /* USER CODE BEGIN Get_Current */
-  if ((Channel_1.state == true) && (currentPage == InfoPage))
-  {
-    if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
-    {
-      uint8_t start = Display_Channel01.Power_p + 1;
-      for(uint8_t i = 0; i < 120; i++)
-      {
-        ILI9341_DrawLine(191+i, 20, 191+i, 100, ILI9341_BLACK);
-        ILI9341_DrawPixel(191+i, 100, ILI9341_WHITE);
-        ILI9341_DrawPixel(191+i, 100-Display_Channel01.history[start++], ILI9341_BLUE);
-        if (start == 120)   {start = 0;}
-      }
-      osMutexRelease(Mutex01Handle);
-    }
-  }
-
-  if ((Channel_2.state == true) && (currentPage == InfoPage))
-  {
-    if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
-    {
-      uint8_t start = Display_Channel02.Power_p + 1;
-      for(uint8_t i = 0; i < 120; i++)
-      {
-        ILI9341_DrawLine(191+i, 140, 191+i, 220, ILI9341_BLACK);
-        ILI9341_DrawPixel(191+i, 220, ILI9341_WHITE);
-        ILI9341_DrawPixel(191+i, 220-Display_Channel02.history[start++], ILI9341_RED);
-        if (start == 120)   {start = 0;}
-      }
-      osMutexRelease(Mutex01Handle);
-    }
-  }
-
+  
   channel01.messageType = PLC_REQUEST_CURRENT;
   osMessageQueuePut(PLC_MsgQueueHandle, &channel01, 0U, 0U);
 
@@ -622,7 +612,40 @@ void PLC_MessageHandle(PLCMessage message)
         Display_Channel02.Current = message.payload;
         Display_Channel02.Power = Display_Channel02.Current * 160 / 1000;
         Display_Channel02.history[Display_Channel02.Power_p++] = Display_Channel02.Power;
-        if (Display_Channel02.Power_p == 30) {Display_Channel02.Power_p = 0;}
+        if (Display_Channel02.Power_p == 120) {Display_Channel02.Power_p = 0;}
+
+        if ((Channel_1.state == true) && (currentPage == InfoPage))
+        {
+          if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
+          {
+            uint8_t start = Display_Channel01.Power_p;
+            for(uint8_t i = 0; i < 120; i++)
+            {
+              ILI9341_DrawLine(191+i, 20, 191+i, 100, ILI9341_BLACK);
+              ILI9341_DrawPixel(191+i, 100, ILI9341_WHITE);
+              ILI9341_DrawPixel(191+i, 100-Display_Channel01.history[start++], ILI9341_BLUE);
+              if (start == 120)   {start = 0;}
+            }
+            osMutexRelease(Mutex01Handle);
+          }
+        }
+
+        if ((Channel_2.state == true) && (currentPage == InfoPage))
+        {
+          if(osMutexAcquire(Mutex01Handle, portMAX_DELAY) == osOK)
+          {
+            uint8_t start = Display_Channel02.Power_p;
+            for(uint8_t i = 0; i < 120; i++)
+            {
+              ILI9341_DrawLine(191+i, 140, 191+i, 220, ILI9341_BLACK);
+              ILI9341_DrawPixel(191+i, 220, ILI9341_WHITE);
+              ILI9341_DrawPixel(191+i, 220-Display_Channel02.history[start++], ILI9341_RED);
+              if (start == 120)   {start = 0;}
+            }
+            osMutexRelease(Mutex01Handle);
+          }
+        }
+
         SLstate = SLAVE_OK;
         TXstate = TXREADY;
       }
@@ -720,16 +743,17 @@ void InfoPageDisplay(void)
 
   char temp[6];
   char t_temp[9];
+  uint8_t start;
 
   ILI9341_WriteString(30, 15, "CHANNEL 1", Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
 
   ILI9341_WriteString(20, 40, "Current: ", Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
-  ftoa(Display_Channel01.Current, temp, 1);
+  intToStr(Display_Channel01.Current, temp, 4);
   ILI9341_WriteString(90, 40, temp, Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
   ILI9341_WriteString(125, 40, "mA", Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
 
   ILI9341_WriteString(20, 60, "Power: ", Font_7x10, ILI9341_RED, ILI9341_BLACK);
-  ftoa(Display_Channel01.Current * 220 / 1000, temp, 1);
+  intToStr(Display_Channel01.Power, temp, 4);
   ILI9341_WriteString(90, 60, temp, Font_7x10, ILI9341_RED, ILI9341_BLACK);
   ILI9341_WriteString(125, 60, "W", Font_7x10, ILI9341_RED, ILI9341_BLACK);
 
@@ -742,12 +766,12 @@ void InfoPageDisplay(void)
   ILI9341_WriteString(30, 105, "CHANNEL 2", Font_11x18, ILI9341_WHITE, ILI9341_BLACK);
 
   ILI9341_WriteString(20, 130, "Current: ", Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
-  ftoa(Display_Channel02.Current, temp, 1);
+  intToStr(Display_Channel02.Current, temp, 4);
   ILI9341_WriteString(90, 130, temp, Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
   ILI9341_WriteString(125, 130, "mA", Font_7x10, ILI9341_YELLOW, ILI9341_BLACK);
 
   ILI9341_WriteString(20, 150, "Power: ", Font_7x10, ILI9341_RED, ILI9341_BLACK);
-  ftoa(Display_Channel02.Current * 220 / 1000, temp, 1);
+  intToStr(Display_Channel02.Power, temp, 4);
   ILI9341_WriteString(90, 150, temp, Font_7x10, ILI9341_RED, ILI9341_BLACK);
   ILI9341_WriteString(125, 150, "W", Font_7x10, ILI9341_RED, ILI9341_BLACK);
 
@@ -765,20 +789,24 @@ void InfoPageDisplay(void)
   ILI9341_DrawLine(313, 222, 315, 220, ILI9341_WHITE);
   ILI9341_WriteString(310, 227, "t", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
   ILI9341_DrawLine(250, 220, 250, 223, ILI9341_WHITE);
-  ILI9341_WriteString(243, 227, "60", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
-  
+  ILI9341_WriteString(235, 227, "-30", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+  ILI9341_WriteString(180, 227, "-60", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+
   ILI9341_DrawLine(190, 135, 190, 220, ILI9341_WHITE);
   ILI9341_DrawLine(190, 135, 192, 137, ILI9341_WHITE);
   ILI9341_DrawLine(190, 135, 188, 137, ILI9341_WHITE);
   ILI9341_WriteString(178, 130, "P", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
   ILI9341_DrawLine(187, 180, 190, 180, ILI9341_WHITE);
-  ILI9341_WriteString(171, 176, "20", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+  ILI9341_WriteString(171, 176, "40", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+  ILI9341_WriteString(171, 213, " 0", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
 
-  ILI9341_WriteString(178, 227, "0", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
-
+  start = Display_Channel02.Power_p;
   for(uint8_t i = 0; i < 120; i++)
   {
-    ILI9341_DrawPixel(191+i, 220-Display_Channel02.history[i], ILI9341_RED);
+    ILI9341_DrawLine(191+i, 140, 191+i, 220, ILI9341_BLACK);
+    ILI9341_DrawPixel(191+i, 220, ILI9341_WHITE);
+    ILI9341_DrawPixel(191+i, 220-Display_Channel02.history[start++], ILI9341_RED);
+    if (start == 120)   {start = 0;}
   }
 
 
@@ -787,22 +815,25 @@ void InfoPageDisplay(void)
   ILI9341_DrawLine(313, 102, 315, 100, ILI9341_WHITE);
   ILI9341_WriteString(310, 107, "t", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
   ILI9341_DrawLine(250, 100, 250, 103, ILI9341_WHITE);
-  ILI9341_WriteString(243, 107, "60", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
-  
+  ILI9341_WriteString(235, 107, "-30", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+  ILI9341_WriteString(180, 107, "-60", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+
   ILI9341_DrawLine(190, 15, 190, 100, ILI9341_WHITE);
   ILI9341_DrawLine(190, 15, 192, 17, ILI9341_WHITE);
   ILI9341_DrawLine(190, 15, 188, 17, ILI9341_WHITE);
   ILI9341_WriteString(178, 10, "P", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
   ILI9341_DrawLine(187, 60, 190, 60, ILI9341_WHITE);
-  ILI9341_WriteString(171, 56, "20", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+  ILI9341_WriteString(171, 56, "40", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
+  ILI9341_WriteString(171, 93, " 0", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
 
-  ILI9341_WriteString(178, 107, "0", Font_7x10, ILI9341_WHITE, ILI9341_BLACK);
-
+  start = Display_Channel01.Power_p;
   for(uint8_t i = 0; i < 120; i++)
   {
-    ILI9341_DrawPixel(191+i, 100-Display_Channel01.history[i], ILI9341_BLUE);
-  }
-  
+    ILI9341_DrawLine(191+i, 20, 191+i, 100, ILI9341_BLACK);
+    ILI9341_DrawPixel(191+i, 100, ILI9341_WHITE);
+    ILI9341_DrawPixel(191+i, 100-Display_Channel01.history[start++], ILI9341_BLUE);
+    if (start == 120)   {start = 0;}
+  }   
 
   ILI9341_FillCircle(Info_Control.pos_x, Info_Control.pos_y, Info_Control.shape_r, Info_Control.color);
   ILI9341_WriteString(Info_Control.pos_x-10, Info_Control.pos_y-7, "<<", Font_11x18, ILI9341_BLACK, Info_Control.color);
@@ -938,7 +969,7 @@ void reverse(char* str, int len)
   }
 }
 
-int intToStr(uint8_t x, char str[], int d)
+int intToStr(uint16_t x, char str[], int d)
 {
   int i = 0;
   if (x == 0)
@@ -954,7 +985,7 @@ int intToStr(uint8_t x, char str[], int d)
     } 
   }
   // If number of digits required is more, then
-  // add 0s at the beginning
+  // add ' ' at the beginning
   while (i < d)
     str[i++] = ' ';
 
